@@ -8,89 +8,170 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Light Mode Colors */
-            --primary-color: #059669;     /* emerald-600 */
-            --primary-dark: #047857;      /* emerald-700 */
-            --primary-light: #10b981;     /* emerald-500 */
-            --accent-color: #0d9488;      /* teal-600 */
-            --light-bg: #f8fafc;          /* slate-50 */
+            /* Light Mode Colors (Updated to a refined Green/Teal gradient) */
+            --primary-color: #10b981;     /* green-600 (NEW: Green for Light Mode) */
+            --primary-dark: #059669;      /* green-700 (NEW: Green for Light Mode) */
+            --accent-color: #0f766e;      /* teal-700 (NEW: Darker Teal for Light Mode Gradient) */
+            --light-bg: #f8fafc;          
             --light-card: #ffffff;
-            --light-text: #0f172a;        /* slate-900 */
-            --medium-text: #475569;       /* slate-600 */
-            --light-border: #e2e8f0;      /* slate-200 */
+            --light-text: #0f172a;        
+            --medium-text: #475569;       
+            --light-border: #e2e8f0;      
             
-            /* Dark Mode Colors */
-            --dark-bg: #0f172a;           /* slate-900 */
-            --dark-card: #1e293b;         /* slate-800 */
-            --dark-text: #f1f5f9;         /* slate-100 */
-            --dark-medium-text: #cbd5e1;  /* slate-300 */
-            --dark-border: #334155;       /* slate-700 */
+            /* Dark Mode Colors (Kept as original Cyan/Teal) */
+            --dark-bg: #0f172a;           
+            --dark-card: #1e293b;         
+            --dark-text: #f1f5f9;         
+            --dark-medium-text: #cbd5e1;  
+            --dark-border: #334155;       
             
             --nav-height: 80px;
-            --amber-color: #f59e0b; /* User's preferred amber color */
-            --dark-primary-border: #14b8a6; /* Increased visibility for dark mode primary border */
+            --amber-color: #fbbf24;       /* Amber-400 (Kept as per user preference) */
+            --amber1-color: #FAB30D;       
+            --dark-primary-border: #0d9488; 
         }
+
+        /* DARK MODE OVERRIDES for Primary Colors to keep them CYAN/TEAL */
+        body.dark-mode {
+            color: var(--dark-text);
+            
+            /* Dark Mode Gradient (Deeper Navy/Slate) */
+            background: linear-gradient(to bottom right, #0d121c, #10192a, #1a243a);
+            background-attachment: fixed;
+        }
+
+        /* Override specific primary/accent colors for dark mode elements if needed, 
+           or use new variables for dark mode if only a few elements are different.
+           However, the existing structure generally uses the Light Mode variables 
+           for primary colors by default, so we'll enforce the Cyan/Teal in dark mode 
+           for things that don't have a dark-mode specific style. */
+           
+        body.dark-mode .active-tab {
+            color: #06b6d4 !important; /* cyan-600 */
+        }
+        
+        body.dark-mode .active-tab::after {
+            background: linear-gradient(90deg, #06b6d4, #0d9488); /* cyan-600, teal-600 */
+        }
+
+        body.dark-mode .separator {
+            background: linear-gradient(90deg, #06b6d4, #0d9488); /* cyan-600, teal-600 */
+        }
+
+        body.dark-mode .gradient-text {
+            background: linear-gradient(135deg, #06b6d4, #0d9488); /* cyan-600, teal-600 */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.dark-mode .btn-primary {
+            background: linear-gradient(135deg, #06b6d4, #0d9488); /* cyan-600, teal-600 */
+            box-shadow: 0 4px 14px 0 rgba(6, 182, 212, 0.4); 
+        }
+
+        body.dark-mode .btn-primary:hover {
+            box-shadow: 0 8px 25px 0 rgba(6, 182, 212, 0.6); 
+        }
+
+        body.dark-mode .btn-outline {
+            border: 2px solid #06b6d4; /* cyan-600 */
+            color: #06b6d4; /* cyan-600 */
+        }
+        
+        body.dark-mode .btn-outline:hover {
+            background: #06b6d4; /* cyan-600 */
+            color: white;
+            box-shadow: 0 4px 12px 0 rgba(6, 182, 212, 0.4);
+        }
+
+        body.dark-mode #content-wrapper::-webkit-scrollbar-thumb { 
+             background: linear-gradient(to bottom, #06b6d4, #0d9488); /* cyan-600, teal-600 */
+            border: 2px solid transparent; 
+        }
+        body.dark-mode #content-wrapper::-webkit-scrollbar-thumb:hover { 
+            background: linear-gradient(to bottom, #0891b2, #0d9488); /* cyan-700, teal-600 */
+        }
+
+        body.dark-mode .section-border::before {
+            background: linear-gradient(to bottom, #06b6d4, #0d9488); /* cyan-600, teal-600 */
+        }
+
+        body.dark-mode .profile-frame {
+            border-image: linear-gradient(135deg, #06b6d4, #0d9488) 1; /* cyan-600, teal-600 */
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2);
+        }
+
+        body.dark-mode .text-primary {
+            color: #06b6d4; /* cyan-600 */
+        }
+        
+        body.dark-mode .bg-primary-light {
+             background-color: rgba(6, 182, 212, 0.1); /* cyan-600 */
+        }
+        
+        /* Light Mode Styles (Using the new Green/Teal variables) */
 
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: var(--light-bg);
             color: var(--light-text);
             min-height: 100vh;
             transition: all 0.4s ease;
-            /* overflow-y: hidden; <- REMOVED to fix scroll issue on all devices */
             padding-top: var(--nav-height);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-        }
-
-        body.dark-mode {
-            background: var(--dark-bg);
-            color: var(--dark-text);
-        }
-
-        .mica-card {
-            /* Consistent border-radius for both modes */
-            border-radius: 16px; 
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(30px) saturate(180%);
-            -webkit-backdrop-filter: blur(30px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 
-                0 10px 30px 0 rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             
-            /* FIX: Add position: relative and overflow: hidden for ::before element to respect border-radius */
+            /* Light Mode Gradient (Cleaner Silver/Blue) */
+            background: linear-gradient(to bottom right, #f7f9fb, #eef4f9, #e0e9f0);
+            background-attachment: fixed;
+        }
+        
+        /* NEW: Poppins for headings */
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* ENHANCED MICA/GLASS EFFECT for main cards */
+        .mica-card {
+            border-radius: 20px; /* Slightly rounder */
+            background-color: rgba(255, 255, 255, 0.4); /* Less opaque */
+            backdrop-filter: blur(35px) saturate(180%); /* Less aggressive blur */
+            -webkit-backdrop-filter: blur(35px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.7); /* Crisper border */
+            box-shadow: 
+                0 20px 40px 0 rgba(0, 0, 0, 0.1), 
+                inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative; 
             overflow: hidden;
         }
         
         .dark-mode .mica-card {
-            /* Consistent border-radius for both modes */
-            border-radius: 16px; 
-            background-color: rgba(30, 41, 59, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: rgba(17, 24, 39, 0.3); /* More transparent dark base */
+            backdrop-filter: blur(35px) saturate(180%);
+            -webkit-backdrop-filter: blur(35px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 
-                0 10px 30px 0 rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+                0 20px 40px 0 rgba(0, 0, 0, 0.3),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.05);
         }
 
         .mica-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-8px) scale(1.005); /* Increased lift on hover */
             box-shadow: 
-                0 20px 40px 0 rgba(0, 0, 0, 0.12),
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
-            background-color: rgba(255, 255, 255, 0.9);
+                0 40px 80px 0 rgba(0, 0, 0, 0.2), /* Stronger hover shadow */
+                inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.55); 
         }
 
         .dark-mode .mica-card:hover {
             box-shadow: 
-                0 20px 40px 0 rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
-            background-color: rgba(30, 41, 59, 0.8);
+                0 40px 80px 0 rgba(0, 0, 0, 0.6),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+            background-color: rgba(17, 24, 39, 0.45);
         }
 
         .active-tab {
@@ -106,38 +187,38 @@
             left: 0;
             width: 100%;
             height: 3px;
+            /* Updated to new gradient (Green/Teal for Light Mode) */
             background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
             border-radius: 3px;
         }
         
         #content-wrapper {
-            /* Changed height to min-height to allow full content scrolling */
             min-height: calc(100vh - var(--nav-height)); 
             overflow-y: auto;
             scroll-behavior: smooth;
-            padding-bottom: 30px; /* Add bottom padding to prevent content/footer from being clipped */
+            padding-bottom: 30px; 
         }
 
-        /* Set max-height for content-section and ensure it's scrollable/responsive */
         .content-section {
             display: none !important;
-            min-height: calc(100vh - var(--nav-height) - 40px); /* Adjusted for better viewport usage */
-            padding: 50px 0;
+            padding: 0; 
         }
 
         .content-section.active {
             display: flex !important;
             flex-direction: column;
             align-items: center;
-            /* Removed justify-content: center; to allow content to align to top */
         }
 
+        /* NEW MODERN SEPARATOR: Small pill/capsule */
         .separator {
-            height: 5px;
-            width: 120px;
+            height: 6px;
+            width: 80px; 
+            /* Updated to new gradient (Green/Teal for Light Mode) */
             background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
             margin: 0 auto;
-            border-radius: 2.5px;
+            border-radius: 6px;
+            opacity: 0.8;
         }
 
         @keyframes fadeInMove {
@@ -149,20 +230,22 @@
             animation: fadeInMove 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
 
+        /* ENHANCED NAVBAR MICA/GLASS EFFECT */
         .navbar-mica {
-            background-color: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(40px) saturate(180%);
-            -webkit-backdrop-filter: blur(40px) saturate(180%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.08);
+            background-color: rgba(255, 255, 255, 0.5); 
+            backdrop-filter: blur(60px) saturate(200%); 
+            -webkit-backdrop-filter: blur(60px) saturate(200%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.7); 
+            box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.1); 
         }
 
         .dark-mode .navbar-mica {
-            background-color: rgba(15, 23, 42, 0.75);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3);
+            background-color: rgba(15, 23, 42, 0.5); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.4);
         }
 
+        /* Updated to new gradient colors (Green/Teal for Light Mode) */
         .gradient-text {
             background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             -webkit-background-clip: text;
@@ -171,15 +254,17 @@
         }
 
         .btn-primary {
+            /* Updated to new gradient colors (Green/Teal for Light Mode) */
             background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             color: white;
-            box-shadow: 0 4px 14px 0 rgba(5, 150, 105, 0.4);
+            /* Updated to green shadow (using a standard green-500 equivalent for a lighter feel) */
+            box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.4); 
             transition: all 0.3s ease;
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px 0 rgba(5, 150, 105, 0.5);
+            transform: translateY(-4px); /* Increased lift */
+            box-shadow: 0 8px 25px 0 rgba(16, 185, 129, 0.6); /* Stronger shadow */
         }
 
         .btn-outline {
@@ -187,105 +272,109 @@
             color: var(--primary-color);
             transition: all 0.3s ease;
         }
+        
+        .dark-mode .btn-outline {
+            border-color: #06b6d4; /* cyan-600 */
+            color: #06b6d4; /* cyan-600 */
+        }
 
         .btn-outline:hover {
             background: var(--primary-color);
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px 0 rgba(5, 150, 105, 0.3);
-        }
-
-        #content-wrapper::-webkit-scrollbar { width: 10px; }
-        #content-wrapper::-webkit-scrollbar-track { 
-            background: var(--light-bg); 
-        }
-        .dark-mode #content-wrapper::-webkit-scrollbar-track { 
-            background: var(--dark-card); 
-        }
-        #content-wrapper::-webkit-scrollbar-thumb { 
-            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color)); 
-            border-radius: 5px; 
-            border: 2px solid var(--light-bg); 
-        }
-        .dark-mode #content-wrapper::-webkit-scrollbar-thumb { 
-            border: 2px solid var(--dark-card); 
-        }
-        #content-wrapper::-webkit-scrollbar-thumb:hover { 
-            background: linear-gradient(to bottom, var(--primary-dark), #0f766e); 
-        }
-
-        /* FIX: Redefine .section-border to use a pseudo-element for reliable border-radius */
-        .section-border {
-            /* Remove conflicting border properties */
-            border-left: none !important; 
-            border-image: none !important;
+            transform: translateY(-4px); /* Increased lift */
+            box-shadow: 0 4px 12px 0 rgba(16, 185, 129, 0.4);
         }
         
-        /* The common style for the green bar */
+        .dark-mode .btn-outline:hover {
+            background: #06b6d4; /* cyan-600 */
+            color: white;
+        }
+
+        /* Custom scrollbar styles */
+        #content-wrapper::-webkit-scrollbar { width: 10px; }
+        #content-wrapper::-webkit-scrollbar-track { background: transparent; }
+        .dark-mode #content-wrapper::-webkit-scrollbar-track { background: transparent; }
+        #content-wrapper::-webkit-scrollbar-thumb { 
+            /* Updated to new gradient (Green/Teal for Light Mode) */
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color)); 
+            border-radius: 5px; 
+            border: 2px solid transparent; 
+        }
+        .dark-mode #content-wrapper::-webkit-scrollbar-thumb { 
+             background: linear-gradient(to bottom, #06b6d4, #0d9488); /* cyan-600, teal-600 */
+            border: 2px solid transparent; 
+        }
+        #content-wrapper::-webkit-scrollbar-thumb:hover { 
+            background: linear-gradient(to bottom, var(--primary-dark), var(--accent-color)); 
+        }
+        .dark-mode #content-wrapper::-webkit-scrollbar-thumb:hover { 
+            background: linear-gradient(to bottom, #0891b2, #0d9488); /* cyan-700, teal-600 */
+        }
+
+
         .section-border::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px; /* Border thickness */
+            width: 4px; 
             height: 100%;
-            /* Light Mode Gradient */
+            /* Updated to new gradient (Green/Teal for Light Mode) */
             background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
-            border-radius: 16px 0 0 16px; /* Match the main card's radius on the left side */
+            border-radius: 16px 0 0 16px; 
         }
         
-        /* Dark Mode visibility fix for the green bar */
         .dark-mode .section-border::before {
-            background: var(--dark-primary-border); 
+            background: linear-gradient(to bottom, #06b6d4, #0d9488); /* cyan-600, teal-600 */
         }
 
 
         .profile-frame {
             border: 4px solid;
+            /* Updated to new gradient (Green/Teal for Light Mode) */
             border-image: linear-gradient(135deg, var(--primary-color), var(--accent-color)) 1;
             padding: 8px;
             border-radius: 50%;
-            box-shadow: 0 10px 30px rgba(5, 150, 105, 0.2);
+            /* Updated to green shadow (using a standard green-500 equivalent) */
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+        }
+        
+        .dark-mode .profile-frame {
+            border-image: linear-gradient(135deg, #06b6d4, #0d9488) 1; /* cyan-600, teal-600 */
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2);
         }
 
+        /* SIMPLIFIED SKILL CARD with light blur/transparency */
         .skill-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.9));
+            background: rgba(255, 255, 255, 0.8); 
+            backdrop-filter: blur(10px);
             border-radius: 12px;
             padding: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
         .dark-mode .skill-card {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+            background: rgba(30, 41, 59, 0.8); 
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .skill-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
         .dark-mode .skill-card:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
         }
 
-        .project-highlight {
-            background: linear-gradient(135deg, rgba(5, 150, 105, 0.05), rgba(13, 148, 136, 0.05));
-            border: 1px solid rgba(5, 150, 105, 0.2);
-        }
-
-        .dark-mode .project-highlight {
-            background: linear-gradient(135deg, rgba(5, 150, 105, 0.1), rgba(13, 148, 136, 0.1));
-        }
-        
-        /* New highlight class using the user's preferred amber color */
+        /* Updated for new amber color */
         .project-highlight-amber {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(234, 88, 12, 0.08)); /* Blend of Amber and another warm color for gradient effect */
-            border: 1px solid rgba(245, 158, 11, 0.5);
-            /* Remove old conflicting border properties */
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.08), rgba(234, 88, 12, 0.08)); 
+            border: 1px solid rgba(251, 191, 36, 0.5);
             border-left: none !important; 
             border-image: none !important; 
         }
@@ -297,15 +386,14 @@
             left: 0;
             width: 4px;
             height: 100%;
-            background: var(--amber-color); /* Solid Amber */
+            background: var(--amber-color); 
             border-radius: 16px 0 0 16px;
         }
         
         .dark-mode .project-highlight-amber {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(234, 88, 12, 0.15));
-            border: 1px solid rgba(245, 158, 11, 0.3);
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(234, 88, 12, 0.15));
+            border: 1px solid rgba(251, 191, 36, 0.3);
         }
-
 
         .floating {
             animation: float 6s ease-in-out infinite;
@@ -345,12 +433,33 @@
             transform: scale(1.1);
         }
 
+        /* Updated primary text color */
         .text-primary {
             color: var(--primary-color);
+        }
+        
+        /* Dark mode override for text-primary to keep it cyan */
+        .dark-mode .text-primary {
+            color: #06b6d4; /* cyan-600 */
+        }
+        
+        .text-amber-custom {
+            color: var(--amber-color);
         }
 
         .text-medium {
             color: var(--medium-text);
+        }
+        
+        /* NEW: Light background for icons/badges */
+        .bg-primary-light {
+             /* Updated to green-600 opacity for light mode */
+             background-color: rgba(16, 185, 129, 0.1); 
+        }
+
+        /* Dark mode override for light background to keep it cyan */
+        .dark-mode .bg-primary-light {
+            background-color: rgba(6, 182, 212, 0.1); /* cyan-600 */
         }
 
         .dark-mode .text-medium {
@@ -364,25 +473,39 @@
         .dark-mode .border-light {
             border-color: var(--dark-border);
         }
-
-        .bg-light {
-            background-color: var(--light-bg);
-        }
-
-        .dark-mode .bg-light {
-            background-color: var(--dark-bg);
+        
+        /* ENHANCED REVIEW CARD with Mica/Glass effect */
+        .review-card {
+            border-radius: 20px; /* Consistent with mica-card */
+            padding: 1.75rem;
+            background-color: rgba(255, 255, 255, 0.7); 
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
         }
         
-        /* Existing utility class for the amber color */
-        .text-amber-500 {
-            color: var(--amber-color);
+        .dark-mode .review-card {
+            background-color: rgba(30, 41, 59, 0.5); 
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        .review-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .dark-mode .review-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
     </style>
 </head>
 <body class="bg-light">
     <nav id="navbar" class="navbar-mica fixed top-0 left-0 right-0 z-50 p-4 transition-all duration-300 h-[80px]">
-        <div class="max-w-7xl mx-auto flex justify-between items-center h-full">
-            <h1 class="text-2xl font-extrabold tracking-wider">
+        <div class="max-w-screen-2xl mx-auto flex justify-between items-center h-full px-4 sm:px-6 lg:px-8">
+            <h1 class="text-2xl font-extrabold tracking-wider font-poppins">
                 <span class="gradient-text">S</span>ubhajit <span class="gradient-text">H</span>alder
             </h1>
             
@@ -392,6 +515,7 @@
                 <button class="nav-link text-medium hover:text-primary pb-1 transition duration-200" data-target="projects">Projects</button>
                 <button class="nav-link text-medium hover:text-primary pb-1 transition duration-200" data-target="skills">Skills</button>
                 <button class="nav-link text-medium hover:text-primary pb-1 transition duration-200" data-target="experience">Experience</button>
+                <button class="nav-link text-medium hover:text-primary pb-1 transition duration-200" data-target="reviews">Reviews</button> 
                 <button class="nav-link text-medium hover:text-primary pb-1 transition duration-200" data-target="contact">Contact</button>
                 <button class="nav-link text-medium hover:text-primary pb-1 transition duration-200" data-target="about">About</button>
             </div>
@@ -408,6 +532,7 @@
                 <button class="nav-link text-medium hover:text-primary py-2 transition duration-200 w-full text-left" data-target="projects">Projects</button>
                 <button class="nav-link text-medium hover:text-primary py-2 transition duration-200 w-full text-left" data-target="skills">Skills</button>
                 <button class="nav-link text-medium hover:text-primary py-2 transition duration-200 w-full text-left" data-target="experience">Experience</button>
+                <button class="nav-link text-medium hover:text-primary py-2 transition duration-200 w-full text-left" data-target="reviews">Reviews</button> 
                 <button class="nav-link text-medium hover:text-primary py-2 transition duration-200 w-full text-left" data-target="contact">Contact</button>
                 <button class="nav-link text-medium hover:text-primary py-2 transition duration-200 w-full text-left" data-target="about">About</button>
             </div>
@@ -415,280 +540,287 @@
     </nav>
 
     <div id="content-wrapper">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         
-            <section id="home" class="content-section active p-6 sm:p-12">
-                <div class="max-w-6xl space-y-10 text-center py-20 lg:py-32">
-                    
-                    <p class="text-xl sm:text-2xl font-medium gradient-text tracking-widest uppercase animate-hero" style="animation-delay: 0.1s; opacity: 0;">
-                        IT & Electronics Specialist
-                    </p>
+          
 
-                    <h2 class="text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight leading-tight animate-hero" style="animation-delay: 0.3s; opacity: 0;">
-                        Powering the Future with <br class="sm:hidden"> 
-                        <span class="gradient-text block sm:inline-block mt-2 sm:mt-0">Precision</span> Engineering.
-                    </h2> 
-                    
-                    <h3 class="text-lg sm:text-xl font-light text-medium max-w-4xl mx-auto pt-4 animate-hero" style="animation-delay: 0.5s; opacity: 0;">
-                        Building high-performance systems — from AVL databases to real-time embedded hardware — engineered for speed, reliability, and precision.
-                    </h3> 
-                    
-                    <div class="pt-12 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-hero" style="animation-delay: 0.7s; opacity: 0;">
-                        <button data-target="projects" class="nav-link btn-primary px-8 py-3 text-lg font-bold rounded-xl transform transition duration-300 ease-in-out hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-emerald-500 focus:ring-opacity-50">
-                            View My Work
-                        </button>
-                        
-                        <button data-target="services" class="nav-link btn-outline px-8 py-3 text-lg font-bold rounded-xl transition duration-300 transform hover:scale-[1.03]">
-                            Check My Services
-                        </button>
-                    </div>
-                </div>
-            </section>
+<section id="home" class="content-section active py-12 sm:py-20">
+    <div class="max-w-7xl space-y-8 text-center py-8 lg:py-12 mica-card w-full mx-4"> 
+        
+        <p class="text-lg sm:text-xl font-medium gradient-text tracking-widest uppercase animate-hero mb-4" style="animation-delay: 0.1s; opacity: 0;">
+            IT & Electronics Specialist
+        </p>
+
+        <div class="px-4"> 
+            
+            <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight animate-hero font-poppins" style="animation-delay: 0.3s; opacity: 0; line-height: 1.3; margin-bottom: 30px;">
+                Powering the Future with 
+                <br class="hidden sm:block">
+                
+                <span class="gradient-text">Precision Engineering</span>
+            </h2> 
+            
+            <h3 class="text-base sm:text-lg font-light text-medium max-w-3xl mx-auto animate-hero leading-relaxed" style="animation-delay: 0.5s; opacity: 0; margin-top: 0;">Building high-performance systems — from AVL databases to real-time embedded hardware — engineered for speed, reliability, and precision.
+            </h3> 
+        </div>
+        
+        <div class="pt-8 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-hero px-4" style="animation-delay: 0.7s; opacity: 0;">
+            <button data-target="projects" class="nav-link btn-primary px-6 py-3 sm:px-8 sm:py-4 text-lg sm:text-xl font-bold rounded-xl transform transition duration-300 ease-in-out hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-cyan-500 focus:ring-opacity-50">
+                View My Work
+            </button>
+            
+            <button data-target="services" class="nav-link btn-outline px-6 py-3 sm:px-8 sm:py-4 text-lg sm:text-xl font-bold rounded-xl transition duration-300 transform hover:scale-[1.03]">
+                Check My Services
+            </button>
+        </div>
+    </div>
+</section>
 
             
-            <section id="services" class="content-section py-16">
-    <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-center">Specialized Technical Services & Mentorship</h2>
-        <div class="separator mb-16"></div>
-        
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            <div class="mica-card p-6 section-border">
-                <div class="flex items-center mb-4">
-                    <div class="p-3 rounded-full bg-emerald-100 text-primary mr-4">
-                        <i class="fas fa-laptop-code text-xl"></i>
-                    </div>
-                    <h4 class="text-xl lg:text-2xl font-extrabold text-primary">Custom Software & Low-Level Systems</h4>
-                </div>
-                <p class="text-sm font-medium text-medium mb-4">C/C++, Python, Java, Networking</p>
-                <p class="mb-2 text-sm lg:text-base">
-                    Delivering high-performance software and low-level system solutions, including C/C++ applications, Python and Java programs, network simulations, and OS-level or hardware-interfacing systems. Focused on robust, optimized, and scalable code across multiple platforms.
-                </p>
-                <p class="text-base font-semibold text-primary mt-4">Specialty: Efficient algorithms, low-latency design, and O(log n) performance optimization.</p>
-            </div>
+            <section id="services" class="content-section py-12">
+                <div class="max-w-7xl mx-auto w-full">
+                    <h4 class="text-4xl sm:text-5xl font-bold mb-4 text-center font-poppins">Specialized Technical Services & Mentorship</h4>
+                    <div class="separator mb-10"></div>
+                    
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                        <div class="mica-card p-6 section-border">
+                            <div class="flex items-center mb-4">
+                                <div class="p-3 rounded-full bg-primary-light text-primary mr-4">
+                                    <i class="fas fa-laptop-code text-xl"></i>
+                                </div>
+                                <h5 class="text-2xl lg:text-3xl font-extrabold text-primary font-poppins">Custom Software & Low-Level Systems</h5>
+                            </div>
+                            <p class="text-base font-medium text-medium mb-4"><b>C/C++ |  Python | Java | Networking</b></p>
+                            <p class="mb-2 text-base lg:text-lg">
+                                High-performance software, OS-level systems, C/C++/Python/Java apps, VBA/VB business tools, and hardware-interfacing solutions. Optimized, scalable, low-latency design.
+                            </p>
+                            <p class="text-base lg:text-lg font-semibold text-primary mt-4">Specialty: Efficient algorithms, DSA, and low-latency optimization.</p>
+                        </div>
 
-            <div class="mica-card p-6 section-border">
-                <div class="flex items-center mb-4">
-                    <div class="p-3 rounded-full bg-emerald-100 text-primary mr-4">
-                        <i class="fas fa-microchip text-xl"></i>
-                    </div>
-                    <h4 class="text-xl lg:text-2xl font-extrabold text-primary">IoT Solutions & Electronics Development</h4>
-                </div>
-                <p class="text-sm font-medium text-medium mb-4">Embedded C, Arduino/ESP32, Circuit Design</p>
-                <p class="mb-2 text-sm lg:text-base">
-                    Providing end-to-end IoT and electronics development, including hardware design, PCB design, circuit prototyping, and software development for embedded systems. Specialize in Arduino/ESP32-based solutions, sensor and actuator integration, and custom IoT system deployment.
-                </p>
-                <p class="text-base font-semibold text-primary mt-4">Focus on: Hardware, PCB, circuits, and embedded software design.</p>
-            </div>
+                        <div class="mica-card p-6 section-border">
+                            <div class="flex items-center mb-4">
+                                <div class="p-3 rounded-full bg-primary-light text-primary mr-4">
+                                    <i class="fas fa-microchip text-xl"></i>
+                                </div>
+                                <h5 class="text-2xl lg:text-3xl font-extrabold text-primary font-poppins">IoT Solutions & Electronics Development</h5>
+                            </div>
+                            <p class="text-base font-medium text-medium mb-4"><b>Embedded C | Arduino/ESP32 | Circuit Design</b></p>
+                            <p class="mb-2 text-base lg:text-lg">
+                               End-to-end IoT and electronics solutions: PCB & circuit design, prototyping, embedded software, Arduino/ESP32 projects, sensors/actuators, custom IoT deployment.
+                            </p>
+                            <p class="text-base lg:text-lg font-semibold text-primary mt-4">Focus on: Hardware, PCB, circuits, and embedded software design.</p>
+                        </div>
 
-            <div class="mica-card p-6 section-border">
-                <div class="flex items-center mb-4">
-                    <div class="p-3 rounded-full bg-emerald-100 text-primary mr-4">
-                        <i class="fas fa-graduation-cap text-xl"></i>
-                    </div>
-                    <h4 class="text-xl lg:text-2xl font-extrabold text-primary">Academic Mentorship & Assessments</h4>
+                        <div class="mica-card p-6 section-border">
+                            <div class="flex items-center mb-4">
+                                <div class="p-3 rounded-full bg-primary-light text-primary mr-4">
+                                    <i class="fas fa-graduation-cap text-xl"></i>
+                                </div>
+                                <h5 class="text-2xl lg:text-3xl font-extrabold text-primary font-poppins">Academic Mentorship & Assessments</h5>
+                            </div>
+                            <p class="text-base font-medium text-medium mb-4"><b>IB | Cambridge | University of Miami Syllabus | Coursework & Assignments</b></p>
+                            <p class="mb-2 text-base lg:text-lg">
+                                Support in Computer Science, Databases, Programming, Robotics, and Electronics. Hands-on guidance, project-based learning, and assignment support for students and independent learners.
+                            </p>
+                            <p class="text-base lg:text-lg font-semibold text-primary mt-4">Subjects: Computer Science and related fields, Electronics.</p>
+                        </div>
+                    </div>   
+                            <div class="text-center pt-2">
+                                <button data-target="contact" class="nav-link btn-primary px-10 py-4 text-xl font-bold rounded-xl transition duration-300 transform hover:scale-[1.03]">
+                                    Inquire About A Service or Class
+                                </button>
+                            </div>
                 </div>
-                <p class="text-sm font-medium text-medium mb-4">IB, Cambridge, Miami Syllabus | Coursework & Assignments</p>
-                <p class="mb-2 text-sm lg:text-base">
-                    Specialized in Computer Science, Databases, Programming, Robotics, and Basic Electronics, providing hands-on guidance and assignment support. Curriculum-agnostic—works with IB, Cambridge, University, or independent learners. Focus on practical understanding, project-based learning, and skill mastery.
-                </p>
-                <p class="text-base font-semibold text-primary mt-4">Subjects: Computer Science and related fields, Electronics.</p>
-            </div>
-        </div>   
-                <div class="text-center pt-8">
-                    <button data-target="contact" class="nav-link btn-primary px-10 py-4 text-xl font-bold rounded-xl transition duration-300 transform hover:scale-[1.03]">
-                        Inquire About A Service or Class
-                    </button>
-                </div>
-
             </section>
             
             <section id="projects" class="content-section py-16">
-                 <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-center">Engineering the Complete Stack — From Circuit Boards to Codebases.</h2>
-                <div class="separator mb-16"></div>
+                <div class="max-w-7xl mx-auto w-full">
+                 <h2 class="text-4xl sm:text-5xl font-bold mb-4 text-center font-poppins">Engineering the Complete Stack — From Circuit Boards to Codebases.</h2>
+                <div class="separator mb-12"></div>
                 
-                <h3 class="text-2xl sm:text-3xl font-bold text-primary mb-8 border-b border-light pb-3 flex items-center">
+                <h3 class="text-3xl sm:text-4xl font-bold text-primary mb-8 border-b border-light pb-3 flex items-center font-poppins">
                     <i class="fas fa-laptop-code mr-3"></i> Advanced Systems & Software Development 
                 </h3>
                 
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                     
                     <div class="mica-card p-6 section-border">
-                        <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3">Database Core Engine (AVL Tree)</h4>
+                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Database Core Engine (AVL Tree)</h4>
                         <p class="text-sm font-medium text-medium mb-4">C/C++ | Data Structures | O(log n) Performance</p>
-                        <p class="text-sm lg:text-base">
+                        <p class="text-base">
                             A high-performance database engine built on a self-balancing AVL Tree, ensuring O(log n) operations with optimized data handling.
                         </p>
                     </div>
 
                     <div class="mica-card p-6 section-border">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3">Custom OS Shell & Low-Level I/O Library</h4>
+                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Custom OS Shell & Low-Level I/O Library</h4>
                         <p class="text-sm font-medium text-medium mb-4">C/C++ | OS Fundamentals | System Programming</p>
-                        <p class="text-sm lg:text-base">
+                        <p class="text-base">
                             Engineered a shell with dedicated low-level I/O for efficient memory, process, and storage control in UNIX-like systems.
                         </p>
                     </div>
                     
                     <div class="mica-card p-6 section-border">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3">CNN Handwriting Recognition</h4>
+                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">CNN Handwriting Recognition</h4>
                         <p class="text-sm font-medium text-medium mb-4">Python | DL | Real-time Data</p>
-                        <p class="text-sm lg:text-base">
+                        <p class="text-base">
                             Deep learning project for digit recognition using Convolutional Neural Networks.
                         </p>
                     </div>
 
                     <div class="mica-card p-6 section-border">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3">Network Routing Simulator (DVR & LSR)</h4>
+                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Network Routing Simulator (DVR & LSR)</h4>
                         <p class="text-sm font-medium text-medium mb-4">Python | Networking | Algorithm Visualization</p>
-                        <p class="text-sm lg:text-base">
+                        <p class="text-base">
                             Python simulation modeling DVR and LSR routing algorithms, visualizing performance and convergence across network topologies.
                         </p>
                     </div>
                     
                     <div class="mica-card p-6 section-border">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3">High Performance Template Vector</h4>
+                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">High Performance Template Vector</h4>
                         <p class="text-sm font-medium text-medium mb-4">C++ | Template programming | Custom memory management</p>
-                        <p class="text-sm lg:text-base">
+                        <p class="text-base">
                             Optimized C++ template vector delivering high speed and memory efficiency beyond std::vector for large-scale and embedded systems
                         </p>
                     </div>
                     
                     <div class="mica-card p-6 section-border">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3">Car Rental Management Application</h4>
+                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Car Rental Management Application</h4>
                         <p class="text-sm font-medium text-medium mb-4">Python | Multi-User DB(MySQL) | CSV Persistence</p>
-                        <p class="text-sm lg:text-base">
+                        <p class="text-base">
                             Robust desktop system handling car rentals, client data, and inventory, using CSV & SQL databases with built-in validation.
                         </p>
                     </div>
 
                     <div class="mica-card p-6 section-border">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3">Healthcare Efficiency Data Analysis</h4>
+                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Healthcare Efficiency Data Analysis</h4>
                         <p class="text-sm font-medium text-medium mb-4">Python | Data Analysis | Pandas & Jupyter</p>
-                        <p class="text-sm lg:text-base">
+                        <p class="text-base">
                             Optimized nursing home operations by analyzing schedules and visits, identifying bottlenecks, and recommending data-driven solutions.
                         </p>
                     </div>
 
                     <div class="mica-card p-6 section-border">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3">Multiround Quiz System</h4>
+                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Multiround Quiz System</h4>
                         <p class="text-sm font-medium text-medium mb-4">C/C++ | Console Application | Procedural Logic</p>
-                        <p class="text-sm lg:text-base">
+                        <p class="text-base">
                             C/C++ console app for multi-group quizzes, demonstrating advanced procedural logic and reliable state/input management.
                         </p>
                     </div>
                 </div>
 
 
-                <h3 class="text-2xl sm:text-3xl font-bold text-primary mb-8 border-b border-light pb-3 flex items-center pt-8">
+                <h3 class="text-3xl sm:text-4xl font-bold text-primary mb-8 border-b border-light pb-3 flex items-center pt-8 font-poppins">
                     <i class="fas fa-microchip mr-3"></i> Embedded Systems & Hardware Engineering
                 </h3>
-                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     
-                    <div class="mica-card p-6 col-span-1 sm:col-span-2 lg:col-span-3 project-highlight-amber">
-                         <h4 class="text-2xl sm:text-3xl font-extrabold text-amber-500 mb-3">SPHOORTI: Realtime Speech/Text to Braille Converter</h4>
-                        <p class="text-sm font-medium text-medium mb-4">MicroPython | ESP32 | Accessibility | Low-Level I/O</p>
-                        <p class="mb-2 text-base lg:text-lg">
+                    <div class="mica-card p-6 col-span-1 sm:col-span-2 lg:col-span-4 project-highlight-amber">
+                         <h4 class="text-2xl sm:text-3xl font-extrabold text-amber-custom mb-3 font-poppins">SPHOORTI: Realtime Speech/Text to Braille Converter</h4>
+                        <p class="text-base font-medium text-medium mb-4">MicroPython | ESP32 | Accessibility | Low-Level I/O</p>
+                        <p class="mb-2 text-lg">
                            ReactJS mobile app captures voice, sends via Bluetooth to ESP32 (MicroPython), controlling solenoids for real-time Braille output.
                         </p>
                     </div>
 
                     <div class="mica-card p-6 section-border">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3">GRAINEYE (AI Vision System)</h4>
+                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">GRAINEYE (AI Vision System)</h4>
                         <p class="text-sm font-medium text-medium mb-4">Embedded Systems(R Pi) | Python & C++ | High-Speed Automation</p>
-                        <p class="text-sm lg:text-base">
+                        <p class="text-base">
                             Real-time beach sand analyzer: Raspberry Pi + CNN predicts grain size and logs results via custom map API.
                         </p>
                     </div>
 
                     <div class="mica-card p-6 section-border">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3">Sine 500W Inverter</h4>
+                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Sine 500W Inverter</h4>
                         <p class="text-sm font-medium text-medium mb-4">4047 & 555 Timer | Triangular & Square Wave | MOSFET Switching | Analog Power Electronics</p>
-                        <p class="text-sm lg:text-base">
+                        <p class="text-base">
                             Designed and built a highly efficient 500W pure sine wave inverter with minimal heat loss, stable output, and robust performance for sensitive loads.
                         </p>
                     </div>
 
                     <div class="mica-card p-6 section-border">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3">High-Fidelity Audio Amplifier (Analog Design)</h4>
+                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">High-Fidelity Audio Amplifier (Analog Design)</h4>
                         <p class="text-sm font-medium text-medium mb-4">Analog Circuit Design | Audio Engineering</p>
-                        <p class="text-sm lg:text-base">
+                        <p class="text-base">
                            High-performance 120W 4.1 amplifier with low distortion and full analog tone controls (bass, treble, volume).
                         </p>
                     </div>
 
                     <div class="mica-card p-6 section-border">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3">Custom Digital Guitar Pedal (DSP)</h4>
+                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Custom Digital Guitar Pedal (DSP)</h4>
                         <p class="text-sm font-medium text-medium mb-4">Analog Electronics | Audio Engineering</p>
-                        <p class="text-sm lg:text-base">
+                        <p class="text-base">
                             Analog guitar pedal with custom circuitry for rich sound modulation and tone shaping.
                         </p>
                     </div>
-                     <div class="hidden lg:block"></div> 
-                    <div class="hidden lg:block"></div>
+                </div>
                 </div>
             </section>
 
 
-            <section id="skills" class="content-section py-16">
-                 <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-center">Technical Proficiencies</h2>
-                <div class="separator mb-12"></div>
+            <section id="skills" class="content-section py-12">
+                 <h2 class="text-4xl sm:text-5xl font-bold mb-4 text-center font-poppins">Technical Proficiencies</h2>
+                <div class="separator mb-10"></div>
 
-                <div class="mica-card p-6 sm:p-8 space-y-8 max-w-6xl w-full">
+                <div class="mica-card p-6 sm:p-8 space-y-8 max-w-7xl w-full">
                     
-                    <h3 class="text-2xl sm:text-3xl font-bold text-primary border-b border-light pb-2">Core Languages & Systems</h3>
+                    <h3 class="text-3xl sm:text-4xl font-bold text-primary border-b border-light pb-2 font-poppins">Core Languages & Systems</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
                         <div class="skill-card text-center">
-                            <h4 class="text-lg sm:text-xl font-semibold text-primary">C / C++</h4>
-                            <p class="text-medium text-xs sm:text-sm mt-2">Low-level I/O, OS concepts, performance-critical systems.</p>
+                             <h4 class="text-xl sm:text-2xl font-semibold text-primary font-poppins">C / C++</h4>
+                            <p class="text-sm sm:text-base mt-2 text-medium">Low-level I/O, OS concepts, performance-critical systems.</p>
                         </div>
                         <div class="skill-card text-center">
-                            <h4 class="text-lg sm:text-xl font-semibold text-primary">Python</h4>
-                            <p class="text-medium text-xs sm:text-sm mt-2">Automation, AI/ML, network simulation, scripting.</p>
+                             <h4 class="text-xl sm:text-2xl font-semibold text-primary font-poppins">Python</h4>
+                            <p class="text-sm sm:text-base mt-2 text-medium">Automation, AI/ML, network simulation, scripting.</p>
                         </div>
                         <div class="skill-card text-center">
-                            <h4 class="text-lg sm:text-xl font-semibold text-primary">Java & C# / VB.Net</h4>
-                            <p class="text-medium text-xs sm:text-sm mt-2">OOP principles, application development (Desktop/Web Backend).</p>
+                             <h4 class="text-xl sm:text-2xl font-semibold text-primary font-poppins">Java & C# / VB.Net</h4>
+                            <p class="text-sm sm:text-base mt-2 text-medium">OOP principles, application development (Desktop/Web Backend).</p>
                         </div>
                         <div class="skill-card text-center">
-                            <h4 class="text-lg sm:text-xl font-semibold text-primary">Data Management</h4>
-                            <p class="text-medium text-xs sm:text-sm mt-2">MySQL, MS Access, AVL Trees, Data Structures optimization.</p>
+                             <h4 class="text-xl sm:text-2xl font-semibold text-primary font-poppins">Data Management</h4>
+                            <p class="text-sm sm:text-base mt-2 text-medium">MySQL, MS Access, AVL Trees, Data Structures optimization.</p>
                         </div>
                     </div>
 
-                    <h3 class="text-2xl sm:text-3xl font-bold text-primary border-b border-light pb-2 pt-6">Electronics, Embedded & Networking</h3>
+                    <h3 class="text-3xl sm:text-4xl font-bold text-primary border-b border-light pb-2 pt-6 font-poppins">Electronics, Embedded & Networking</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
                         <div class="skill-card text-center">
-                            <h4 class="text-lg sm:text-xl font-semibold text-primary">Embedded Systems</h4>
-                            <p class="text-medium text-xs sm:text-sm mt-2">ESP_Family/STM32/Arduino/IoT, DSP, low-level I/O, Embedded C.</p>
+                             <h4 class="text-xl sm:text-2xl font-semibold text-primary font-poppins">Embedded Systems</h4>
+                            <p class="text-sm sm:text-base mt-2 text-medium">ESP_Family/STM32/Arduino/IoT, DSP, low-level I/O, Embedded C.</p>
                         </div>
                         <div class="skill-card text-center">
-                            <h4 class="text-lg sm:text-xl font-semibold text-primary">Networking & Routing</h4>
-                            <p class="text-medium text-xs sm:text-sm mt-2">DVR/LSR, Cisco Packet Tracer/Wireshark, Network Protocol implementation.</p>
+                             <h4 class="text-xl sm:text-2xl font-semibold text-primary font-poppins">Networking & Routing</h4>
+                            <p class="text-sm sm:text-base mt-2 text-medium">DVR/LSR, Cisco Packet Tracer/Wireshark, Network Protocol implementation.</p>
                         </div>
                         <div class="skill-card text-center">
-                            <h4 class="text-lg sm:text-xl font-semibold text-primary">Circuit Design</h4>
-                            <p class="text-medium text-xs sm:text-sm mt-2">Analog & Digital, Signal Integrity, Audio Amplifiers, PCB Designing.</p>
+                             <h4 class="text-xl sm:text-2xl font-semibold text-primary font-poppins">Circuit Design</h4>
+                            <p class="text-sm sm:text-base mt-2 text-medium">Analog & Digital, Signal Integrity, Audio Amplifiers, PCB Designing.</p>
                         </div>
                         <div class="skill-card text-center">
-                            <h4 class="text-lg sm:text-xl font-semibold text-primary">Professional Tools</h4>
-                            <p class="text-medium text-xs sm:text-sm mt-2">Advanced VBA/Macro, DaVinci Resolve, Adobe CC.</p>
+                             <h4 class="text-xl sm:text-2xl font-semibold text-primary font-poppins">Professional Tools</h4>
+                            <p class="text-sm sm:text-base mt-2 text-medium">Advanced VBA/Macro, DaVinci Resolve, Adobe CC.</p>
                         </div>
                     </div>
                 </div>
             </section>
             
             
-            <section id="experience" class="content-section py-16">
-                 <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-center">Work Experience</h2>
+            <section id="experience" class="content-section py-12">
+                 <h2 class="text-4xl sm:text-5xl font-bold mb-4 text-center font-poppins">Work Experience</h2>
                 <div class="separator mb-12"></div>
-                <div class="space-y-8 max-w-3xl w-full">
+                
+                <div class="grid lg:grid-cols-2 gap-8 max-w-7xl w-full">
 
                     <div class="mica-card p-6 sm:p-8 section-border">
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
-                            <h3 class="text-xl sm:text-2xl font-semibold">Freelancer - Code Analyst & Developer</h3>
+                            <h3 class="text-xl sm:text-2xl font-semibold font-poppins">Freelancer - Code Analyst & Developer</h3>
                             <span class="text-base sm:text-lg text-primary font-medium mt-1 sm:mt-0">Feb 2025 - Present</span>
                         </div>
-                        <p class="text-base sm:text-lg font-medium mb-3">International Client Solutions & Systems Development</p>
-                        <ul class="list-disc list-inside space-y-2 ml-4 text-sm sm:text-base">
+                        <p class="text-lg font-medium mb-3">International Client Solutions & Systems Development</p>
+                        <ul class="list-disc list-inside space-y-2 ml-4 text-base">
                             <li>Delivered high-value projects and mentorship for international clients across the USA, Saudi Arabia, Germany, and Australia.</li>
                             <li>Specialized in AVL-based database engines, advanced network simulators, and IoT/automation systems, emphasizing performance and architectural reliability in C/C++ and Python.</li>
                             <li>Focus on delivering solutions requiring strict performance optimization and architectural reliability in C/C++ and Python.</li>
@@ -698,11 +830,11 @@
 
                     <div class="mica-card p-6 sm:p-8 section-border">
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
-                            <h3 class="text-xl sm:text-2xl font-semibold">DeepTechSolutions - Consultant, Mentor & Developer</h3>
-                            <span class="text-base sm:text-lg text-primary font-medium mt-1 sm:mt-0">Feb 2025 - Present</span>
+                            <h3 class="text-xl sm:text-2xl font-semibold font-poppins">DeepTechSolutions - Consultant, Mentor & Developer</h3>
+                            <span class="text-base sm:text-lg text-primary font-medium mt-1 sm:mt-0">March 2025 - Present</span>
                         </div>
-                        <p class="text-base sm:text-lg font-medium mb-3">Specialized Mentorship & Enterprise Development</p>
-                        <ul class="list-disc list-inside space-y-2 ml-4 text-sm sm:text-base">
+                        <p class="text-lg font-medium mb-3">Specialized Mentorship & Enterprise Development</p>
+                        <ul class="list-disc list-inside space-y-2 ml-4 text-base">
                             <li>Provided expert Cisco Packet Tracer configuration guidance and developed advanced network simulation models.</li>
                             <li>Delivered Python-based data analysis and machine learning solutions for clients, enabling critical business intelligence.</li>
                             <li>Designed and maintained VBA/Macro solutions automating complex workflows in finance and operations for enterprise clients.</li>
@@ -711,19 +843,87 @@
                 </div>
             </section>
             
-            <section id="contact" class="content-section p-6 sm:p-12">
-                <div class="mica-card p-8 max-w-md w-full text-center space-y-6 py-16 shadow-2xl">
-                     <h2 class="text-3xl font-bold">Let's Discuss Your Next Project</h2>
+            <section id="reviews" class="content-section py-12">
+                 <h2 class="text-4xl sm:text-5xl font-bold mb-4 text-center text-amber1-custom font-poppins">Client Testimonials & Feedback</h2>
+                <div class="separator mb-12 mx-auto" style="background: var(--amber-color);"></div> 
+                
+                <div class="max-w-7xl w-full grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <div class="review-card flex flex-col justify-between">
+                        <div>
+                            <div class="text-amber-custom mb-3 text-xl">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="text-lg italic text-medium mb-4">"I’ve had this tutor for all my programming courses, and honestly, he’s amazing at what he does. He really knows his stuff and solve things in a way that actually makes sense."</p>
+                        </div>
+                        <p class="text-xl font-semibold text-primary">- Yousef Ghazi (Miami, USA)</p>
+                    </div>
+
+                    <div class="review-card flex flex-col justify-between">
+                        <div>
+                            <div class="text-amber-custom mb-3 text-xl">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                            </div>
+                            <p class="text-lg italic text-medium mb-4">"Great support on my university coursework. The explanation of advanced networking protocols was clear and thorough."</p>
+                        </div>
+                        <p class="text-xl font-semibold text-primary">- Anonymous, Client (Dubai)</p>
+                    </div>
+
+                    <div class="review-card flex flex-col justify-between">
+                        <div>
+                            <div class="text-amber-custom mb-3 text-xl">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p class="text-lg italic text-medium mb-4">"The custom IoT solution exceeded expectations. Subhajit seamlessly handled both the embedded software (ESP32) and the circuit design. Highly recommended."</p>
+                        </div>
+                        <p class="text-xl font-semibold text-primary">- Sneha Iyer (Chennai, India)</p>
+                    </div>
+                    
+                    <div class="review-card flex flex-col justify-between">
+                        <div>
+                            <div class="text-amber-custom mb-3 text-xl">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="far fa-star"></i>
+                            </div>
+                            <p class="text-lg italic text-medium mb-4">"The Python assignment was delivered on time with clear, actionable insights. The guidance made the complex data analysis understandable and very useful. Highly recommended!"</p>
+                        </div>
+                        <p class="text-xl font-semibold text-primary">- Sophie Mitchell (Hahndorf, Australia)</p>
+                    </div>
+
+                    <div class="review-card flex flex-col justify-between">
+                        <div>
+                            <div class="text-amber-custom mb-3 text-xl">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p class="text-lg italic text-medium mb-4">"Expert guidance in Cisco Packet Tracer. My configuration lab work improved dramatically after one session. Fantastic mentor!"</p>
+                        </div>
+                        <p class="text-xl font-semibold text-primary">- Alya Al-Shammari (Saudi Arabia)</p>
+                    </div>
+                    
+                    <div class="review-card flex flex-col justify-between">
+                        <div>
+                            <div class="text-amber-custom mb-3 text-xl">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p class="text-lg italic text-medium mb-4">"Subhajit developed a comprehensive VBA solution for our store, managing stock, expenses, and staff efficiently. The system has significantly improved our daily operations and record-keeping. Highly professional and reliable!"</p>
+                        </div>
+                        <p class="text-xl font-semibold text-primary">- Olivia Parker (Denver, USA)</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="contact" class="content-section py-12">
+                <div class="mica-card p-8 max-w-lg w-full text-center space-y-6 py-10 shadow-2xl">
+                     <h2 class="text-3xl sm:text-4xl font-bold font-poppins">Let's Discuss Your Next Project</h2>
                     <div class="separator"></div>
-                    <p class="text-base text-medium">I am currently available for new freelance assignments globally. Due to the proprietary nature of my work, full project source code and CV are available upon request and signing a Non-Disclosure Agreement (NDA).</p>
+                    <p class="text-lg text-medium">I am currently available for new freelance assignments globally. Due to the proprietary nature of my work, full project source code and CV are available upon request and signing a Non-Disclosure Agreement (NDA).</p>
                     <div class="space-y-4 pt-6">
-                        <p class="text-lg sm:text-xl text-primary font-semibold">
-                            Email: <a href="mailto:subhajithalder267@outlook.com" class="hover:underline hover:text-emerald-700">subhajithalder267@outlook.com</a>
+                        <p class="text-xl sm:text-2xl text-primary font-semibold">
+                            Email: <a href="mailto:subhajithalder267@outlook.com" class="hover:underline hover:text-cyan-700">subhajithalder267@outlook.com</a>
                         </p>
-                        <p class="text-lg sm:text-xl text-primary font-semibold">
+                        <p class="text-xl sm:text-2xl text-primary font-semibold">
                             Phone/WhatsApp: 
-                            <a href="tel:+917047736124" class="hover:underline hover:text-emerald-700">+91 7047736124</a>
-                            <a href="https://wa.me/917047736124" target="_blank" class="ml-3 text-2xl text-emerald-600 hover:text-emerald-700 transition transform hover:scale-110" aria-label="WhatsApp">
+                            <a href="tel:+917047736124" class="hover:underline hover:text-cyan-700">+91 7047736124</a>
+                            <a href="https://wa.me/917047736124" target="_blank" class="ml-3 text-2xl text-primary hover:text-cyan-700 transition transform hover:scale-110" aria-label="WhatsApp">
                                 <i class="fab fa-whatsapp"></i>
                             </a>
                         </p>
@@ -739,12 +939,12 @@
                 </div>
             </section>
             
-             <section id="about" class="content-section p-6 sm:p-12">
-                <div class="max-w-5xl py-10 mica-card p-10 w-full">
+             <section id="about" class="content-section py-12">
+                <div class="max-w-6xl py-10 mica-card p-10 w-full">
                     <div class="flex flex-col lg:flex-row gap-10 items-center lg:items-start">
                         
                         <div class="w-full lg:w-1/3 flex justify-center lg:justify-start flex-shrink-0">
-                            <div class="p-2 border-4 border-emerald-600 rounded-full shadow-lg shadow-emerald-500/30">
+                            <div class="p-2 border-4 border-primary rounded-full shadow-lg shadow-green-500/30">
                                 <img src="assets/IM1.jpeg" 
      alt="Professional profile image of Subhajit Halder" 
      class="w-64 h-auto object-contain rounded-full border-4 border-gray-100">
@@ -752,28 +952,28 @@
                         </div>
 
                         <div class="w-full lg:w-2/3">
-                             <h2 class="text-4xl font-bold mb-4">About Me</h2>
+                             <h2 class="text-5xl font-bold mb-4 font-poppins">About Me</h2>
                             <div class="separator mb-8 mx-0"></div>
                             
-                            <h3 class="text-2xl sm:text-3xl font-semibold text-primary">
+                            <h3 class="text-3xl sm:text-3xl font-semibold text-primary font-poppins">
                                 System Architect & Embedded Specialist
                             </h3>
 
                             <div class="pt-2 pb-6">
-                                <p class="text-base sm:text-xl leading-relaxed mx-auto">
+                                <p class="text-lg sm:text-l leading-relaxed mx-auto">
                                     I build high-performance software and low-level systems, bridging hardware and software seamlessly. My expertise spans C/C++ systems, network simulations, and advanced embedded devices. I have delivered projects like custom assistive technology systems and AVL Tree-based database cores for clients across multiple countries, demonstrating both technical proficiency and real-world problem-solving.
                                 </p>
-                                <p class="text-base sm:text-xl leading-relaxed mx-auto pt-4">
+                                <p class="text-lg sm:text-l leading-relaxed mx-auto pt-4">
                                    Through my work, I translate complex requirements into efficient, reliable solutions, combining deep technical knowledge with practical implementation. From low-level systems to innovative software projects, I aim to deliver results that are both impactful and tailored to client needs.
                                 </p>
                             </div>
                             
                             <div class="mt-8 flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4">
-                                <span class="px-3 py-1 sm:px-4 sm:py-2 bg-emerald-100 text-emerald-800 rounded-full font-medium text-sm">C/C++ Systems</span>
-                                <span class="px-3 py-1 sm:px-4 sm:py-2 bg-emerald-100 text-emerald-800 rounded-full font-medium text-sm">Embedded Electronics</span>
-                                <span class="px-3 py-1 sm:px-4 sm:py-2 bg-emerald-100 text-emerald-800 rounded-full font-medium text-sm">IoT Solutions</span>
-                                <span class="px-3 py-1 sm:px-4 sm:py-2 bg-emerald-100 text-emerald-800 rounded-full font-medium text-sm">Network Simulation</span>
-                                <span class="px-3 py-1 sm:px-4 sm:py-2 bg-emerald-100 text-emerald-800 rounded-full font-medium text-sm">Academic Mentorship</span>
+                                <span class="px-4 py-2 bg-primary-light text-primary rounded-full font-medium text-base">C/C++ Systems</span>
+                                <span class="px-4 py-2 bg-primary-light text-primary rounded-full font-medium text-base">Embedded Electronics</span>
+                                <span class="px-4 py-2 bg-primary-light text-primary rounded-full font-medium text-base">IoT Solutions</span>
+                                <span class="px-4 py-2 bg-primary-light text-primary rounded-full font-medium text-base">Network Simulation</span>
+                                <span class="px-4 py-2 bg-primary-light text-primary rounded-full font-medium text-base">Academic Mentorship</span>
                             </div>
                         </div>
                     </div>
