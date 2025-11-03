@@ -500,6 +500,171 @@
         .dark-mode .review-card:hover {
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
+        
+        /* NEW: Project card enhancements with expandable descriptions */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .project-description {
+            max-height: 0;
+            opacity: 0;
+            transition: all 0.5s ease;
+            overflow: hidden;
+        }
+        
+        .project-description.expanded {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 1rem;
+        }
+        
+        .read-more-btn {
+            margin-top: auto;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            padding-top: 1rem;
+        }
+        
+        .read-more-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .read-more-btn i {
+            transition: transform 0.3s ease;
+        }
+        
+        .read-more-btn.expanded i {
+            transform: rotate(180deg);
+        }
+        
+        /* NEW: Enhanced project section CTA */
+        .project-cta {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            transition: all 0.4s ease;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .dark-mode .project-cta {
+            background: linear-gradient(135deg, #06b6d4, #0d9488);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
+        }
+        
+        .project-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+        }
+        
+        .dark-mode .project-cta:hover {
+            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.4);
+        }
+
+        /* NEW: Contact Form Styles */
+        .contact-form {
+            width: 100%;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--light-text);
+        }
+        
+        .dark-mode .form-label {
+            color: var(--dark-text);
+        }
+        
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--light-border);
+            background: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .dark-mode .form-input, .dark-mode .form-textarea {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: var(--dark-border);
+            color: var(--dark-text);
+        }
+        
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .dark-mode .form-input:focus, .dark-mode .form-textarea:focus {
+            border-color: #06b6d4;
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+            background: rgba(30, 41, 59, 0.9);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .form-message {
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .form-message.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--primary-color);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        
+        .dark-mode .form-message.success {
+            background: rgba(6, 182, 212, 0.1);
+            color: #06b6d4;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+        
+        .form-message.error {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
     </style>
 </head>
 <body class="bg-light">
@@ -644,68 +809,116 @@
                 
                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                     
-                    <div class="mica-card p-6 section-border">
+                    <div class="mica-card p-6 section-border project-card">
                          <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Database Core Engine (AVL Tree)</h4>
                         <p class="text-sm font-medium text-medium mb-4">C/C++ | Data Structures | O(log n) Performance</p>
-                        <p class="text-base">
-                            A high-performance database engine built on a self-balancing AVL Tree, ensuring O(log n) operations with optimized data handling.
-                        </p>
+                        <div class="project-description">
+                            <p class="text-base">
+                                A high-performance database engine built on a self-balancing AVL Tree, ensuring O(log n) operations with optimized data handling.
+                            </p>
+                            <p class="mt-2 text-medium">This project involved implementing a complete database engine from scratch using C/C++ with a focus on performance and efficiency. The AVL tree data structure ensures that all operations (insertion, deletion, search) maintain O(log n) time complexity, making it suitable for large-scale data processing applications.</p>
+                        </div>
+                        <button class="read-more-btn text-primary">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
 
-                    <div class="mica-card p-6 section-border">
+                    <div class="mica-card p-6 section-border project-card">
                          <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Custom OS Shell & Low-Level I/O Library</h4>
                         <p class="text-sm font-medium text-medium mb-4">C/C++ | OS Fundamentals | System Programming</p>
-                        <p class="text-base">
-                            Engineered a shell with dedicated low-level I/O for efficient memory, process, and storage control in UNIX-like systems.
-                        </p>
+                        <div class="project-description">
+                            <p class="text-base">
+                                Engineered a shell with dedicated low-level I/O for efficient memory, process, and storage control in UNIX-like systems.
+                            </p>
+                            <p class="mt-2 text-medium">This project involved developing a custom shell environment with specialized low-level I/O operations for UNIX-like systems. The implementation focused on efficient memory management, process control, and storage operations, providing a foundation for system-level programming and understanding of operating system internals.</p>
+                        </div>
+                        <button class="read-more-btn text-primary">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
                     
-                    <div class="mica-card p-6 section-border">
+                    <div class="mica-card p-6 section-border project-card">
                          <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">CNN Handwriting Recognition</h4>
                         <p class="text-sm font-medium text-medium mb-4">Python | DL | Real-time Data</p>
-                        <p class="text-base">
-                            Deep learning project for digit recognition using Convolutional Neural Networks.
-                        </p>
+                        <div class="project-description">
+                            <p class="text-base">
+                                Deep learning project for digit recognition using Convolutional Neural Networks.
+                            </p>
+                            <p class="mt-2 text-medium">Implemented a Convolutional Neural Network (CNN) using Python and TensorFlow/Keras for handwritten digit recognition. The model was trained on the MNIST dataset and achieved high accuracy in classifying digits, demonstrating practical applications of deep learning in computer vision tasks.</p>
+                        </div>
+                        <button class="read-more-btn text-primary">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
 
-                    <div class="mica-card p-6 section-border">
+                    <div class="mica-card p-6 section-border project-card">
                          <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Network Routing Simulator (DVR & LSR)</h4>
                         <p class="text-sm font-medium text-medium mb-4">Python | Networking | Algorithm Visualization</p>
-                        <p class="text-base">
-                            Python simulation modeling DVR and LSR routing algorithms, visualizing performance and convergence across network topologies.
-                        </p>
+                        <div class="project-description">
+                            <p class="text-base">
+                                Python simulation modeling DVR and LSR routing algorithms, visualizing performance and convergence across network topologies.
+                            </p>
+                            <p class="mt-2 text-medium">Developed a comprehensive network routing simulator in Python that implements both Distance Vector Routing (DVR) and Link State Routing (LSR) algorithms. The simulator includes visualization capabilities to demonstrate how these protocols converge and perform across various network topologies, making it an excellent educational tool for networking concepts.</p>
+                        </div>
+                        <button class="read-more-btn text-primary">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
                     
-                    <div class="mica-card p-6 section-border">
+                    <div class="mica-card p-6 section-border project-card">
                          <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">High Performance Template Vector</h4>
                         <p class="text-sm font-medium text-medium mb-4">C++ | Template programming | Custom memory management</p>
-                        <p class="text-base">
-                            Optimized C++ template vector delivering high speed and memory efficiency beyond std::vector for large-scale and embedded systems
-                        </p>
+                        <div class="project-description">
+                            <p class="text-base">
+                                Optimized C++ template vector delivering high speed and memory efficiency beyond std::vector for large-scale and embedded systems
+                            </p>
+                            <p class="mt-2 text-medium">Created a highly optimized C++ template vector implementation that outperforms the standard library's std::vector in both speed and memory efficiency. This custom vector implementation includes specialized memory management techniques and optimizations specifically designed for large-scale data processing and embedded systems where performance is critical.</p>
+                        </div>
+                        <button class="read-more-btn text-primary">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
                     
-                    <div class="mica-card p-6 section-border">
+                    <div class="mica-card p-6 section-border project-card">
                          <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Car Rental Management Application</h4>
                         <p class="text-sm font-medium text-medium mb-4">Python | Multi-User DB(MySQL) | CSV Persistence</p>
-                        <p class="text-base">
-                            Robust desktop system handling car rentals, client data, and inventory, using CSV & SQL databases with built-in validation.
-                        </p>
+                        <div class="project-description">
+                            <p class="text-base">
+                                Robust desktop system handling car rentals, client data, and inventory, using CSV & SQL databases with built-in validation.
+                            </p>
+                            <p class="mt-2 text-medium">Developed a comprehensive car rental management application in Python with both CSV and MySQL database support. The system handles client information, vehicle inventory, rental transactions, and billing with built-in validation and error handling. The application supports multiple user roles and provides a user-friendly interface for managing all aspects of a car rental business.</p>
+                        </div>
+                        <button class="read-more-btn text-primary">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
 
-                    <div class="mica-card p-6 section-border">
+                    <div class="mica-card p-6 section-border project-card">
                          <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Healthcare Efficiency Data Analysis</h4>
                         <p class="text-sm font-medium text-medium mb-4">Python | Data Analysis | Pandas & Jupyter</p>
-                        <p class="text-base">
-                            Optimized nursing home operations by analyzing schedules and visits, identifying bottlenecks, and recommending data-driven solutions.
-                        </p>
+                        <div class="project-description">
+                            <p class="text-base">
+                                Optimized nursing home operations by analyzing schedules and visits, identifying bottlenecks, and recommending data-driven solutions.
+                            </p>
+                            <p class="mt-2 text-medium">Conducted comprehensive data analysis for a healthcare organization using Python, Pandas, and Jupyter notebooks. The project focused on optimizing nursing home operations by analyzing staff schedules, patient visits, and resource allocation. The analysis identified operational bottlenecks and provided data-driven recommendations that improved efficiency and reduced costs.</p>
+                        </div>
+                        <button class="read-more-btn text-primary">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
 
-                    <div class="mica-card p-6 section-border">
+                    <div class="mica-card p-6 section-border project-card">
                          <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Multiround Quiz System</h4>
                         <p class="text-sm font-medium text-medium mb-4">C/C++ | Console Application | Procedural Logic</p>
-                        <p class="text-base">
-                            C/C++ console app for multi-group quizzes, demonstrating advanced procedural logic and reliable state/input management.
-                        </p>
+                        <div class="project-description">
+                            <p class="text-base">
+                                C/C++ console app for multi-group quizzes, demonstrating advanced procedural logic and reliable state/input management.
+                            </p>
+                            <p class="mt-2 text-medium">Developed a comprehensive multi-round quiz system in C/C++ as a console application. The system supports multiple quiz groups, complex scoring mechanisms, and reliable state management. This project demonstrates advanced procedural programming techniques, efficient input handling, and robust application architecture suitable for educational and competitive environments.</p>
+                        </div>
+                        <button class="read-more-btn text-primary">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
                 </div>
 
@@ -715,45 +928,84 @@
                 </h3>
                  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     
-                    <div class="mica-card p-6 col-span-1 sm:col-span-2 lg:col-span-4 project-highlight-amber">
+                    <div class="mica-card p-6 col-span-1 sm:col-span-2 lg:col-span-4 project-highlight-amber project-card">
                          <h4 class="text-2xl sm:text-3xl font-extrabold text-amber-custom mb-3 font-poppins">SPHOORTI: Realtime Speech/Text to Braille Converter</h4>
                         <p class="text-base font-medium text-medium mb-4">MicroPython | ESP32 | Accessibility | Low-Level I/O</p>
-                        <p class="mb-2 text-lg">
-                           ReactJS mobile app captures voice, sends via Bluetooth to ESP32 (MicroPython), controlling solenoids for real-time Braille output.
-                        </p>
+                        <div class="project-description">
+                            <p class="mb-2 text-lg">
+                               ReactJS mobile app captures voice, sends via Bluetooth to ESP32 (MicroPython), controlling solenoids for real-time Braille output.
+                            </p>
+                            <p class="mt-2 text-medium">SPHOORTI is an innovative accessibility device that converts speech or text to Braille in real-time. The system consists of a ReactJS mobile application that captures voice input or accepts text, which is then transmitted via Bluetooth to an ESP32 microcontroller running MicroPython. The ESP32 controls solenoids that physically form Braille characters, enabling real-time tactile communication for visually impaired users. This project demonstrates expertise in embedded systems, IoT connectivity, and accessibility technology.</p>
+                        </div>
+                        <button class="read-more-btn text-amber-custom">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
 
-                    <div class="mica-card p-6 section-border">
+                    <div class="mica-card p-6 section-border project-card">
                          <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">GRAINEYE (AI Vision System)</h4>
                         <p class="text-sm font-medium text-medium mb-4">Embedded Systems(R Pi) | Python & C++ | High-Speed Automation</p>
-                        <p class="text-base">
-                            Real-time beach sand analyzer: Raspberry Pi + CNN predicts grain size and logs results via custom map API.
-                        </p>
+                        <div class="project-description">
+                            <p class="text-base">
+                                Real-time beach sand analyzer: Raspberry Pi + CNN predicts grain size and logs results via custom map API.
+                            </p>
+                            <p class="mt-2 text-medium">GRAINEYE is an AI-powered vision system that analyzes beach sand composition in real-time. Using a Raspberry Pi with a custom CNN model implemented in Python and C++, the system can predict grain size distribution and log results through a custom mapping API. This project showcases expertise in embedded AI, computer vision, and high-speed automation for environmental monitoring applications.</p>
+                        </div>
+                        <button class="read-more-btn text-primary">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
 
-                    <div class="mica-card p-6 section-border">
+                    <div class="mica-card p-6 section-border project-card">
                          <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Sine 500W Inverter</h4>
                         <p class="text-sm font-medium text-medium mb-4">4047 & 555 Timer | Triangular & Square Wave | MOSFET Switching | Analog Power Electronics</p>
-                        <p class="text-base">
-                            Designed and built a highly efficient 500W pure sine wave inverter with minimal heat loss, stable output, and robust performance for sensitive loads.
-                        </p>
+                        <div class="project-description">
+                            <p class="text-base">
+                                Designed and built a highly efficient 500W pure sine wave inverter with minimal heat loss, stable output, and robust performance for sensitive loads.
+                            </p>
+                            <p class="mt-2 text-medium">Designed and built a high-performance 500W pure sine wave inverter using 4047 and 555 timer ICs for waveform generation. The circuit efficiently converts DC to AC power with minimal heat loss and stable output, making it suitable for sensitive electronic equipment. This project demonstrates advanced knowledge of analog power electronics, MOSFET switching techniques, and power supply design principles.</p>
+                        </div>
+                        <button class="read-more-btn text-primary">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
 
-                    <div class="mica-card p-6 section-border">
+                    <div class="mica-card p-6 section-border project-card">
                          <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">High-Fidelity Audio Amplifier (Analog Design)</h4>
                         <p class="text-sm font-medium text-medium mb-4">Analog Circuit Design | Audio Engineering</p>
-                        <p class="text-base">
-                           High-performance 120W 4.1 amplifier with low distortion and full analog tone controls (bass, treble, volume).
-                        </p>
+                        <div class="project-description">
+                            <p class="text-base">
+                               High-performance 120W 4.1 amplifier with low distortion and full analog tone controls (bass, treble, volume).
+                            </p>
+                            <p class="mt-2 text-medium">Designed and constructed a high-fidelity 120W 4.1 channel audio amplifier with exceptional sound quality and minimal distortion. The amplifier features comprehensive analog tone controls for bass, treble, and volume adjustment, showcasing expertise in analog circuit design, audio engineering, and power amplification principles for high-quality audio reproduction.</p>
+                        </div>
+                        <button class="read-more-btn text-primary">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
 
-                    <div class="mica-card p-6 section-border">
+                    <div class="mica-card p-6 section-border project-card">
                          <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Custom Digital Guitar Pedal (DSP)</h4>
                         <p class="text-sm font-medium text-medium mb-4">Analog Electronics | Audio Engineering</p>
-                        <p class="text-base">
-                            Analog guitar pedal with custom circuitry for rich sound modulation and tone shaping.
-                        </p>
+                        <div class="project-description">
+                            <p class="text-base">
+                                Analog guitar pedal with custom circuitry for rich sound modulation and tone shaping.
+                            </p>
+                            <p class="mt-2 text-medium">Designed and built a custom digital guitar pedal with specialized circuitry for rich sound modulation and tone shaping. The pedal incorporates both analog and digital signal processing techniques to create unique audio effects, demonstrating expertise in audio engineering, circuit design, and DSP implementation for musical applications.</p>
+                        </div>
+                        <button class="read-more-btn text-primary">
+                            Read More <i class="fas fa-chevron-down"></i>
+                        </button>
                     </div>
+                </div>
+                
+                <!-- NEW: Project Section CTA -->
+                <div class="project-cta mt-12">
+                    <h3 class="text-2xl sm:text-3xl font-bold mb-4">Ready to Bring Your Vision to Life?</h3>
+                    <p class="text-lg mb-6">Let's collaborate on your next innovative project!</p>
+                    <button data-target="contact" class="nav-link bg-white text-primary px-8 py-3 text-xl font-bold rounded-xl transition duration-300 transform hover:scale-[1.05]">
+                        Get Your Project Done Today!
+                    </button>
                 </div>
                 </div>
             </section>
@@ -854,7 +1106,7 @@
                             <div class="text-amber-custom mb-3 text-xl">
                                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
-                            <p class="text-lg italic text-medium mb-4">"I’ve had this tutor for all my programming courses, and honestly, he’s amazing at what he does. He really knows his stuff and solve things in a way that actually makes sense."</p>
+                            <p class="text-lg italic text-medium mb-4">"I've had this tutor for all my programming courses, and honestly, he's amazing at what he does. He really knows his stuff and solve things in a way that actually makes sense."</p>
                         </div>
                         <p class="text-xl font-semibold text-primary">- Yousef Ghazi (Miami, USA)</p>
                     </div>
@@ -912,29 +1164,69 @@
             </section>
             
             <section id="contact" class="content-section py-12">
-                <div class="mica-card p-8 max-w-lg w-full text-center space-y-6 py-10 shadow-2xl">
-                     <h2 class="text-3xl sm:text-4xl font-bold font-poppins">Let's Discuss Your Next Project</h2>
-                    <div class="separator"></div>
-                    <p class="text-lg text-medium">I am currently available for new freelance assignments globally. Due to the proprietary nature of my work, full project source code and CV are available upon request and signing a Non-Disclosure Agreement (NDA).</p>
-                    <div class="space-y-4 pt-6">
-                        <p class="text-xl sm:text-2xl text-primary font-semibold">
-                            Email: <a href="mailto:subhajithalder267@outlook.com" class="hover:underline hover:text-cyan-700">subhajithalder267@outlook.com</a>
-                        </p>
-                        <p class="text-xl sm:text-2xl text-primary font-semibold">
-                            Phone/WhatsApp: 
-                            <a href="tel:+917047736124" class="hover:underline hover:text-cyan-700">+91 7047736124</a>
-                            <a href="https://wa.me/917047736124" target="_blank" class="ml-3 text-2xl text-primary hover:text-cyan-700 transition transform hover:scale-110" aria-label="WhatsApp">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                        </p>
-                    </div>
-                    <div class="flex justify-center space-x-6 pt-8">
-                       <a href="https://github.com/Subhajit267?tab=repositories" target="_blank" class="text-medium hover:text-primary transition transform hover:scale-110" aria-label="GitHub">
-                            <i class="fab fa-github text-4xl"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/subhajit-halder-7aba79325" target="_blank" class="text-medium hover:text-primary transition transform hover:scale-110" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin text-4xl"></i>
-                        </a>
+                <div class="max-w-6xl mx-auto w-full">
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-4 text-center font-poppins">Get In Touch</h2>
+                    <div class="separator mb-12"></div>
+                    
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <!-- Contact Details Card -->
+                        <div class="mica-card p-8 text-center space-y-6 py-10 shadow-2xl">
+                            <h3 class="text-3xl sm:text-4xl font-bold font-poppins">Let's Discuss Your Next Project</h3>
+                            <div class="separator"></div>
+                            <p class="text-lg text-medium">I am currently available for new freelance assignments globally. Due to the proprietary nature of my work, full project source code and CV are available upon request and signing a Non-Disclosure Agreement (NDA).</p>
+                            <div class="space-y-4 pt-6">
+                                <p class="text-xl sm:text-2xl text-primary font-semibold">
+                                    Email: <a href="mailto:subhajithalder267@outlook.com" class="hover:underline hover:text-cyan-700">subhajithalder267@outlook.com</a>
+                                </p>
+                                <p class="text-xl sm:text-2xl text-primary font-semibold">
+                                    Phone/WhatsApp: 
+                                    <a href="tel:+917047736124" class="hover:underline hover:text-cyan-700">+91 7047736124</a>
+                                    <a href="https://wa.me/917047736124" target="_blank" class="ml-3 text-2xl text-primary hover:text-cyan-700 transition transform hover:scale-110" aria-label="WhatsApp">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="flex justify-center space-x-6 pt-8">
+                            <a href="https://github.com/Subhajit267?tab=repositories" target="_blank" class="text-medium hover:text-primary transition transform hover:scale-110" aria-label="GitHub">
+                                    <i class="fab fa-github text-4xl"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/subhajit-halder-7aba79325" target="_blank" class="text-medium hover:text-primary transition transform hover:scale-110" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin text-4xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Form -->
+                        <div class="mica-card p-8 section-border">
+                            <h3 class="text-3xl sm:text-4xl font-bold mb-6 font-poppins">Send Me a Message</h3>
+                            <form class="contact-form" id="contactForm">
+                                <div class="form-group">
+                                    <label class="form-label" for="name">Your Name</label>
+                                    <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="email">Your Email</label>
+                                    <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="subject">Subject</label>
+                                    <input type="text" id="subject" name="subject" class="form-input" placeholder="What is this regarding?" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="message">Your Message</label>
+                                    <textarea id="message" name="message" class="form-textarea" placeholder="Tell me about your project or inquiry..." required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn-primary submit-btn">
+                                    Send Message <i class="fas fa-paper-plane ml-2"></i>
+                                </button>
+                                
+                                <div id="formMessage" class="form-message hidden"></div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1071,6 +1363,7 @@
             }
         });
 
+        // Read More functionality for project cards
         document.addEventListener('DOMContentLoaded', () => {
             const navLinks = document.querySelectorAll('.nav-link');
             
@@ -1084,6 +1377,83 @@
             
             const initialTarget = document.querySelector('.nav-link.active-tab')?.dataset.target || 'home';
             switchTab(initialTarget);
+            
+            // Read More button functionality
+            const readMoreButtons = document.querySelectorAll('.read-more-btn');
+            readMoreButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const description = this.previousElementSibling;
+                    description.classList.toggle('expanded');
+                    this.classList.toggle('expanded');
+                    
+                    if (this.classList.contains('expanded')) {
+                        this.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
+                    } else {
+                        this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
+                    }
+                });
+            });
+            
+            // Contact form submission
+            const contactForm = document.getElementById('contactForm');
+            const formMessage = document.getElementById('formMessage');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(this);
+                    const name = formData.get('name');
+                    const email = formData.get('email');
+                    const subject = formData.get('subject');
+                    const message = formData.get('message');
+                    
+                    // Simple validation
+                    if (!name || !email || !subject || !message) {
+                        showFormMessage('Please fill in all fields.', 'error');
+                        return;
+                    }
+                    
+                    // Email validation
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        showFormMessage('Please enter a valid email address.', 'error');
+                        return;
+                    }
+                    
+                    // Show loading state
+                    const submitBtn = contactForm.querySelector('.submit-btn');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin ml-2"></i>';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate form submission (in a real implementation, you would send this to a server)
+                    setTimeout(() => {
+                        // Reset form
+                        contactForm.reset();
+                        
+                        // Show success message
+                        showFormMessage('Thank you for your message! I will get back to you soon.', 'success');
+                        
+                        // Reset button
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }, 2000);
+                });
+            }
+            
+            function showFormMessage(message, type) {
+                formMessage.textContent = message;
+                formMessage.className = 'form-message';
+                formMessage.classList.add(type);
+                formMessage.classList.remove('hidden');
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.classList.add('hidden');
+                }, 5000);
+            }
         });
     </script>
 </body>
