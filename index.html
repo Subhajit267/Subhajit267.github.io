@@ -46,25 +46,27 @@ html[data-theme="dark"] {
   --tag-green-bg: rgba(34,197,94,0.1);
 }
 
-/* ── LIGHT MODE ── */
+/* ── LIGHT MODE — warm parchment, easy on eyes ── */
 html[data-theme="light"] {
-  --bg:        #f8f7f4;
-  --bg2:       #ffffff;
-  --bg3:       #f0eeea;
-  --border:    rgba(0,0,0,0.08);
-  --border2:   rgba(0,0,0,0.14);
-  --text:      #1a1a1e;
-  --muted:     #888490;
-  --muted2:    #555260;
-  --nav-bg:    rgba(248,247,244,0.92);
-  --shadow:    rgba(0,0,0,0.12);
-  --noise-opacity: 0.15;
-  --glow1-bg:  rgba(245,166,35,0.08);
-  --glow2-bg:  rgba(34,197,94,0.05);
-  --review-before-color: rgba(245,166,35,0.2);
-  --tag-amber-bg: rgba(245,166,35,0.12);
-  --tag-green-bg: rgba(34,197,94,0.1);
-  --green:     #16a34a;
+  --bg:        #f0ead8;
+  --bg2:       #f8f3e8;
+  --bg3:       #e6ddc8;
+  --border:    rgba(100,80,40,0.12);
+  --border2:   rgba(100,80,40,0.22);
+  --text:      #28200f;
+  --muted:     #8a7855;
+  --muted2:    #5c4e30;
+  --nav-bg:    rgba(240,234,216,0.93);
+  --shadow:    rgba(80,55,10,0.12);
+  --noise-opacity: 0.1;
+  --glow1-bg:  rgba(200,140,20,0.07);
+  --glow2-bg:  rgba(34,197,94,0.04);
+  --review-before-color: rgba(200,140,20,0.18);
+  --tag-amber-bg: rgba(180,120,10,0.1);
+  --tag-green-bg: rgba(34,150,80,0.1);
+  --green:     #1a6e35;
+  --amber:     #b86a00;
+  --amber2:    #d48020;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -634,232 +636,350 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
 .step-desc { font-size: 0.83rem; color: var(--muted2); line-height: 1.6; }
 
 /* ═══════════════════════════════════════════
-   PROJECTS SECTION — REDESIGNED
+   PROJECTS SECTION — TABBED SINGLE-FRAME
 ═══════════════════════════════════════════ */
+#projects {
+  padding-top: 2rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
 .projects-header {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 2.5rem;
+  margin-bottom: 0.75rem;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
-.category-label {
+/* ── TAB BAR (kept for compat, hidden) ── */
+.proj-tabs { display: none; }
+.proj-panel { display: none; }
+.proj-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+/* ── UNIFIED 3-COL GRID ── */
+.proj-unified-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.6rem;
+  align-items: start;
+}
+
+.proj-cat-label {
   font-family: var(--font-m);
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   letter-spacing: 0.12em;
   color: var(--muted);
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
-  margin-top: 0.5rem;
+  gap: 0.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.1rem;
 }
 
-.category-label::after {
+.proj-cat-label::after {
   content: '';
   flex: 1;
   height: 1px;
   background: var(--border);
 }
 
-/* ── FLAGSHIP (full-width hero card) ── */
-.project-flagship {
+/* wide card spans 2 cols */
+.proj-wide { grid-column: span 2; }
+
+/* stacked pair in one cell */
+.proj-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* mini cards (no description, compact) */
+.proj-mini {
+  padding: 1.1rem 1.25rem !important;
+}
+
+/* card top row (title + badge) */
+.pc-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+}
+
+/* badge variants */
+.pc-badge {
+  font-family: var(--font-m);
+  font-size: 0.6rem;
+  color: var(--amber);
+  background: rgba(245,166,35,0.08);
+  border: 1px solid rgba(245,166,35,0.22);
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.pc-badge-green {
+  color: var(--green);
+  background: rgba(34,197,94,0.08);
+  border-color: rgba(34,197,94,0.22);
+}
+
+/* card footer row */
+.pc-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* ── PROJECT CARD ── */
+.project-card {
   background: var(--bg2);
-  border: 1px solid rgba(245,166,35,0.2);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 2.25rem 2.5rem;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2rem;
-  align-items: start;
-  margin-bottom: 1.25rem;
-  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  padding: 0.9rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
   position: relative;
   overflow: hidden;
 }
 
-.project-flagship::before {
+.project-card:hover {
+  border-color: var(--border2);
+  box-shadow: 0 12px 32px var(--shadow);
+  transform: translateY(-2px);
+}
+
+/* amber left accent on featured cards */
+.project-card.is-flagship {
+  border-color: rgba(245,166,35,0.22);
+}
+.project-card.is-flagship::before {
   content: '';
   position: absolute;
   left: 0; top: 0; bottom: 0;
   width: 3px;
   background: var(--amber);
-  border-radius: 3px 0 0 3px;
+}
+.project-card.is-flagship:hover {
+  border-color: rgba(245,166,35,0.45);
+  box-shadow: 0 12px 32px rgba(245,166,35,0.08);
 }
 
-.project-flagship:hover {
-  border-color: rgba(245,166,35,0.4);
-  box-shadow: 0 20px 50px rgba(245,166,35,0.07);
-  transform: translateY(-3px);
-}
-
-.flagship-body { display: flex; flex-direction: column; gap: 0.75rem; }
-
-.flagship-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  flex-wrap: wrap;
-}
-
-.flagship-badge {
-  font-family: var(--font-m);
-  font-size: 0.65rem;
-  color: var(--amber);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  background: rgba(245,166,35,0.08);
-  border: 1px solid rgba(245,166,35,0.2);
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-}
-
-.flagship-type {
-  font-family: var(--font-m);
-  font-size: 0.65rem;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.flagship-title {
-  font-size: 1.35rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  color: var(--text);
-}
-
-.flagship-desc {
-  font-size: 0.9rem;
-  color: var(--muted2);
-  line-height: 1.75;
-  max-width: 640px;
-}
-
-.flagship-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.25rem; }
-
-.flagship-action {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 1rem;
-  flex-shrink: 0;
-  padding-top: 0.25rem;
-}
-
-/* ── PROJECT PAIR (2-col side by side) ── */
-.projects-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-  margin-bottom: 1.25rem;
-}
-
-/* ── STANDARD PROJECT CARD ── */
-.project-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-}
-
-.project-card:hover {
-  border-color: var(--border2);
-  box-shadow: 0 16px 40px var(--shadow);
-  transform: translateY(-3px);
-}
-
+/* ── card innards ── */
 .project-card-type {
   font-family: var(--font-m);
-  font-size: 0.65rem;
+  font-size: 0.63rem;
   color: var(--muted);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .project-card-title {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.3;
-  color: var(--text);
 }
 
 .project-card-desc {
-  font-size: 0.86rem;
+  font-size: 0.78rem;
   color: var(--muted2);
-  line-height: 1.7;
+  line-height: 1.55;
   flex: 1;
 }
 
-.project-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.25rem; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.15rem; }
 
 .project-link {
   font-family: var(--font-m);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   color: var(--amber);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  margin-top: 0.25rem;
-  opacity: 0.8;
+  gap: 0.3rem;
+  margin-top: 0.1rem;
+  opacity: 0.75;
   transition: opacity 0.2s;
+  width: fit-content;
 }
 .project-link:hover { opacity: 1; }
 
-/* ── SECTION DIVIDER ── */
-.projects-section-gap { margin-top: 3rem; }
-
-/* Featured project — kept for backward compat */
-.project-featured {
-  background: var(--bg2);
-  border: 1px solid rgba(245,166,35,0.2);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
+.proj-footer {
   display: flex;
-  flex-direction: column;
-  transition: all 0.3s;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.6rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
-.project-featured:hover {
-  border-color: rgba(245,166,35,0.4);
-  box-shadow: 0 24px 60px rgba(245,166,35,0.06);
-  transform: translateY(-4px);
+
+.proj-footer-note {
+  font-family: var(--font-m);
+  font-size: 0.72rem;
+  color: var(--muted);
 }
-.featured-badge {
+
+.view-all-btn {
+  font-family: var(--font-m);
+  font-size: 0.75rem;
+  color: var(--amber);
+  background: rgba(245,166,35,0.07);
+  border: 1px solid rgba(245,166,35,0.25);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-family: var(--font-m);
-  font-size: 0.68rem;
-  color: var(--amber);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
+  transition: all 0.2s;
 }
-.featured-title {
-  font-size: 1.4rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  margin-bottom: 0.75rem;
-  color: var(--amber2);
+.view-all-btn:hover { background: rgba(245,166,35,0.14); transform: translateY(-1px); }
+
+/* ══════════════════════════════════════════
+   ALL PROJECTS DRAWER (slide-in panel)
+══════════════════════════════════════════ */
+#all-projects-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
-/* legacy grid — not used in new layout */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  margin-bottom: 1.5rem;
+#all-projects-drawer.open {
+  pointer-events: all;
+  opacity: 1;
 }
+
+.drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+}
+
+.drawer-panel {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: min(680px, 95vw);
+  background: var(--bg2);
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 2.5rem 2rem;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+#all-projects-drawer.open .drawer-panel {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: -2.5rem;
+  background: var(--bg2);
+  margin: -2.5rem -2rem 0;
+  padding: 1.5rem 2rem;
+  z-index: 1;
+}
+
+.drawer-title {
+  font-family: var(--font-h);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.drawer-close {
+  width: 36px; height: 36px;
+  border-radius: var(--radius);
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  color: var(--muted2);
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.drawer-close:hover { color: var(--text); background: var(--border2); }
+
+.drawer-cat {
+  font-family: var(--font-m);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+.drawer-cat::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.drawer-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  transition: border-color 0.2s, background 0.2s;
+}
+.drawer-item:hover { border-color: var(--border2); background: var(--bg3); }
+
+.drawer-item-num {
+  font-family: var(--font-m);
+  font-size: 0.7rem;
+  color: var(--amber);
+  background: rgba(245,166,35,0.08);
+  border: 1px solid rgba(245,166,35,0.2);
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.drawer-item-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.25rem;
+}
+
+.drawer-item-desc {
+  font-size: 0.78rem;
+  color: var(--muted2);
+  line-height: 1.6;
+}
+
+.drawer-item-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.5rem; }
 
 /* ═══════════════════════════════════════════
    SKILLS SECTION
@@ -1349,19 +1469,23 @@ footer {
 @media (max-width: 1100px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
   .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .proj-unified-grid { grid-template-columns: 1fr 1fr; }
+  .proj-wide { grid-column: span 2; }
   .process-row { grid-template-columns: repeat(2, 1fr); }
   .process-step:nth-child(2) { border-right: none; }
   .process-step:nth-child(3) { border-bottom: none; }
   .process-step:nth-child(3), .process-step:nth-child(4) { border-top: 1px solid var(--border); }
   .hero-layout { grid-template-columns: 1fr; }
   .hero-card { display: none; }
-  .project-flagship { grid-template-columns: 1fr; }
-  .flagship-action { flex-direction: row; align-items: center; }
 }
 
 @media (max-width: 900px) {
   .nav-links { display: none; }
   .mobile-btn { display: flex; }
+  .proj-unified-grid { grid-template-columns: 1fr 1fr; }
+  .proj-wide { grid-column: span 2; }
+  .proj-stack { flex-direction: row; }
+  .proj-stack .project-card { flex: 1; }
   .skills-layout { grid-template-columns: 1fr; }
   .experience-layout { grid-template-columns: 1fr; }
   .contact-layout { grid-template-columns: 1fr; }
@@ -1376,8 +1500,9 @@ footer {
 @media (max-width: 600px) {
   .services-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
-  .projects-pair { grid-template-columns: 1fr; }
-  .project-featured { grid-column: span 1; }
+  .proj-unified-grid { grid-template-columns: 1fr; }
+  .proj-wide { grid-column: span 1; }
+  .proj-stack { flex-direction: column; }
   .reviews-grid { grid-template-columns: 1fr; }
   .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
   .hero-title { font-size: 2.4rem; }
@@ -1593,142 +1718,251 @@ footer {
   <div class="projects-header">
     <div>
       <div class="section-label">Portfolio</div>
-      <h2 class="section-title">Selected Work</h2>
+      <h2 class="section-title" style="margin-bottom:0;">Selected Work</h2>
     </div>
-    <p style="color:var(--muted2);font-size:0.9rem;max-width:320px;line-height:1.6;">Source code & documentation available on request. NDA available.</p>
+    <p style="color:var(--muted2);font-size:0.88rem;max-width:280px;line-height:1.6;text-align:right;">Source & docs on request · NDA available</p>
   </div>
 
-  <!-- ══════════════════════════════
-       SOFTWARE & SYSTEMS
-  ══════════════════════════════ -->
-  <div class="category-label">
-    <i class="fas fa-terminal" style="color:var(--amber)"></i> Software & Systems Development
+  <!--
+    LAYOUT: 3-col grid
+    Row 1 (Software): OE spans 2 cols | DVR/LSR 1 col
+    Row 2 (Hardware): SPHOORTI 1 col  | IoT Mood 1 col | Inverter+Amp stacked 1 col
+    Category labels float above each row via CSS subgrid trick
+  -->
+  <div class="proj-unified-grid">
+
+    <!-- ── Software label ── -->
+    <div class="proj-cat-label" style="grid-column:1/-1;">
+      <i class="fas fa-terminal" style="color:var(--amber);font-size:0.7rem;"></i> Software & Systems
+    </div>
+
+    <!-- OE — full-width flagship -->
+    <div class="project-card is-flagship" style="grid-column:1/-1;">
+      <div class="pc-top">
+        <div>
+          <div class="project-card-type">Systems Programming · Cross-Platform</div>
+          <div class="project-card-title">Operating Environment (OE)</div>
+        </div>
+        <span class="pc-badge"><i class="fas fa-star"></i> Flagship</span>
+      </div>
+      <p class="project-card-desc">Cross-platform shell in C/C++ with 15+ commands, custom Windows/Linux abstraction layer, full text editor, Shunting Yard math evaluator — zero dependencies.</p>
+      <div class="pc-foot">
+        <div class="project-tags">
+          <span class="tag tag-amber">C / C++</span>
+          <span class="tag tag-amber">Systems</span>
+          <span class="tag tag-amber">Cross-Platform</span>
+        </div>
+        <a href="https://github.com/Subhajit267" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </div>
+
+    <!-- DVR/LSR — 1 col -->
+    <div class="project-card" style="grid-column:span 1;">
+      <div class="pc-top"><div>
+        <div class="project-card-type">Networking · Algorithms</div>
+        <div class="project-card-title">Network Routing Simulator</div>
+      </div></div>
+      <p class="project-card-desc">Bellman-Ford (DVR) & Dijkstra (LSR) across 10+ nodes via multi-threaded Python TCP sockets. Real-time convergence analysis.</p>
+      <div class="pc-foot">
+        <div class="project-tags"><span class="tag">Python</span><span class="tag">TCP</span><span class="tag">Multithreading</span></div>
+        <a href="https://github.com/Subhajit267" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </div>
+
+    <!-- Face Recognition — 2 cols -->
+    <div class="project-card" style="grid-column:span 2;">
+      <div class="pc-top">
+        <div>
+          <div class="project-card-type">Computer Vision · AI / ML</div>
+          <div class="project-card-title">Face Recognition Attendance System</div>
+        </div>
+        <span class="pc-badge">AI</span>
+      </div>
+      <p class="project-card-desc">Real-time face recognition for 50+ users with ~90% accuracy using dlib. Automated attendance logging with database integration and modular client-specific design.</p>
+      <div class="pc-foot">
+        <div class="project-tags"><span class="tag">Python</span><span class="tag">dlib</span><span class="tag">OpenCV</span><span class="tag">SQLite</span></div>
+        <a href="https://github.com/Subhajit267" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </div>
+
+    <!-- ── Hardware label ── -->
+    <div class="proj-cat-label" style="grid-column:1/-1;">
+      <i class="fas fa-microchip" style="color:var(--amber);font-size:0.7rem;"></i> Embedded Systems & IoT
+    </div>
+
+    <!-- SPHOORTI -->
+    <div class="project-card is-flagship proj-wide">
+      <div class="pc-top">
+        <div>
+          <div class="project-card-type">ESP32 · Bluetooth · Accessibility</div>
+          <div class="project-card-title">SPHOORTI — Speech to Braille</div>
+        </div>
+        <span class="pc-badge pc-badge-green">🏆 1st Prize</span>
+      </div>
+      <p class="project-card-desc">Led 4-member team. ReactJS app → BT → ESP32 → GPIO solenoids forming Braille. ~85–90% transcription accuracy, low latency. Won multiple 1st prizes at technical competitions and innovation expos.</p>
+      <div class="pc-foot">
+        <div class="project-tags"><span class="tag tag-amber">ESP32</span><span class="tag tag-amber">GPIO</span><span class="tag tag-amber">BT</span><span class="tag tag-amber">ReactJS</span></div>
+        <a href="https://github.com/Subhajit267" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </div>
+
+    <!-- IoT Mood -->
+    <div class="project-card is-flagship">
+      <div class="pc-top"><div>
+        <div class="project-card-type">Raspberry Pi · I2C · ML</div>
+        <div class="project-card-title">IoT Mood Analysis & Therapy</div>
+      </div></div>
+      <p class="project-card-desc">MAX30102 + GSR + MPU6050 over I2C on RPi. ML classifier ~75–85% accuracy triggers targeted audio therapy on 3 consecutive detections.</p>
+      <div class="pc-foot">
+        <div class="project-tags"><span class="tag tag-amber">RPi</span><span class="tag tag-amber">I2C</span><span class="tag tag-amber">scikit-learn</span></div>
+        <a href="https://github.com/Subhajit267" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </div>
+
   </div>
 
-  <!-- OE — Full-width flagship -->
-  <div class="project-flagship">
-    <div class="flagship-body">
-      <div class="flagship-meta">
-        <span class="flagship-badge"><i class="fas fa-star"></i> Flagship</span>
-        <span class="flagship-type">Systems Programming · Cross-Platform</span>
-      </div>
-      <div class="flagship-title">Operating Environment (OE) — Custom Shell & Utilities</div>
-      <p class="flagship-desc">Cross-platform shell built in C/C++ with 15+ commands, a custom Windows/Linux abstraction layer, a full-featured text editor, a Shunting Yard math evaluator, and modular file management — all from scratch, zero dependencies.</p>
-      <div class="flagship-tags">
-        <span class="tag tag-amber">C / C++</span>
-        <span class="tag tag-amber">Systems Programming</span>
-        <span class="tag tag-amber">Cross-Platform</span>
-        <span class="tag tag-amber">Shunting Yard</span>
-        <span class="tag tag-amber">Modular Architecture</span>
-      </div>
-    </div>
-    <div class="flagship-action">
-      <a href="https://github.com/Subhajit267" target="_blank" class="btn btn-outline-amber" style="font-size:0.78rem;padding:0.45rem 1rem;white-space:nowrap;"><i class="fab fa-github"></i> GitHub</a>
-    </div>
+  <!-- Footer row -->
+  <div class="proj-footer">
+    <span class="proj-footer-note">5 flagship projects shown · 35+ total delivered</span>
+    <button class="view-all-btn" id="openAllProjects">
+      View All Projects <i class="fas fa-arrow-right"></i>
+    </button>
   </div>
 
-  <!-- Two secondary software cards -->
-  <div class="projects-pair">
-    <div class="project-card">
-      <div class="project-card-type">Networking · Algorithms</div>
-      <div class="project-card-title">Network Routing Simulator (DVR & LSR)</div>
-      <p class="project-card-desc">Bellman-Ford (DVR) and Dijkstra's (LSR) across 10+ virtual nodes via multi-threaded Python TCP sockets. Real-time convergence and topology update analysis.</p>
-      <div class="project-tags">
-        <span class="tag">Python</span><span class="tag">Multithreading</span><span class="tag">TCP Sockets</span><span class="tag">Bellman-Ford</span><span class="tag">Dijkstra</span>
-      </div>
-      <a href="https://github.com/Subhajit267" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub</a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-card-type">AI · Computer Vision</div>
-      <div class="project-card-title">Face Recognition Attendance System</div>
-      <p class="project-card-desc">Real-time face recognition for 50+ users at ~90% accuracy using dlib. Automated attendance logging with database integration and modular client-specific design.</p>
-      <div class="project-tags">
-        <span class="tag">Python</span><span class="tag">dlib</span><span class="tag">OpenCV</span><span class="tag">SQLite</span>
-      </div>
-      <a href="https://github.com/Subhajit267" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub</a>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════
-       EMBEDDED SYSTEMS & IoT
-  ══════════════════════════════ -->
-  <div class="category-label projects-section-gap">
-    <i class="fas fa-microchip" style="color:var(--amber)"></i> Embedded Systems & IoT Engineering
-  </div>
-
-  <!-- SPHOORTI — Full-width flagship -->
-  <div class="project-flagship">
-    <div class="flagship-body">
-      <div class="flagship-meta">
-        <span class="flagship-badge"><i class="fas fa-trophy"></i> 1st Prize · Multiple Tech Expos</span>
-        <span class="flagship-type">ESP32 · Bluetooth · Accessibility</span>
-      </div>
-      <div class="flagship-title">SPHOORTI — Real-Time Speech to Braille Converter</div>
-      <p class="flagship-desc">Led a 4-member team to build a real-time Speech-to-Braille device for visually impaired users. A ReactJS mobile app sends text via Bluetooth to an ESP32 running MicroPython, which drives GPIO-controlled solenoids to form Braille characters — achieving ~85–90% transcription accuracy with low-latency output.</p>
-      <div class="flagship-tags">
-        <span class="tag tag-amber">ESP32</span>
-        <span class="tag tag-amber">MicroPython</span>
-        <span class="tag tag-amber">Bluetooth</span>
-        <span class="tag tag-amber">GPIO / Solenoid</span>
-        <span class="tag tag-amber">ReactJS</span>
-        <span class="tag tag-amber">Accessibility</span>
-      </div>
-    </div>
-    <div class="flagship-action">
-      <span class="tag tag-amber" style="font-size:0.65rem;padding:0.25rem 0.7rem;">🏆 Award Winner</span>
-      <a href="https://github.com/Subhajit267" target="_blank" class="btn btn-outline-amber" style="font-size:0.78rem;padding:0.45rem 1rem;white-space:nowrap;"><i class="fab fa-github"></i> GitHub</a>
-    </div>
-  </div>
-
-  <!-- IoT Mood — Full-width flagship -->
-  <div class="project-flagship">
-    <div class="flagship-body">
-      <div class="flagship-meta">
-        <span class="flagship-badge"><i class="fas fa-star"></i> Flagship</span>
-        <span class="flagship-type">Raspberry Pi · I2C · ML Pipeline</span>
-      </div>
-      <div class="flagship-title">IoT Music Mood Analysis & Therapy System</div>
-      <p class="flagship-desc">Raspberry Pi system integrating MAX30102 (heart rate), ADS1115 GSR, and MPU6050 (motion) over I2C for physiological data acquisition. ML mood classifier at ~75–85% accuracy triggers targeted audio therapy on 3 consecutive detections. Supports live and simulation modes.</p>
-      <div class="flagship-tags">
-        <span class="tag tag-amber">Raspberry Pi</span>
-        <span class="tag tag-amber">I2C</span>
-        <span class="tag tag-amber">MAX30102</span>
-        <span class="tag tag-amber">MPU6050</span>
-        <span class="tag tag-amber">scikit-learn</span>
-        <span class="tag tag-amber">Sensor Fusion</span>
-      </div>
-    </div>
-    <div class="flagship-action">
-      <a href="https://github.com/Subhajit267" target="_blank" class="btn btn-outline-amber" style="font-size:0.78rem;padding:0.45rem 1rem;white-space:nowrap;"><i class="fab fa-github"></i> GitHub</a>
-    </div>
-  </div>
-
-  <!-- Two hardware support cards -->
-  <div class="projects-pair">
-    <div class="project-card">
-      <div class="project-card-type">Power Electronics · PCB Design</div>
-      <div class="project-card-title">500W Pure Sine Wave Inverter</div>
-      <p class="project-card-desc">Designed and built using 4047 & 555 timer ICs with MOSFET switching. Stable output, minimal heat loss, and full KiCad PCB layout.</p>
-      <div class="project-tags">
-        <span class="tag">Analog Design</span><span class="tag">MOSFET</span><span class="tag">KiCad</span><span class="tag">PCB</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-card-type">Audio Engineering · Analog Design</div>
-      <div class="project-card-title">120W 4.1 Hi-Fi Amplifier</div>
-      <p class="project-card-desc">High-fidelity analog amplifier with full tone controls — bass, treble, volume. Minimal distortion and clean power delivery across all four channels.</p>
-      <div class="project-tags">
-        <span class="tag">Analog</span><span class="tag">TDA Series</span><span class="tag">Audio</span><span class="tag">PCB</span>
-      </div>
-    </div>
-  </div>
-
-  <div style="text-align:center;margin-top:3rem;">
-    <button class="btn btn-primary nav-btn" data-target="contact">Get Your Project Done <i class="fas fa-arrow-right"></i></button>
-  </div>
 </section>
+
+<!-- ═══ ALL PROJECTS DRAWER ═══ -->
+<div id="all-projects-drawer">
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <div class="drawer-panel">
+    <div class="drawer-header">
+      <div class="drawer-title">All Projects</div>
+      <button class="drawer-close" id="closeAllProjects"><i class="fas fa-times"></i></button>
+    </div>
+
+    <div class="drawer-cat" style="margin-top:0.5rem;"><i class="fas fa-terminal" style="color:var(--amber)"></i> Software & Systems</div>
+
+    <div class="drawer-item">
+      <span class="drawer-item-num">01</span>
+      <div>
+        <div class="drawer-item-title">Operating Environment (OE) — Custom Shell</div>
+        <div class="drawer-item-desc">Cross-platform C/C++ shell with 15+ commands, text editor, math evaluator (Shunting Yard), file management. Zero dependencies.</div>
+        <div class="drawer-item-tags"><span class="tag tag-amber">C/C++</span><span class="tag">Cross-Platform</span><span class="tag">Systems</span></div>
+      </div>
+    </div>
+
+    <div class="drawer-item">
+      <span class="drawer-item-num">02</span>
+      <div>
+        <div class="drawer-item-title">Network Routing Simulator (DVR & LSR)</div>
+        <div class="drawer-item-desc">Bellman-Ford & Dijkstra across 10+ nodes using multi-threaded Python TCP sockets with real-time convergence analysis.</div>
+        <div class="drawer-item-tags"><span class="tag">Python</span><span class="tag">Multithreading</span><span class="tag">TCP</span></div>
+      </div>
+    </div>
+
+    <div class="drawer-item">
+      <span class="drawer-item-num">03</span>
+      <div>
+        <div class="drawer-item-title">Face Recognition Attendance System</div>
+        <div class="drawer-item-desc">Real-time face recognition for 50+ users (~90% accuracy) using dlib. Automated logging with SQLite integration.</div>
+        <div class="drawer-item-tags"><span class="tag">Python</span><span class="tag">dlib</span><span class="tag">OpenCV</span></div>
+      </div>
+    </div>
+
+    <div class="drawer-item">
+      <span class="drawer-item-num">04</span>
+      <div>
+        <div class="drawer-item-title">AVL Tree Database Engine</div>
+        <div class="drawer-item-desc">Self-balancing AVL Tree based DB core in C/C++. O(log n) guaranteed for all operations on production-scale datasets.</div>
+        <div class="drawer-item-tags"><span class="tag">C/C++</span><span class="tag">DSA</span><span class="tag">O(log n)</span></div>
+      </div>
+    </div>
+
+    <div class="drawer-item">
+      <span class="drawer-item-num">05</span>
+      <div>
+        <div class="drawer-item-title">High-Performance Template Vector</div>
+        <div class="drawer-item-desc">Optimized C++ template vector outperforming std::vector with custom memory management for embedded and large-scale environments.</div>
+        <div class="drawer-item-tags"><span class="tag">C++</span><span class="tag">Templates</span><span class="tag">Memory</span></div>
+      </div>
+    </div>
+
+    <div class="drawer-item">
+      <span class="drawer-item-num">06</span>
+      <div>
+        <div class="drawer-item-title">VBA Store Management Suite</div>
+        <div class="drawer-item-desc">Enterprise Excel/VBA solution managing stock, expenses, and staff for a retail client. Automated reports and records.</div>
+        <div class="drawer-item-tags"><span class="tag">VBA</span><span class="tag">Excel</span><span class="tag">Automation</span></div>
+      </div>
+    </div>
+
+    <div class="drawer-item">
+      <span class="drawer-item-num">07</span>
+      <div>
+        <div class="drawer-item-title">Car Rental Management System</div>
+        <div class="drawer-item-desc">Python desktop app with MySQL/CSV backends, multi-user roles, billing, and inventory management.</div>
+        <div class="drawer-item-tags"><span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">CSV</span></div>
+      </div>
+    </div>
+
+    <div class="drawer-item">
+      <span class="drawer-item-num">08</span>
+      <div>
+        <div class="drawer-item-title">CNN Handwriting Recognition</div>
+        <div class="drawer-item-desc">Convolutional Neural Network for real-time digit recognition trained on MNIST. Full pipeline from preprocessing to deployment.</div>
+        <div class="drawer-item-tags"><span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">CNN</span></div>
+      </div>
+    </div>
+
+    <div class="drawer-cat"><i class="fas fa-microchip" style="color:var(--amber)"></i> Embedded Systems & IoT</div>
+
+    <div class="drawer-item">
+      <span class="drawer-item-num">09</span>
+      <div>
+        <div class="drawer-item-title">SPHOORTI — Real-Time Speech to Braille</div>
+        <div class="drawer-item-desc">ESP32 + ReactJS BT app driving GPIO solenoids for Braille output. ~85–90% accuracy. 🏆 1st Prize at multiple tech expos.</div>
+        <div class="drawer-item-tags"><span class="tag tag-amber">ESP32</span><span class="tag">MicroPython</span><span class="tag">GPIO</span></div>
+      </div>
+    </div>
+
+    <div class="drawer-item">
+      <span class="drawer-item-num">10</span>
+      <div>
+        <div class="drawer-item-title">IoT Music Mood Analysis & Therapy System</div>
+        <div class="drawer-item-desc">Raspberry Pi + MAX30102/GSR/MPU6050 sensors over I2C. ML mood classifier (~75–85%) triggers audio therapy feedback.</div>
+        <div class="drawer-item-tags"><span class="tag tag-amber">Raspberry Pi</span><span class="tag">I2C</span><span class="tag">scikit-learn</span></div>
+      </div>
+    </div>
+
+    <div class="drawer-item">
+      <span class="drawer-item-num">11</span>
+      <div>
+        <div class="drawer-item-title">GRAINEYE — AI Sand Grain Analyzer</div>
+        <div class="drawer-item-desc">Raspberry Pi + CNN for real-time beach sand grain-size analysis. Results logged via custom map API for environmental monitoring.</div>
+        <div class="drawer-item-tags"><span class="tag">Raspberry Pi</span><span class="tag">CNN</span><span class="tag">Python</span></div>
+      </div>
+    </div>
+
+    <div class="drawer-item">
+      <span class="drawer-item-num">12</span>
+      <div>
+        <div class="drawer-item-title">500W Pure Sine Wave Inverter</div>
+        <div class="drawer-item-desc">4047 & 555 IC MOSFET-switched inverter with stable output, minimal heat loss, and full KiCad PCB design.</div>
+        <div class="drawer-item-tags"><span class="tag">Analog</span><span class="tag">MOSFET</span><span class="tag">KiCad</span></div>
+      </div>
+    </div>
+
+    <div class="drawer-item">
+      <span class="drawer-item-num">13</span>
+      <div>
+        <div class="drawer-item-title">120W 4.1 Hi-Fi Amplifier</div>
+        <div class="drawer-item-desc">High-fidelity 4-channel analog amplifier with full tone controls, minimal distortion, custom PCB.</div>
+        <div class="drawer-item-tags"><span class="tag">Analog</span><span class="tag">TDA Series</span><span class="tag">Audio</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- ─── SKILLS ─── -->
 <section class="section" id="skills">
@@ -2232,6 +2466,32 @@ if (saved) {
 } else {
   applyTheme('dark');
 }
+
+/* ═══════════════════════════════════════════
+   ALL PROJECTS DRAWER
+═══════════════════════════════════════════ */
+const drawer = document.getElementById('all-projects-drawer');
+const openBtn = document.getElementById('openAllProjects');
+const closeBtn = document.getElementById('closeAllProjects');
+const backdrop = document.getElementById('drawerBackdrop');
+
+function openDrawer() {
+  drawer.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDrawer() {
+  drawer.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+if (openBtn) openBtn.addEventListener('click', openDrawer);
+if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeDrawer();
+});
 
 /* ── Init ── */
 showSection('home');
