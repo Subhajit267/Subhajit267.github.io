@@ -1,1481 +1,2240 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subhajit Halder | IT & Electronics Specialist</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            /* Light Mode Colors (Updated to a refined Green/Teal gradient) */
-            --primary-color: #10b981;     /* green-600 (NEW: Green for Light Mode) */
-            --primary-dark: #059669;      /* green-700 (NEW: Green for Light Mode) */
-            --accent-color: #0f766e;      /* teal-700 (NEW: Darker Teal for Light Mode Gradient) */
-            --light-bg: #f8fafc;          
-            --light-card: #ffffff;
-            --light-text: #0f172a;        
-            --medium-text: #475569;       
-            --light-border: #e2e8f0;      
-            
-            /* Dark Mode Colors (Kept as original Cyan/Teal) */
-            --dark-bg: #0f172a;           
-            --dark-card: #1e293b;         
-            --dark-text: #f1f5f9;         
-            --dark-medium-text: #cbd5e1;  
-            --dark-border: #334155;       
-            
-            --nav-height: 80px;
-            --amber-color: #fbbf24;       /* Amber-400 (Kept as per user preference) */
-            --amber1-color: #FAB30D;       
-            --dark-primary-border: #0d9488; 
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subhajit Halder — Systems Engineer & Freelance Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN SYSTEM — DARK / LIGHT MODE
+═══════════════════════════════════════════ */
+:root {
+  /* shared */
+  --amber:     #f5a623;
+  --amber2:    #ffc344;
+  --green:     #22c55e;
+  --font-h:    'Syne', sans-serif;
+  --font-b:    'DM Sans', sans-serif;
+  --font-m:    'DM Mono', monospace;
+  --nav-h:     68px;
+  --radius:    12px;
+  --radius-lg: 20px;
+}
 
-        /* DARK MODE OVERRIDES for Primary Colors to keep them CYAN/TEAL */
-        body.dark-mode {
-            color: var(--dark-text);
-            
-            /* Dark Mode Gradient (Deeper Navy/Slate) */
-            background: linear-gradient(to bottom right, #0d121c, #10192a, #1a243a);
-            background-attachment: fixed;
-        }
+/* ── DARK MODE (default) ── */
+html[data-theme="dark"] {
+  --bg:        #0a0a0b;
+  --bg2:       #111114;
+  --bg3:       #18181d;
+  --border:    rgba(255,255,255,0.07);
+  --border2:   rgba(255,255,255,0.12);
+  --text:      #f0ede8;
+  --muted:     #7a7880;
+  --muted2:    #a09ea8;
+  --nav-bg:    rgba(10,10,11,0.88);
+  --shadow:    rgba(0,0,0,0.4);
+  --noise-opacity: 0.4;
+  --glow1-bg:  rgba(245,166,35,0.06);
+  --glow2-bg:  rgba(34,197,94,0.04);
+  --review-before-color: rgba(245,166,35,0.15);
+  --tag-amber-bg: rgba(245,166,35,0.1);
+  --tag-green-bg: rgba(34,197,94,0.1);
+}
 
-        /* Override specific primary/accent colors for dark mode elements if needed, 
-           or use new variables for dark mode if only a few elements are different.
-           However, the existing structure generally uses the Light Mode variables 
-           for primary colors by default, so we'll enforce the Cyan/Teal in dark mode 
-           for things that don't have a dark-mode specific style. */
-           
-        body.dark-mode .active-tab {
-            color: #06b6d4 !important; /* cyan-600 */
-        }
-        
-        body.dark-mode .active-tab::after {
-            background: linear-gradient(90deg, #06b6d4, #0d9488); /* cyan-600, teal-600 */
-        }
+/* ── LIGHT MODE ── */
+html[data-theme="light"] {
+  --bg:        #f8f7f4;
+  --bg2:       #ffffff;
+  --bg3:       #f0eeea;
+  --border:    rgba(0,0,0,0.08);
+  --border2:   rgba(0,0,0,0.14);
+  --text:      #1a1a1e;
+  --muted:     #888490;
+  --muted2:    #555260;
+  --nav-bg:    rgba(248,247,244,0.92);
+  --shadow:    rgba(0,0,0,0.12);
+  --noise-opacity: 0.15;
+  --glow1-bg:  rgba(245,166,35,0.08);
+  --glow2-bg:  rgba(34,197,94,0.05);
+  --review-before-color: rgba(245,166,35,0.2);
+  --tag-amber-bg: rgba(245,166,35,0.12);
+  --tag-green-bg: rgba(34,197,94,0.1);
+  --green:     #16a34a;
+}
 
-        body.dark-mode .separator {
-            background: linear-gradient(90deg, #06b6d4, #0d9488); /* cyan-600, teal-600 */
-        }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body.dark-mode .gradient-text {
-            background: linear-gradient(135deg, #06b6d4, #0d9488); /* cyan-600, teal-600 */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+html { scroll-behavior: smooth; }
 
-        body.dark-mode .btn-primary {
-            background: linear-gradient(135deg, #06b6d4, #0d9488); /* cyan-600, teal-600 */
-            box-shadow: 0 4px 14px 0 rgba(6, 182, 212, 0.4); 
-        }
+body {
+  font-family: var(--font-b);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
 
-        body.dark-mode .btn-primary:hover {
-            box-shadow: 0 8px 25px 0 rgba(6, 182, 212, 0.6); 
-        }
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: var(--noise-opacity);
+}
 
-        body.dark-mode .btn-outline {
-            border: 2px solid #06b6d4; /* cyan-600 */
-            color: #06b6d4; /* cyan-600 */
-        }
-        
-        body.dark-mode .btn-outline:hover {
-            background: #06b6d4; /* cyan-600 */
-            color: white;
-            box-shadow: 0 4px 12px 0 rgba(6, 182, 212, 0.4);
-        }
+/* ── AMBIENT GLOW ── */
+.glow-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+.glow-1 { width: 600px; height: 600px; background: var(--glow1-bg); top: -200px; right: -100px; }
+.glow-2 { width: 400px; height: 400px; background: var(--glow2-bg); bottom: 20%; left: -100px; }
 
-        body.dark-mode #content-wrapper::-webkit-scrollbar-thumb { 
-             background: linear-gradient(to bottom, #06b6d4, #0d9488); /* cyan-600, teal-600 */
-            border: 2px solid transparent; 
-        }
-        body.dark-mode #content-wrapper::-webkit-scrollbar-thumb:hover { 
-            background: linear-gradient(to bottom, #0891b2, #0d9488); /* cyan-700, teal-600 */
-        }
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  background: var(--nav-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
 
-        body.dark-mode .section-border::before {
-            background: linear-gradient(to bottom, #06b6d4, #0d9488); /* cyan-600, teal-600 */
-        }
+.nav-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-        body.dark-mode .profile-frame {
-            border-image: linear-gradient(135deg, #06b6d4, #0d9488) 1; /* cyan-600, teal-600 */
-            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2);
-        }
+.nav-logo {
+  font-family: var(--font-h);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 
-        body.dark-mode .text-primary {
-            color: #06b6d4; /* cyan-600 */
-        }
-        
-        body.dark-mode .bg-primary-light {
-             background-color: rgba(6, 182, 212, 0.1); /* cyan-600 */
-        }
-        
-        /* Light Mode Styles (Using the new Green/Teal variables) */
+.nav-logo .dot { color: var(--amber); }
 
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            color: var(--light-text);
-            min-height: 100vh;
-            transition: all 0.4s ease;
-            padding-top: var(--nav-height);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            
-            /* Light Mode Gradient (Cleaner Silver/Blue) */
-            background: linear-gradient(to bottom right, #f7f9fb, #eef4f9, #e0e9f0);
-            background-attachment: fixed;
-        }
-        
-        /* NEW: Poppins for headings */
-        .font-poppins {
-            font-family: 'Poppins', sans-serif;
-        }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+}
 
-        /* ENHANCED MICA/GLASS EFFECT for main cards */
-        .mica-card {
-            border-radius: 20px; /* Slightly rounder */
-            background-color: rgba(255, 255, 255, 0.4); /* Less opaque */
-            backdrop-filter: blur(35px) saturate(180%); /* Less aggressive blur */
-            -webkit-backdrop-filter: blur(35px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.7); /* Crisper border */
-            box-shadow: 
-                0 20px 40px 0 rgba(0, 0, 0, 0.1), 
-                inset 0 0 0 1px rgba(255, 255, 255, 0.8);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative; 
-            overflow: hidden;
-        }
-        
-        .dark-mode .mica-card {
-            background-color: rgba(17, 24, 39, 0.3); /* More transparent dark base */
-            backdrop-filter: blur(35px) saturate(180%);
-            -webkit-backdrop-filter: blur(35px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 
-                0 20px 40px 0 rgba(0, 0, 0, 0.3),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-        }
+.nav-links button {
+  background: none;
+  border: none;
+  font-family: var(--font-m);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--muted2);
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
 
-        .mica-card:hover {
-            transform: translateY(-8px) scale(1.005); /* Increased lift on hover */
-            box-shadow: 
-                0 40px 80px 0 rgba(0, 0, 0, 0.2), /* Stronger hover shadow */
-                inset 0 0 0 1px rgba(255, 255, 255, 0.9);
-            background-color: rgba(255, 255, 255, 0.55); 
-        }
+.nav-links button:hover,
+.nav-links button.active {
+  color: var(--text);
+  background: var(--bg3);
+}
 
-        .dark-mode .mica-card:hover {
-            box-shadow: 
-                0 40px 80px 0 rgba(0, 0, 0, 0.6),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.15);
-            background-color: rgba(17, 24, 39, 0.45);
-        }
+.nav-links button.active {
+  color: var(--amber);
+}
 
-        .active-tab {
-            color: var(--primary-color) !important;
-            font-weight: 700;
-            position: relative;
-        }
-        
-        .active-tab::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            /* Updated to new gradient (Green/Teal for Light Mode) */
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-            border-radius: 3px;
-        }
-        
-        #content-wrapper {
-            min-height: calc(100vh - var(--nav-height)); 
-            overflow-y: auto;
-            scroll-behavior: smooth;
-            padding-bottom: 30px; 
-        }
+.nav-cta {
+  font-family: var(--font-m) !important;
+  background: var(--amber) !important;
+  color: var(--bg) !important;
+  font-weight: 500;
+  padding: 0.5rem 1.1rem !important;
+  letter-spacing: 0.02em !important;
+}
 
-        .content-section {
-            display: none !important;
-            padding: 0; 
-        }
+.nav-cta:hover {
+  background: var(--amber2) !important;
+  color: var(--bg) !important;
+}
 
-        .content-section.active {
-            display: flex !important;
-            flex-direction: column;
-            align-items: center;
-        }
+/* Mobile menu */
+.mobile-btn {
+  display: none;
+  background: none;
+  border: 1px solid var(--border2);
+  color: var(--text);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 1rem;
+}
 
-        /* NEW MODERN SEPARATOR: Small pill/capsule */
-        .separator {
-            height: 6px;
-            width: 80px; 
-            /* Updated to new gradient (Green/Teal for Light Mode) */
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-            margin: 0 auto;
-            border-radius: 6px;
-            opacity: 0.8;
-        }
+#mobile-drawer {
+  display: none;
+  position: fixed;
+  top: var(--nav-h);
+  left: 0; right: 0;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  z-index: 99;
+  padding: 1rem;
+  gap: 0.25rem;
+  flex-direction: column;
+}
 
-        @keyframes fadeInMove {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+#mobile-drawer.open { display: flex; }
+#mobile-drawer button {
+  background: none;
+  border: none;
+  font-family: var(--font-m);
+  font-size: 0.85rem;
+  color: var(--muted2);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+#mobile-drawer button:hover, #mobile-drawer button.active { color: var(--amber); background: var(--bg3); }
 
-        .animate-hero {
-            animation: fadeInMove 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        }
+/* ═══════════════════════════════════════════
+   LAYOUT SHELL
+═══════════════════════════════════════════ */
+main {
+  padding-top: var(--nav-h);
+  position: relative;
+  z-index: 1;
+}
 
-        /* ENHANCED NAVBAR MICA/GLASS EFFECT */
-        .navbar-mica {
-            background-color: rgba(255, 255, 255, 0.5); 
-            backdrop-filter: blur(60px) saturate(200%); 
-            -webkit-backdrop-filter: blur(60px) saturate(200%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.7); 
-            box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.1); 
-        }
+.section {
+  display: none;
+  min-height: calc(100vh - var(--nav-h));
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 5rem 2rem 4rem;
+}
 
-        .dark-mode .navbar-mica {
-            background-color: rgba(15, 23, 42, 0.5); 
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.4);
-        }
+.section.active { display: block; }
 
-        /* Updated to new gradient colors (Green/Teal for Light Mode) */
-        .gradient-text {
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+/* ═══════════════════════════════════════════
+   SHARED COMPONENTS
+═══════════════════════════════════════════ */
+.section-label {
+  font-family: var(--font-m);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--amber);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
 
-        .btn-primary {
-            /* Updated to new gradient colors (Green/Teal for Light Mode) */
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            color: white;
-            /* Updated to green shadow (using a standard green-500 equivalent for a lighter feel) */
-            box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.4); 
-            transition: all 0.3s ease;
-        }
+.section-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--amber);
+}
 
-        .btn-primary:hover {
-            transform: translateY(-4px); /* Increased lift */
-            box-shadow: 0 8px 25px 0 rgba(16, 185, 129, 0.6); /* Stronger shadow */
-        }
+h1, h2, h3, h4, h5 { font-family: var(--font-h); }
 
-        .btn-outline {
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            transition: all 0.3s ease;
-        }
-        
-        .dark-mode .btn-outline {
-            border-color: #06b6d4; /* cyan-600 */
-            color: #06b6d4; /* cyan-600 */
-        }
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
 
-        .btn-outline:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-4px); /* Increased lift */
-            box-shadow: 0 4px 12px 0 rgba(16, 185, 129, 0.4);
-        }
-        
-        .dark-mode .btn-outline:hover {
-            background: #06b6d4; /* cyan-600 */
-            color: white;
-        }
+.section-sub {
+  color: var(--muted2);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 640px;
+  margin-bottom: 3rem;
+}
 
-        /* Custom scrollbar styles */
-        #content-wrapper::-webkit-scrollbar { width: 10px; }
-        #content-wrapper::-webkit-scrollbar-track { background: transparent; }
-        .dark-mode #content-wrapper::-webkit-scrollbar-track { background: transparent; }
-        #content-wrapper::-webkit-scrollbar-thumb { 
-            /* Updated to new gradient (Green/Teal for Light Mode) */
-            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color)); 
-            border-radius: 5px; 
-            border: 2px solid transparent; 
-        }
-        .dark-mode #content-wrapper::-webkit-scrollbar-thumb { 
-             background: linear-gradient(to bottom, #06b6d4, #0d9488); /* cyan-600, teal-600 */
-            border: 2px solid transparent; 
-        }
-        #content-wrapper::-webkit-scrollbar-thumb:hover { 
-            background: linear-gradient(to bottom, var(--primary-dark), var(--accent-color)); 
-        }
-        .dark-mode #content-wrapper::-webkit-scrollbar-thumb:hover { 
-            background: linear-gradient(to bottom, #0891b2, #0d9488); /* cyan-700, teal-600 */
-        }
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  margin: 3rem 0;
+}
 
+/* ── CARD BASE ── */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
 
-        .section-border::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px; 
-            height: 100%;
-            /* Updated to new gradient (Green/Teal for Light Mode) */
-            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
-            border-radius: 16px 0 0 16px; 
-        }
-        
-        .dark-mode .section-border::before {
-            background: linear-gradient(to bottom, #06b6d4, #0d9488); /* cyan-600, teal-600 */
-        }
+.card:hover {
+  border-color: var(--border2);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px var(--shadow);
+}
 
+.card-amber {
+  border-color: rgba(245,166,35,0.2);
+}
 
-        .profile-frame {
-            border: 4px solid;
-            /* Updated to new gradient (Green/Teal for Light Mode) */
-            border-image: linear-gradient(135deg, var(--primary-color), var(--accent-color)) 1;
-            padding: 8px;
-            border-radius: 50%;
-            /* Updated to green shadow (using a standard green-500 equivalent) */
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
-        }
-        
-        .dark-mode .profile-frame {
-            border-image: linear-gradient(135deg, #06b6d4, #0d9488) 1; /* cyan-600, teal-600 */
-            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2);
-        }
+.card-amber:hover {
+  border-color: rgba(245,166,35,0.4);
+  box-shadow: 0 24px 60px rgba(245,166,35,0.08);
+}
 
-        /* SIMPLIFIED SKILL CARD with light blur/transparency */
-        .skill-card {
-            background: rgba(255, 255, 255, 0.8); 
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
+/* ── TAGS ── */
+.tag {
+  display: inline-block;
+  font-family: var(--font-m);
+  font-size: 0.7rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--bg3);
+  color: var(--muted2);
+  border: 1px solid var(--border2);
+  letter-spacing: 0.03em;
+}
 
-        .dark-mode .skill-card {
-            background: rgba(30, 41, 59, 0.8); 
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+.tag-amber { background: var(--tag-amber-bg); color: var(--amber); border-color: rgba(245,166,35,0.25); }
+.tag-green { background: var(--tag-green-bg); color: var(--green); border-color: rgba(34,197,94,0.2); }
 
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-m);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
 
-        .dark-mode .skill-card:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
-        }
+.btn-primary {
+  background: var(--amber);
+  color: var(--bg);
+}
+.btn-primary:hover { background: var(--amber2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,166,35,0.3); }
 
-        /* Updated for new amber color */
-        .project-highlight-amber {
-            background: linear-gradient(135deg, rgba(251, 191, 36, 0.08), rgba(234, 88, 12, 0.08)); 
-            border: 1px solid rgba(251, 191, 36, 0.5);
-            border-left: none !important; 
-            border-image: none !important; 
-        }
-        
-        .project-highlight-amber::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--amber-color); 
-            border-radius: 16px 0 0 16px;
-        }
-        
-        .dark-mode .project-highlight-amber {
-            background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(234, 88, 12, 0.15));
-            border: 1px solid rgba(251, 191, 36, 0.3);
-        }
+.btn-ghost {
+  background: var(--bg3);
+  color: var(--text);
+  border: 1px solid var(--border2);
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.25); transform: translateY(-2px); }
 
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
+.btn-outline-amber {
+  background: transparent;
+  color: var(--amber);
+  border: 1px solid rgba(245,166,35,0.4);
+}
+.btn-outline-amber:hover { background: rgba(245,166,35,0.08); transform: translateY(-2px); }
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
+/* ═══════════════════════════════════════════
+   HOME SECTION
+═══════════════════════════════════════════ */
+#home {
+  display: none;
+  padding-top: 0;
+}
+#home.active {
+  display: grid;
+  grid-template-rows: 1fr;
+  align-items: center;
+  min-height: calc(100vh - var(--nav-h));
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
 
-        .theme-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 100;
-            background: var(--light-card);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border: 1px solid var(--light-border);
-        }
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 3rem;
+  align-items: center;
+}
 
-        .dark-mode .theme-toggle {
-            background: var(--dark-card);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--dark-border);
-        }
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-m);
+  font-size: 0.75rem;
+  color: var(--green);
+  border: 1px solid rgba(34,197,94,0.25);
+  background: rgba(34,197,94,0.08);
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
 
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
+.hero-status .pulse {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s infinite;
+}
 
-        /* Updated primary text color */
-        .text-primary {
-            color: var(--primary-color);
-        }
-        
-        /* Dark mode override for text-primary to keep it cyan */
-        .dark-mode .text-primary {
-            color: #06b6d4; /* cyan-600 */
-        }
-        
-        .text-amber-custom {
-            color: var(--amber-color);
-        }
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
 
-        .text-medium {
-            color: var(--medium-text);
-        }
-        
-        /* NEW: Light background for icons/badges */
-        .bg-primary-light {
-             /* Updated to green-600 opacity for light mode */
-             background-color: rgba(16, 185, 129, 0.1); 
-        }
+.hero-title {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.5rem;
+}
 
-        /* Dark mode override for light background to keep it cyan */
-        .dark-mode .bg-primary-light {
-            background-color: rgba(6, 182, 212, 0.1); /* cyan-600 */
-        }
+.hero-title .amber { color: var(--amber); }
+.hero-title .block { display: block; }
 
-        .dark-mode .text-medium {
-            color: var(--dark-medium-text);
-        }
+.hero-desc {
+  font-size: 1.1rem;
+  color: var(--muted2);
+  line-height: 1.75;
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+}
 
-        .border-light {
-            border-color: var(--light-border);
-        }
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 3.5rem;
+}
 
-        .dark-mode .border-light {
-            border-color: var(--dark-border);
-        }
-        
-        /* ENHANCED REVIEW CARD with Mica/Glass effect */
-        .review-card {
-            border-radius: 20px; /* Consistent with mica-card */
-            padding: 1.75rem;
-            background-color: rgba(255, 255, 255, 0.7); 
-            backdrop-filter: blur(15px) saturate(180%);
-            -webkit-backdrop-filter: blur(15px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-        }
-        
-        .dark-mode .review-card {
-            background-color: rgba(30, 41, 59, 0.5); 
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-        }
-        
-        .review-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .dark-mode .review-card:hover {
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-        
-        /* NEW: Project card enhancements with expandable descriptions */
-        .project-card {
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        
-        .project-description {
-            max-height: 0;
-            opacity: 0;
-            transition: all 0.5s ease;
-            overflow: hidden;
-        }
-        
-        .project-description.expanded {
-            max-height: 500px;
-            opacity: 1;
-            margin-top: 1rem;
-        }
-        
-        .read-more-btn {
-            margin-top: auto;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            padding-top: 1rem;
-        }
-        
-        .read-more-btn:hover {
-            transform: translateY(-2px);
-        }
-        
-        .read-more-btn i {
-            transition: transform 0.3s ease;
-        }
-        
-        .read-more-btn.expanded i {
-            transform: rotate(180deg);
-        }
-        
-        /* NEW: Enhanced project section CTA */
-        .project-cta {
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            color: white;
-            padding: 1.5rem 2rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
-            transition: all 0.4s ease;
-            text-align: center;
-            margin-top: 3rem;
-        }
-        
-        .dark-mode .project-cta {
-            background: linear-gradient(135deg, #06b6d4, #0d9488);
-            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
-        }
-        
-        .project-cta:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
-        }
-        
-        .dark-mode .project-cta:hover {
-            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.4);
-        }
+.hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
 
-        /* NEW: Contact Form Styles */
-        .contact-form {
-            width: 100%;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--light-text);
-        }
-        
-        .dark-mode .form-label {
-            color: var(--dark-text);
-        }
-        
-        .form-input, .form-textarea {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border-radius: 12px;
-            border: 1px solid var(--light-border);
-            background: rgba(255, 255, 255, 0.8);
-            transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .dark-mode .form-input, .dark-mode .form-textarea {
-            background: rgba(30, 41, 59, 0.8);
-            border-color: var(--dark-border);
-            color: var(--dark-text);
-        }
-        
-        .form-input:focus, .form-textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
-            background: rgba(255, 255, 255, 0.9);
-        }
-        
-        .dark-mode .form-input:focus, .dark-mode .form-textarea:focus {
-            border-color: #06b6d4;
-            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
-            background: rgba(30, 41, 59, 0.9);
-        }
-        
-        .form-textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            width: 100%;
-            padding: 0.75rem 1.5rem;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-        
-        .form-message {
-            margin-top: 1rem;
-            padding: 0.75rem 1rem;
-            border-radius: 12px;
-            text-align: center;
-            font-weight: 600;
-        }
-        
-        .form-message.success {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--primary-color);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-        
-        .dark-mode .form-message.success {
-            background: rgba(6, 182, 212, 0.1);
-            color: #06b6d4;
-            border: 1px solid rgba(6, 182, 212, 0.3);
-        }
-        
-        .form-message.error {
-            background: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
-            border: 1px solid rgba(239, 68, 68, 0.3);
-        }
-    </style>
+.stat-item { display: flex; flex-direction: column; gap: 0.2rem; }
+.stat-num {
+  font-family: var(--font-h);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.03em;
+}
+.stat-num span { color: var(--amber); }
+.stat-label { font-family: var(--font-m); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
+
+/* Hero right card */
+.hero-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  position: sticky;
+  top: calc(var(--nav-h) + 2rem);
+}
+
+.hero-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-card-header .dot-row { display: flex; gap: 5px; }
+.dot-row span { width: 10px; height: 10px; border-radius: 50%; }
+.dot-red { background: #ff5f57; }
+.dot-yellow { background: #febc2e; }
+.dot-green { background: #28c840; }
+
+.hero-card-title {
+  font-family: var(--font-m);
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  margin-left: auto;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.service-item:last-child { border: none; padding-bottom: 0; }
+
+.service-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.si-amber { background: rgba(245,166,35,0.12); color: var(--amber); }
+.si-green { background: rgba(34,197,94,0.12); color: var(--green); }
+.si-blue { background: rgba(99,179,237,0.12); color: #63b3ed; }
+
+.service-name { font-size: 0.88rem; font-weight: 500; }
+.service-tech { font-family: var(--font-m); font-size: 0.68rem; color: var(--muted); margin-top: 0.1rem; }
+
+.availability-badge {
+  margin-top: 1.25rem;
+  background: rgba(34,197,94,0.06);
+  border: 1px solid rgba(34,197,94,0.15);
+  border-radius: 10px;
+  padding: 0.85rem;
+  text-align: center;
+  font-family: var(--font-m);
+  font-size: 0.75rem;
+  color: var(--green);
+  letter-spacing: 0.04em;
+}
+
+/* ═══════════════════════════════════════════
+   SERVICES SECTION
+═══════════════════════════════════════════ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.service-card {
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--amber);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.service-card:hover::before { opacity: 1; }
+
+.service-card-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: rgba(245,166,35,0.1);
+  border: 1px solid rgba(245,166,35,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--amber);
+  font-size: 1.2rem;
+  margin-bottom: 1.25rem;
+}
+
+.service-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.service-card-sub {
+  font-family: var(--font-m);
+  font-size: 0.72rem;
+  color: var(--amber);
+  margin-bottom: 1rem;
+  letter-spacing: 0.04em;
+}
+
+.service-card-desc {
+  color: var(--muted2);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.service-card-note {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.process-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-top: 2rem;
+}
+
+.process-step {
+  padding: 1.75rem;
+  border-right: 1px solid var(--border);
+  position: relative;
+}
+
+.process-step:last-child { border-right: none; }
+
+.step-num {
+  font-family: var(--font-m);
+  font-size: 0.7rem;
+  color: var(--amber);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+
+.step-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+.step-desc { font-size: 0.83rem; color: var(--muted2); line-height: 1.6; }
+
+/* ═══════════════════════════════════════════
+   PROJECTS SECTION — REDESIGNED
+═══════════════════════════════════════════ */
+.projects-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.category-label {
+  font-family: var(--font-m);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  margin-top: 0.5rem;
+}
+
+.category-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── FLAGSHIP (full-width hero card) ── */
+.project-flagship {
+  background: var(--bg2);
+  border: 1px solid rgba(245,166,35,0.2);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 1.25rem;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-flagship::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--amber);
+  border-radius: 3px 0 0 3px;
+}
+
+.project-flagship:hover {
+  border-color: rgba(245,166,35,0.4);
+  box-shadow: 0 20px 50px rgba(245,166,35,0.07);
+  transform: translateY(-3px);
+}
+
+.flagship-body { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.flagship-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.flagship-badge {
+  font-family: var(--font-m);
+  font-size: 0.65rem;
+  color: var(--amber);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(245,166,35,0.08);
+  border: 1px solid rgba(245,166,35,0.2);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.flagship-type {
+  font-family: var(--font-m);
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.flagship-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.flagship-desc {
+  font-size: 0.9rem;
+  color: var(--muted2);
+  line-height: 1.75;
+  max-width: 640px;
+}
+
+.flagship-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.25rem; }
+
+.flagship-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-shrink: 0;
+  padding-top: 0.25rem;
+}
+
+/* ── PROJECT PAIR (2-col side by side) ── */
+.projects-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ── STANDARD PROJECT CARD ── */
+.project-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.project-card:hover {
+  border-color: var(--border2);
+  box-shadow: 0 16px 40px var(--shadow);
+  transform: translateY(-3px);
+}
+
+.project-card-type {
+  font-family: var(--font-m);
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.project-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.project-card-desc {
+  font-size: 0.86rem;
+  color: var(--muted2);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.25rem; }
+
+.project-link {
+  font-family: var(--font-m);
+  font-size: 0.72rem;
+  color: var(--amber);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.project-link:hover { opacity: 1; }
+
+/* ── SECTION DIVIDER ── */
+.projects-section-gap { margin-top: 3rem; }
+
+/* Featured project — kept for backward compat */
+.project-featured {
+  background: var(--bg2);
+  border: 1px solid rgba(245,166,35,0.2);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+}
+.project-featured:hover {
+  border-color: rgba(245,166,35,0.4);
+  box-shadow: 0 24px 60px rgba(245,166,35,0.06);
+  transform: translateY(-4px);
+}
+.featured-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-m);
+  font-size: 0.68rem;
+  color: var(--amber);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.featured-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+  color: var(--amber2);
+}
+
+/* legacy grid — not used in new layout */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ═══════════════════════════════════════════
+   SKILLS SECTION
+═══════════════════════════════════════════ */
+.skills-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.skills-group {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+
+.skills-group-title {
+  font-family: var(--font-m);
+  font-size: 0.72rem;
+  color: var(--amber);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.skill-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.skill-item:last-child { border: none; }
+
+.skill-name { font-size: 0.92rem; font-weight: 500; }
+.skill-level {
+  display: flex;
+  gap: 3px;
+}
+
+.skill-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+}
+
+.skill-dot.filled { background: var(--amber); border-color: var(--amber); }
+
+.skill-desc { font-size: 0.78rem; color: var(--muted); margin-top: 0.15rem; }
+
+.skills-full {
+  margin-top: 2rem;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+
+.skills-tags-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.skills-tag-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+/* ═══════════════════════════════════════════
+   EXPERIENCE SECTION
+═══════════════════════════════════════════ */
+.experience-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.exp-card { padding: 2rem; }
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.exp-title { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; }
+.exp-date {
+  font-family: var(--font-m);
+  font-size: 0.72rem;
+  color: var(--amber);
+  border: 1px solid rgba(245,166,35,0.25);
+  background: rgba(245,166,35,0.06);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.exp-org { color: var(--muted2); font-size: 0.9rem; margin-bottom: 1.25rem; }
+
+.exp-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.exp-list li {
+  font-size: 0.88rem;
+  color: var(--muted2);
+  line-height: 1.65;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.exp-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--amber);
+  font-size: 0.7rem;
+  top: 0.15em;
+}
+
+/* ═══════════════════════════════════════════
+   REVIEWS SECTION
+═══════════════════════════════════════════ */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.review-card { padding: 1.75rem; }
+
+.stars {
+  display: flex;
+  gap: 3px;
+  color: var(--amber);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.review-quote {
+  font-size: 0.92rem;
+  color: var(--muted2);
+  line-height: 1.75;
+  font-style: italic;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.review-quote::before {
+  content: '"';
+  font-family: var(--font-h);
+  font-size: 3rem;
+  color: var(--review-before-color);
+  opacity: 1;
+  position: absolute;
+  top: -0.5rem;
+  left: -0.5rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.review-author {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.review-location {
+  font-family: var(--font-m);
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  margin-top: 0.2rem;
+}
+
+/* ═══════════════════════════════════════════
+   CONTACT SECTION
+═══════════════════════════════════════════ */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.contact-info { padding: 2.5rem; }
+
+.contact-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+  line-height: 1.15;
+}
+
+.contact-desc {
+  color: var(--muted2);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  transition: color 0.2s;
+}
+
+.contact-item:last-of-type { border: none; }
+.contact-item:hover { color: var(--amber); }
+
+.contact-item-icon {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: rgba(245,166,35,0.08);
+  border: 1px solid rgba(245,166,35,0.15);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--amber);
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.contact-item-label { font-family: var(--font-m); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.contact-item-value { font-size: 0.92rem; font-weight: 500; margin-top: 0.1rem; }
+
+.social-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.social-btn {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted2);
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.social-btn:hover { color: var(--amber); border-color: rgba(245,166,35,0.3); background: rgba(245,166,35,0.06); }
+
+/* Form */
+.form-card { padding: 2.5rem; }
+.form-title { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+
+.form-group { margin-bottom: 1.25rem; }
+
+.form-label {
+  display: block;
+  font-family: var(--font-m);
+  font-size: 0.72rem;
+  color: var(--muted2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  font-family: var(--font-b);
+  font-size: 0.92rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
+
+.form-input:focus, .form-textarea:focus {
+  border-color: rgba(245,166,35,0.5);
+  box-shadow: 0 0 0 3px rgba(245,166,35,0.08);
+}
+
+.form-textarea { min-height: 120px; resize: vertical; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.form-message {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  font-family: var(--font-m);
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  display: none;
+}
+
+.form-message.success { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); color: var(--green); display: block; }
+.form-message.error { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); color: #f87171; display: block; }
+
+/* ═══════════════════════════════════════════
+   ABOUT SECTION
+═══════════════════════════════════════════ */
+.about-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-img-wrap {
+  position: sticky;
+  top: calc(var(--nav-h) + 2rem);
+}
+
+.about-img-frame {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border2);
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: var(--bg2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.about-img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-img-placeholder {
+  font-family: var(--font-m);
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+  padding: 2rem;
+}
+
+.about-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.about-role {
+  font-family: var(--font-m);
+  font-size: 0.72rem;
+  color: var(--amber);
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.about-content h2 { font-size: 2.8rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 0.75rem; }
+
+.about-body {
+  color: var(--muted2);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.about-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+
+.education-block {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.edu-title { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+
+.edu-item { padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+.edu-item:last-child { border: none; padding-bottom: 0; }
+.edu-deg { font-size: 0.92rem; font-weight: 600; }
+.edu-school { font-family: var(--font-m); font-size: 0.72rem; color: var(--muted2); margin-top: 0.15rem; }
+
+/* ═══════════════════════════════════════════
+   CERTIFICATIONS SECTION
+═══════════════════════════════════════════ */
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.cert-card {
+  padding: 1.75rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.cert-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: rgba(245,166,35,0.1);
+  border: 1px solid rgba(245,166,35,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--amber);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.cert-name { font-size: 1rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.25rem; }
+.cert-issuer { font-family: var(--font-m); font-size: 0.72rem; color: var(--amber); letter-spacing: 0.04em; margin-bottom: 0.35rem; }
+.cert-year { font-family: var(--font-m); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.06em; }
+
+@media (max-width: 600px) {
+  .certs-grid { grid-template-columns: 1fr; }
+}
+
+/* ── THEME TOGGLE BUTTON ── */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px; height: 38px;
+  border-radius: var(--radius);
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  color: var(--muted2);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.theme-toggle:hover { color: var(--amber); border-color: rgba(245,166,35,0.3); background: rgba(245,166,35,0.06); }
+
+/* light mode specific overrides */
+html[data-theme="light"] .hero-status { border-color: rgba(22,163,74,0.3); background: rgba(22,163,74,0.08); }
+html[data-theme="light"] .availability-badge { background: rgba(22,163,74,0.06); border-color: rgba(22,163,74,0.2); }
+html[data-theme="light"] .project-featured { border-color: rgba(245,166,35,0.25); }
+html[data-theme="light"] .project-featured:hover { border-color: rgba(245,166,35,0.5); }
+html[data-theme="light"] #mobile-drawer { background: var(--bg2); border-bottom-color: var(--border); }
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+  font-family: var(--font-m);
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up { animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) both; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.35s; }
+.delay-4 { animation-delay: 0.5s; }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-row { grid-template-columns: repeat(2, 1fr); }
+  .process-step:nth-child(2) { border-right: none; }
+  .process-step:nth-child(3) { border-bottom: none; }
+  .process-step:nth-child(3), .process-step:nth-child(4) { border-top: 1px solid var(--border); }
+  .hero-layout { grid-template-columns: 1fr; }
+  .hero-card { display: none; }
+  .project-flagship { grid-template-columns: 1fr; }
+  .flagship-action { flex-direction: row; align-items: center; }
+}
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .mobile-btn { display: flex; }
+  .skills-layout { grid-template-columns: 1fr; }
+  .experience-layout { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; }
+  .about-layout { grid-template-columns: 1fr; }
+  .about-img-wrap { position: static; display: flex; flex-direction: column; align-items: center; }
+  .about-img-frame { max-width: 240px; margin: 0 auto 1rem; }
+  .reviews-grid { grid-template-columns: 1fr 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .section { padding: 3rem 1.25rem 3rem; }
+}
+
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .projects-pair { grid-template-columns: 1fr; }
+  .project-featured { grid-column: span 1; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+  .hero-title { font-size: 2.4rem; }
+  .process-row { grid-template-columns: 1fr; }
+  .process-step { border-right: none; border-bottom: 1px solid var(--border); }
+  .process-step:last-child { border: none; }
+}
+</style>
 </head>
-<body class="bg-light">
-    <nav id="navbar" class="navbar-mica fixed top-0 left-0 right-0 z-50 p-4 transition-all duration-300 h-[80px]">
-        <div class="max-w-screen-2xl mx-auto flex justify-between items-center h-full px-4 sm:px-6 lg:px-8">
-            <h1 class="text-2xl font-extrabold tracking-wider font-poppins">
-                <span class="gradient-text">S</span>ubhajit <span class="gradient-text">H</span>alder
-            </h1>
-            
-            <div class="hidden lg:flex space-x-8">
-                <button class="nav-link text-medium hover:text-primary pb-1 active-tab transition duration-200" data-target="home">Home</button>
-                <button class="nav-link text-medium hover:text-primary pb-1 transition duration-200" data-target="services">Services</button>
-                <button class="nav-link text-medium hover:text-primary pb-1 transition duration-200" data-target="projects">Projects</button>
-                <button class="nav-link text-medium hover:text-primary pb-1 transition duration-200" data-target="skills">Skills</button>
-                <button class="nav-link text-medium hover:text-primary pb-1 transition duration-200" data-target="experience">Experience</button>
-                <button class="nav-link text-medium hover:text-primary pb-1 transition duration-200" data-target="reviews">Reviews</button> 
-                <button class="nav-link text-medium hover:text-primary pb-1 transition duration-200" data-target="contact">Contact</button>
-                <button class="nav-link text-medium hover:text-primary pb-1 transition duration-200" data-target="about">About</button>
-            </div>
-            
-            <button id="mobile-menu-toggle" class="lg:hidden text-2xl text-primary focus:outline-none">
-                 <i class="fas fa-bars"></i>
-            </button>
-        </div>
-        
-         <div id="mobile-menu" class="lg:hidden absolute top-[80px] left-0 right-0 bg-white/95 backdrop-blur-md shadow-xl border-t border-light hidden">
-            <div class="flex flex-col p-4 space-y-2">
-                <button class="nav-link text-medium hover:text-primary py-2 active-tab transition duration-200 w-full text-left" data-target="home">Home</button>
-                <button class="nav-link text-medium hover:text-primary py-2 transition duration-200 w-full text-left" data-target="services">Services</button>
-                <button class="nav-link text-medium hover:text-primary py-2 transition duration-200 w-full text-left" data-target="projects">Projects</button>
-                <button class="nav-link text-medium hover:text-primary py-2 transition duration-200 w-full text-left" data-target="skills">Skills</button>
-                <button class="nav-link text-medium hover:text-primary py-2 transition duration-200 w-full text-left" data-target="experience">Experience</button>
-                <button class="nav-link text-medium hover:text-primary py-2 transition duration-200 w-full text-left" data-target="reviews">Reviews</button> 
-                <button class="nav-link text-medium hover:text-primary py-2 transition duration-200 w-full text-left" data-target="contact">Contact</button>
-                <button class="nav-link text-medium hover:text-primary py-2 transition duration-200 w-full text-left" data-target="about">About</button>
-            </div>
-        </div>
-    </nav>
+<body>
 
-    <div id="content-wrapper">
-        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-          
+<!-- Ambient glows -->
+<div class="glow-orb glow-1"></div>
+<div class="glow-orb glow-2"></div>
 
-<section id="home" class="content-section active py-12 sm:py-20">
-    <div class="max-w-7xl space-y-8 text-center py-8 lg:py-12 mica-card w-full mx-4"> 
-        
-        <p class="text-lg sm:text-xl font-medium gradient-text tracking-widest uppercase animate-hero mb-4" style="animation-delay: 0.1s; opacity: 0;">
-            IT & Electronics Specialist
-        </p>
-
-        <div class="px-4"> 
-            
-            <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight animate-hero font-poppins" style="animation-delay: 0.3s; opacity: 0; line-height: 1.3; margin-bottom: 30px;">
-                Powering the Future with 
-                <br class="hidden sm:block">
-                
-                <span class="gradient-text">Precision Engineering</span>
-            </h2> 
-            
-            <h3 class="text-base sm:text-lg font-light text-medium max-w-3xl mx-auto animate-hero leading-relaxed" style="animation-delay: 0.5s; opacity: 0; margin-top: 0;">Building high-performance systems — from AVL databases to real-time embedded hardware — engineered for speed, reliability, and precision.
-            </h3> 
-        </div>
-        
-        <div class="pt-8 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-hero px-4" style="animation-delay: 0.7s; opacity: 0;">
-            <button data-target="projects" class="nav-link btn-primary px-6 py-3 sm:px-8 sm:py-4 text-lg sm:text-xl font-bold rounded-xl transform transition duration-300 ease-in-out hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-cyan-500 focus:ring-opacity-50">
-                View My Work
-            </button>
-            
-            <button data-target="services" class="nav-link btn-outline px-6 py-3 sm:px-8 sm:py-4 text-lg sm:text-xl font-bold rounded-xl transition duration-300 transform hover:scale-[1.03]">
-                Check My Services
-            </button>
-        </div>
+<!-- ═══ NAVIGATION ═══ -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      SH<span class="dot">.</span>
     </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><button class="active" data-target="home">Home</button></li>
+      <li><button data-target="services">Services</button></li>
+      <li><button data-target="projects">Projects</button></li>
+      <li><button data-target="skills">Skills</button></li>
+      <li><button data-target="certifications">Certifications</button></li>
+      <li><button data-target="experience">Experience</button></li>
+      <li><button data-target="reviews">Reviews</button></li>
+      <li><button data-target="about">About</button></li>
+      <li><button data-target="contact" class="nav-cta">Hire Me</button></li>
+    </ul>
+
+    <button class="mobile-btn" id="mobileToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+    <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">
+      <i class="fas fa-sun"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Drawer -->
+<div id="mobile-drawer">
+  <button data-target="home" class="active">Home</button>
+  <button data-target="services">Services</button>
+  <button data-target="projects">Projects</button>
+  <button data-target="skills">Skills</button>
+  <button data-target="certifications">Certifications</button>
+  <button data-target="experience">Experience</button>
+  <button data-target="reviews">Reviews</button>
+  <button data-target="about">About</button>
+  <button data-target="contact">Hire Me →</button>
+</div>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<main>
+
+<!-- ─── HOME ─── -->
+<section class="section active" id="home">
+  <div class="hero-layout">
+    <div>
+      <div class="hero-status fade-up">
+        <span class="pulse"></span>
+        Available for freelance work
+      </div>
+
+      <h1 class="hero-title fade-up delay-1">
+        <span class="block">Systems &</span>
+        <span class="block amber">Software</span>
+        <span class="block">Developer.</span>
+      </h1>
+
+      <p class="hero-desc fade-up delay-2">
+        35+ freelance projects delivered internationally. I build high-performance C/C++ systems, real-time IoT & embedded solutions, and AI-driven applications — for clients across USA, Germany, Saudi Arabia & Australia.
+      </p>
+
+      <div class="hero-actions fade-up delay-3">
+        <button class="btn btn-primary nav-btn" data-target="contact">
+          Start a Project <i class="fas fa-arrow-right"></i>
+        </button>
+        <button class="btn btn-ghost nav-btn" data-target="projects">
+          View Work
+        </button>
+      </div>
+
+      <div class="hero-stats fade-up delay-4">
+        <div class="stat-item">
+          <div class="stat-num">35<span>+</span></div>
+          <div class="stat-label">Projects Delivered</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4<span>+</span></div>
+          <div class="stat-label">Countries Served</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100<span>%</span></div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-card fade-up delay-2">
+      <div class="hero-card-header">
+        <div class="dot-row">
+          <span class="dot-red"></span>
+          <span class="dot-yellow"></span>
+          <span class="dot-green"></span>
+        </div>
+        <span class="hero-card-title">SERVICES OVERVIEW</span>
+      </div>
+
+      <div class="service-item">
+        <div class="service-icon si-amber"><i class="fas fa-microchip"></i></div>
+        <div>
+          <div class="service-name">Embedded & IoT Systems</div>
+          <div class="service-tech">ESP32 · Arduino · Embedded C · PCB</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon si-blue"><i class="fas fa-code"></i></div>
+        <div>
+          <div class="service-name">Software Development</div>
+          <div class="service-tech">C/C++ · Python · Java · Databases</div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon si-green"><i class="fas fa-graduation-cap"></i></div>
+        <div>
+          <div class="service-name">Technical Mentorship</div>
+          <div class="service-tech">IB · Cambridge · University Coursework</div>
+        </div>
+      </div>
+
+      <div class="availability-badge">
+        ✦ OPEN TO NEW PROJECTS — WORLDWIDE
+      </div>
+    </div>
+  </div>
 </section>
 
-            
-            <section id="services" class="content-section py-12">
-                <div class="max-w-7xl mx-auto w-full">
-                    <h4 class="text-4xl sm:text-5xl font-bold mb-4 text-center font-poppins">Specialized Technical Services & Mentorship</h4>
-                    <div class="separator mb-10"></div>
-                    
-                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                        <div class="mica-card p-6 section-border">
-                            <div class="flex items-center mb-4">
-                                <div class="p-3 rounded-full bg-primary-light text-primary mr-4">
-                                    <i class="fas fa-laptop-code text-xl"></i>
-                                </div>
-                                <h5 class="text-2xl lg:text-3xl font-extrabold text-primary font-poppins">Custom Software & Low-Level Systems</h5>
-                            </div>
-                            <p class="text-base font-medium text-medium mb-4"><b>C/C++ |  Python | Java | Networking</b></p>
-                            <p class="mb-2 text-base lg:text-lg">
-                                High-performance software, OS-level systems, C/C++/Python/Java apps, VBA/VB business tools, and hardware-interfacing solutions. Optimized, scalable, low-latency design.
-                            </p>
-                            <p class="text-base lg:text-lg font-semibold text-primary mt-4">Specialty: Efficient algorithms, DSA, and low-latency optimization.</p>
-                        </div>
+<!-- ─── SERVICES ─── -->
+<section class="section" id="services">
+  <div class="section-label">What I Offer</div>
+  <h2 class="section-title">Services Built Around<br>Client Outcomes</h2>
+  <p class="section-sub">Every engagement is scoped, delivered, and refined to meet your exact requirements — no bloat, no vague timelines.</p>
 
-                        <div class="mica-card p-6 section-border">
-                            <div class="flex items-center mb-4">
-                                <div class="p-3 rounded-full bg-primary-light text-primary mr-4">
-                                    <i class="fas fa-microchip text-xl"></i>
-                                </div>
-                                <h5 class="text-2xl lg:text-3xl font-extrabold text-primary font-poppins">IoT Solutions & Electronics Development</h5>
-                            </div>
-                            <p class="text-base font-medium text-medium mb-4"><b>Embedded C | Arduino/ESP32 | Circuit Design</b></p>
-                            <p class="mb-2 text-base lg:text-lg">
-                               End-to-end IoT and electronics solutions: PCB & circuit design, prototyping, embedded software, Arduino/ESP32 projects, sensors/actuators, custom IoT deployment.
-                            </p>
-                            <p class="text-base lg:text-lg font-semibold text-primary mt-4">Focus on: Hardware, PCB, circuits, and embedded software design.</p>
-                        </div>
+  <div class="services-grid">
+    <!-- Service 1 -->
+    <div class="card service-card">
+      <div class="service-card-icon"><i class="fas fa-laptop-code"></i></div>
+      <div class="service-card-title">Custom Software & Systems</div>
+      <div class="service-card-sub">C / C++ · Python · Java · Databases · VBA</div>
+      <p class="service-card-desc">High-performance applications, OS-level tooling, algorithm-intensive systems, VBA/Macro automation, and database engines. Optimized for speed, correctness, and maintainability.</p>
+      <div class="service-card-note">Specialty: Low-latency systems, DSA-heavy projects, performance-critical code.</div>
+    </div>
 
-                        <div class="mica-card p-6 section-border">
-                            <div class="flex items-center mb-4">
-                                <div class="p-3 rounded-full bg-primary-light text-primary mr-4">
-                                    <i class="fas fa-graduation-cap text-xl"></i>
-                                </div>
-                                <h5 class="text-2xl lg:text-3xl font-extrabold text-primary font-poppins">Academic Mentorship & Assessments</h5>
-                            </div>
-                            <p class="text-base font-medium text-medium mb-4"><b>IB | Cambridge | University of Miami Syllabus | Coursework & Assignments</b></p>
-                            <p class="mb-2 text-base lg:text-lg">
-                                Support in Computer Science, Databases, Programming, Robotics, and Electronics. Hands-on guidance, project-based learning, and assignment support for students and independent learners.
-                            </p>
-                            <p class="text-base lg:text-lg font-semibold text-primary mt-4">Subjects: Computer Science and related fields, Electronics.</p>
-                        </div>
-                    </div>   
-                            <div class="text-center pt-2">
-                                <button data-target="contact" class="nav-link btn-primary px-10 py-4 text-xl font-bold rounded-xl transition duration-300 transform hover:scale-[1.03]">
-                                    Inquire About A Service or Class
-                                </button>
-                            </div>
-                </div>
-            </section>
-            
-            <section id="projects" class="content-section py-16">
-                <div class="max-w-7xl mx-auto w-full">
-                 <h2 class="text-4xl sm:text-5xl font-bold mb-4 text-center font-poppins">Engineering the Complete Stack — From Circuit Boards to Codebases.</h2>
-                <div class="separator mb-12"></div>
-                
-                <h3 class="text-3xl sm:text-4xl font-bold text-primary mb-8 border-b border-light pb-3 flex items-center font-poppins">
-                    <i class="fas fa-laptop-code mr-3"></i> Advanced Systems & Software Development 
-                </h3>
-                
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                    
-                    <div class="mica-card p-6 section-border project-card">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Database Core Engine (AVL Tree)</h4>
-                        <p class="text-sm font-medium text-medium mb-4">C/C++ | Data Structures | O(log n) Performance</p>
-                        <div class="project-description">
-                            <p class="text-base">
-                                A high-performance database engine built on a self-balancing AVL Tree, ensuring O(log n) operations with optimized data handling.
-                            </p>
-                            <p class="mt-2 text-medium">This project involved implementing a complete database engine from scratch using C/C++ with a focus on performance and efficiency. The AVL tree data structure ensures that all operations (insertion, deletion, search) maintain O(log n) time complexity, making it suitable for large-scale data processing applications.</p>
-                        </div>
-                        <button class="read-more-btn text-primary">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
+    <!-- Service 2 -->
+    <div class="card service-card">
+      <div class="service-card-icon"><i class="fas fa-microchip"></i></div>
+      <div class="service-card-title">IoT & Electronics Development</div>
+      <div class="service-card-sub">Embedded C · ESP32/Arduino · PCB Design · Circuit Prototyping</div>
+      <p class="service-card-desc">End-to-end embedded solutions — from circuit schematics and PCB layouts to firmware and cloud connectivity. Delivered as production-ready, documented hardware and software packages.</p>
+      <div class="service-card-note">Focus: ESP-family, STM32, analog/digital circuits, power electronics.</div>
+    </div>
 
-                    <div class="mica-card p-6 section-border project-card">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Custom OS Shell & Low-Level I/O Library</h4>
-                        <p class="text-sm font-medium text-medium mb-4">C/C++ | OS Fundamentals | System Programming</p>
-                        <div class="project-description">
-                            <p class="text-base">
-                                Engineered a shell with dedicated low-level I/O for efficient memory, process, and storage control in UNIX-like systems.
-                            </p>
-                            <p class="mt-2 text-medium">This project involved developing a custom shell environment with specialized low-level I/O operations for UNIX-like systems. The implementation focused on efficient memory management, process control, and storage operations, providing a foundation for system-level programming and understanding of operating system internals.</p>
-                        </div>
-                        <button class="read-more-btn text-primary">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    
-                    <div class="mica-card p-6 section-border project-card">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">CNN Handwriting Recognition</h4>
-                        <p class="text-sm font-medium text-medium mb-4">Python | DL | Real-time Data</p>
-                        <div class="project-description">
-                            <p class="text-base">
-                                Deep learning project for digit recognition using Convolutional Neural Networks.
-                            </p>
-                            <p class="mt-2 text-medium">Implemented a Convolutional Neural Network (CNN) using Python and TensorFlow/Keras for handwritten digit recognition. The model was trained on the MNIST dataset and achieved high accuracy in classifying digits, demonstrating practical applications of deep learning in computer vision tasks.</p>
-                        </div>
-                        <button class="read-more-btn text-primary">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
+    <!-- Service 3 -->
+    <div class="card service-card">
+      <div class="service-card-icon"><i class="fas fa-graduation-cap"></i></div>
+      <div class="service-card-title">Academic Mentorship</div>
+      <div class="service-card-sub">IB · Cambridge · University of Miami (ECE) · IGCSE</div>
+      <p class="service-card-desc">Structured, results-driven tutoring for CS, Electronics, Networking, and Embedded Systems. Covers coursework, assignments, lab projects, and exam preparation with hands-on examples.</p>
+      <div class="service-card-note">Subjects: Computer Science, Electronics, Databases, Robotics.</div>
+    </div>
+  </div>
 
-                    <div class="mica-card p-6 section-border project-card">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Network Routing Simulator (DVR & LSR)</h4>
-                        <p class="text-sm font-medium text-medium mb-4">Python | Networking | Algorithm Visualization</p>
-                        <div class="project-description">
-                            <p class="text-base">
-                                Python simulation modeling DVR and LSR routing algorithms, visualizing performance and convergence across network topologies.
-                            </p>
-                            <p class="mt-2 text-medium">Developed a comprehensive network routing simulator in Python that implements both Distance Vector Routing (DVR) and Link State Routing (LSR) algorithms. The simulator includes visualization capabilities to demonstrate how these protocols converge and perform across various network topologies, making it an excellent educational tool for networking concepts.</p>
-                        </div>
-                        <button class="read-more-btn text-primary">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    
-                    <div class="mica-card p-6 section-border project-card">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">High Performance Template Vector</h4>
-                        <p class="text-sm font-medium text-medium mb-4">C++ | Template programming | Custom memory management</p>
-                        <div class="project-description">
-                            <p class="text-base">
-                                Optimized C++ template vector delivering high speed and memory efficiency beyond std::vector for large-scale and embedded systems
-                            </p>
-                            <p class="mt-2 text-medium">Created a highly optimized C++ template vector implementation that outperforms the standard library's std::vector in both speed and memory efficiency. This custom vector implementation includes specialized memory management techniques and optimizations specifically designed for large-scale data processing and embedded systems where performance is critical.</p>
-                        </div>
-                        <button class="read-more-btn text-primary">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    
-                    <div class="mica-card p-6 section-border project-card">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Car Rental Management Application</h4>
-                        <p class="text-sm font-medium text-medium mb-4">Python | Multi-User DB(MySQL) | CSV Persistence</p>
-                        <div class="project-description">
-                            <p class="text-base">
-                                Robust desktop system handling car rentals, client data, and inventory, using CSV & SQL databases with built-in validation.
-                            </p>
-                            <p class="mt-2 text-medium">Developed a comprehensive car rental management application in Python with both CSV and MySQL database support. The system handles client information, vehicle inventory, rental transactions, and billing with built-in validation and error handling. The application supports multiple user roles and provides a user-friendly interface for managing all aspects of a car rental business.</p>
-                        </div>
-                        <button class="read-more-btn text-primary">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
+  <!-- How I Work -->
+  <div style="margin-top:3rem;">
+    <p class="section-label">Process</p>
+    <h3 style="font-size:1.5rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:1.5rem;">How Every Project Works</h3>
+    <div class="process-row">
+      <div class="process-step">
+        <div class="step-num">01 — SCOPE</div>
+        <div class="step-title">Requirements & Brief</div>
+        <p class="step-desc">We align on deliverables, constraints, timelines, and budget before any work begins. NDA available on request.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02 — BUILD</div>
+        <div class="step-title">Development & Engineering</div>
+        <p class="step-desc">I execute with precision, providing progress checkpoints. You get documented, maintainable code or hardware.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03 — REVIEW</div>
+        <div class="step-title">Testing & Iteration</div>
+        <p class="step-desc">Rigorous validation, debugging, and revisions until the solution meets every specified requirement.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04 — DELIVER</div>
+        <div class="step-title">Handoff & Support</div>
+        <p class="step-desc">Clean handoff with documentation. Post-delivery support available. IP transfer included per agreement.</p>
+      </div>
+    </div>
+  </div>
 
-                    <div class="mica-card p-6 section-border project-card">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Healthcare Efficiency Data Analysis</h4>
-                        <p class="text-sm font-medium text-medium mb-4">Python | Data Analysis | Pandas & Jupyter</p>
-                        <div class="project-description">
-                            <p class="text-base">
-                                Optimized nursing home operations by analyzing schedules and visits, identifying bottlenecks, and recommending data-driven solutions.
-                            </p>
-                            <p class="mt-2 text-medium">Conducted comprehensive data analysis for a healthcare organization using Python, Pandas, and Jupyter notebooks. The project focused on optimizing nursing home operations by analyzing staff schedules, patient visits, and resource allocation. The analysis identified operational bottlenecks and provided data-driven recommendations that improved efficiency and reduced costs.</p>
-                        </div>
-                        <button class="read-more-btn text-primary">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
+  <div style="text-align:center;margin-top:3rem;">
+    <button class="btn btn-primary nav-btn" data-target="contact">Discuss a Project <i class="fas fa-arrow-right"></i></button>
+  </div>
+</section>
 
-                    <div class="mica-card p-6 section-border project-card">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Multiround Quiz System</h4>
-                        <p class="text-sm font-medium text-medium mb-4">C/C++ | Console Application | Procedural Logic</p>
-                        <div class="project-description">
-                            <p class="text-base">
-                                C/C++ console app for multi-group quizzes, demonstrating advanced procedural logic and reliable state/input management.
-                            </p>
-                            <p class="mt-2 text-medium">Developed a comprehensive multi-round quiz system in C/C++ as a console application. The system supports multiple quiz groups, complex scoring mechanisms, and reliable state management. This project demonstrates advanced procedural programming techniques, efficient input handling, and robust application architecture suitable for educational and competitive environments.</p>
-                        </div>
-                        <button class="read-more-btn text-primary">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                </div>
+<!-- ─── PROJECTS ─── -->
+<section class="section" id="projects">
+  <div class="projects-header">
+    <div>
+      <div class="section-label">Portfolio</div>
+      <h2 class="section-title">Selected Work</h2>
+    </div>
+    <p style="color:var(--muted2);font-size:0.9rem;max-width:320px;line-height:1.6;">Source code & documentation available on request. NDA available.</p>
+  </div>
 
+  <!-- ══════════════════════════════
+       SOFTWARE & SYSTEMS
+  ══════════════════════════════ -->
+  <div class="category-label">
+    <i class="fas fa-terminal" style="color:var(--amber)"></i> Software & Systems Development
+  </div>
 
-                <h3 class="text-3xl sm:text-4xl font-bold text-primary mb-8 border-b border-light pb-3 flex items-center pt-8 font-poppins">
-                    <i class="fas fa-microchip mr-3"></i> Embedded Systems & Hardware Engineering
-                </h3>
-                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    
-                    <div class="mica-card p-6 col-span-1 sm:col-span-2 lg:col-span-4 project-highlight-amber project-card">
-                         <h4 class="text-2xl sm:text-3xl font-extrabold text-amber-custom mb-3 font-poppins">SPHOORTI: Realtime Speech/Text to Braille Converter</h4>
-                        <p class="text-base font-medium text-medium mb-4">MicroPython | ESP32 | Accessibility | Low-Level I/O</p>
-                        <div class="project-description">
-                            <p class="mb-2 text-lg">
-                               ReactJS mobile app captures voice, sends via Bluetooth to ESP32 (MicroPython), controlling solenoids for real-time Braille output.
-                            </p>
-                            <p class="mt-2 text-medium">SPHOORTI is an innovative accessibility device that converts speech or text to Braille in real-time. The system consists of a ReactJS mobile application that captures voice input or accepts text, which is then transmitted via Bluetooth to an ESP32 microcontroller running MicroPython. The ESP32 controls solenoids that physically form Braille characters, enabling real-time tactile communication for visually impaired users. This project demonstrates expertise in embedded systems, IoT connectivity, and accessibility technology.</p>
-                        </div>
-                        <button class="read-more-btn text-amber-custom">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
+  <!-- OE — Full-width flagship -->
+  <div class="project-flagship">
+    <div class="flagship-body">
+      <div class="flagship-meta">
+        <span class="flagship-badge"><i class="fas fa-star"></i> Flagship</span>
+        <span class="flagship-type">Systems Programming · Cross-Platform</span>
+      </div>
+      <div class="flagship-title">Operating Environment (OE) — Custom Shell & Utilities</div>
+      <p class="flagship-desc">Cross-platform shell built in C/C++ with 15+ commands, a custom Windows/Linux abstraction layer, a full-featured text editor, a Shunting Yard math evaluator, and modular file management — all from scratch, zero dependencies.</p>
+      <div class="flagship-tags">
+        <span class="tag tag-amber">C / C++</span>
+        <span class="tag tag-amber">Systems Programming</span>
+        <span class="tag tag-amber">Cross-Platform</span>
+        <span class="tag tag-amber">Shunting Yard</span>
+        <span class="tag tag-amber">Modular Architecture</span>
+      </div>
+    </div>
+    <div class="flagship-action">
+      <a href="https://github.com/Subhajit267" target="_blank" class="btn btn-outline-amber" style="font-size:0.78rem;padding:0.45rem 1rem;white-space:nowrap;"><i class="fab fa-github"></i> GitHub</a>
+    </div>
+  </div>
 
-                    <div class="mica-card p-6 section-border project-card">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">GRAINEYE (AI Vision System)</h4>
-                        <p class="text-sm font-medium text-medium mb-4">Embedded Systems(R Pi) | Python & C++ | High-Speed Automation</p>
-                        <div class="project-description">
-                            <p class="text-base">
-                                Real-time beach sand analyzer: Raspberry Pi + CNN predicts grain size and logs results via custom map API.
-                            </p>
-                            <p class="mt-2 text-medium">GRAINEYE is an AI-powered vision system that analyzes beach sand composition in real-time. Using a Raspberry Pi with a custom CNN model implemented in Python and C++, the system can predict grain size distribution and log results through a custom mapping API. This project showcases expertise in embedded AI, computer vision, and high-speed automation for environmental monitoring applications.</p>
-                        </div>
-                        <button class="read-more-btn text-primary">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
+  <!-- Two secondary software cards -->
+  <div class="projects-pair">
+    <div class="project-card">
+      <div class="project-card-type">Networking · Algorithms</div>
+      <div class="project-card-title">Network Routing Simulator (DVR & LSR)</div>
+      <p class="project-card-desc">Bellman-Ford (DVR) and Dijkstra's (LSR) across 10+ virtual nodes via multi-threaded Python TCP sockets. Real-time convergence and topology update analysis.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">Multithreading</span><span class="tag">TCP Sockets</span><span class="tag">Bellman-Ford</span><span class="tag">Dijkstra</span>
+      </div>
+      <a href="https://github.com/Subhajit267" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub</a>
+    </div>
 
-                    <div class="mica-card p-6 section-border project-card">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Sine 500W Inverter</h4>
-                        <p class="text-sm font-medium text-medium mb-4">4047 & 555 Timer | Triangular & Square Wave | MOSFET Switching | Analog Power Electronics</p>
-                        <div class="project-description">
-                            <p class="text-base">
-                                Designed and built a highly efficient 500W pure sine wave inverter with minimal heat loss, stable output, and robust performance for sensitive loads.
-                            </p>
-                            <p class="mt-2 text-medium">Designed and built a high-performance 500W pure sine wave inverter using 4047 and 555 timer ICs for waveform generation. The circuit efficiently converts DC to AC power with minimal heat loss and stable output, making it suitable for sensitive electronic equipment. This project demonstrates advanced knowledge of analog power electronics, MOSFET switching techniques, and power supply design principles.</p>
-                        </div>
-                        <button class="read-more-btn text-primary">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
+    <div class="project-card">
+      <div class="project-card-type">AI · Computer Vision</div>
+      <div class="project-card-title">Face Recognition Attendance System</div>
+      <p class="project-card-desc">Real-time face recognition for 50+ users at ~90% accuracy using dlib. Automated attendance logging with database integration and modular client-specific design.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">dlib</span><span class="tag">OpenCV</span><span class="tag">SQLite</span>
+      </div>
+      <a href="https://github.com/Subhajit267" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub</a>
+    </div>
+  </div>
 
-                    <div class="mica-card p-6 section-border project-card">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">High-Fidelity Audio Amplifier (Analog Design)</h4>
-                        <p class="text-sm font-medium text-medium mb-4">Analog Circuit Design | Audio Engineering</p>
-                        <div class="project-description">
-                            <p class="text-base">
-                               High-performance 120W 4.1 amplifier with low distortion and full analog tone controls (bass, treble, volume).
-                            </p>
-                            <p class="mt-2 text-medium">Designed and constructed a high-fidelity 120W 4.1 channel audio amplifier with exceptional sound quality and minimal distortion. The amplifier features comprehensive analog tone controls for bass, treble, and volume adjustment, showcasing expertise in analog circuit design, audio engineering, and power amplification principles for high-quality audio reproduction.</p>
-                        </div>
-                        <button class="read-more-btn text-primary">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
+  <!-- ══════════════════════════════
+       EMBEDDED SYSTEMS & IoT
+  ══════════════════════════════ -->
+  <div class="category-label projects-section-gap">
+    <i class="fas fa-microchip" style="color:var(--amber)"></i> Embedded Systems & IoT Engineering
+  </div>
 
-                    <div class="mica-card p-6 section-border project-card">
-                         <h4 class="text-xl lg:text-2xl font-semibold text-primary mb-3 font-poppins">Custom Digital Guitar Pedal (DSP)</h4>
-                        <p class="text-sm font-medium text-medium mb-4">Analog Electronics | Audio Engineering</p>
-                        <div class="project-description">
-                            <p class="text-base">
-                                Analog guitar pedal with custom circuitry for rich sound modulation and tone shaping.
-                            </p>
-                            <p class="mt-2 text-medium">Designed and built a custom digital guitar pedal with specialized circuitry for rich sound modulation and tone shaping. The pedal incorporates both analog and digital signal processing techniques to create unique audio effects, demonstrating expertise in audio engineering, circuit design, and DSP implementation for musical applications.</p>
-                        </div>
-                        <button class="read-more-btn text-primary">
-                            Read More <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- NEW: Project Section CTA -->
-                <div class="project-cta mt-12">
-                    <h3 class="text-2xl sm:text-3xl font-bold mb-4">Ready to Bring Your Vision to Life?</h3>
-                    <p class="text-lg mb-6">Let's collaborate on your next innovative project!</p>
-                    <button data-target="contact" class="nav-link bg-white text-primary px-8 py-3 text-xl font-bold rounded-xl transition duration-300 transform hover:scale-[1.05]">
-                        Get Your Project Done Today!
-                    </button>
-                </div>
-                </div>
-            </section>
+  <!-- SPHOORTI — Full-width flagship -->
+  <div class="project-flagship">
+    <div class="flagship-body">
+      <div class="flagship-meta">
+        <span class="flagship-badge"><i class="fas fa-trophy"></i> 1st Prize · Multiple Tech Expos</span>
+        <span class="flagship-type">ESP32 · Bluetooth · Accessibility</span>
+      </div>
+      <div class="flagship-title">SPHOORTI — Real-Time Speech to Braille Converter</div>
+      <p class="flagship-desc">Led a 4-member team to build a real-time Speech-to-Braille device for visually impaired users. A ReactJS mobile app sends text via Bluetooth to an ESP32 running MicroPython, which drives GPIO-controlled solenoids to form Braille characters — achieving ~85–90% transcription accuracy with low-latency output.</p>
+      <div class="flagship-tags">
+        <span class="tag tag-amber">ESP32</span>
+        <span class="tag tag-amber">MicroPython</span>
+        <span class="tag tag-amber">Bluetooth</span>
+        <span class="tag tag-amber">GPIO / Solenoid</span>
+        <span class="tag tag-amber">ReactJS</span>
+        <span class="tag tag-amber">Accessibility</span>
+      </div>
+    </div>
+    <div class="flagship-action">
+      <span class="tag tag-amber" style="font-size:0.65rem;padding:0.25rem 0.7rem;">🏆 Award Winner</span>
+      <a href="https://github.com/Subhajit267" target="_blank" class="btn btn-outline-amber" style="font-size:0.78rem;padding:0.45rem 1rem;white-space:nowrap;"><i class="fab fa-github"></i> GitHub</a>
+    </div>
+  </div>
 
+  <!-- IoT Mood — Full-width flagship -->
+  <div class="project-flagship">
+    <div class="flagship-body">
+      <div class="flagship-meta">
+        <span class="flagship-badge"><i class="fas fa-star"></i> Flagship</span>
+        <span class="flagship-type">Raspberry Pi · I2C · ML Pipeline</span>
+      </div>
+      <div class="flagship-title">IoT Music Mood Analysis & Therapy System</div>
+      <p class="flagship-desc">Raspberry Pi system integrating MAX30102 (heart rate), ADS1115 GSR, and MPU6050 (motion) over I2C for physiological data acquisition. ML mood classifier at ~75–85% accuracy triggers targeted audio therapy on 3 consecutive detections. Supports live and simulation modes.</p>
+      <div class="flagship-tags">
+        <span class="tag tag-amber">Raspberry Pi</span>
+        <span class="tag tag-amber">I2C</span>
+        <span class="tag tag-amber">MAX30102</span>
+        <span class="tag tag-amber">MPU6050</span>
+        <span class="tag tag-amber">scikit-learn</span>
+        <span class="tag tag-amber">Sensor Fusion</span>
+      </div>
+    </div>
+    <div class="flagship-action">
+      <a href="https://github.com/Subhajit267" target="_blank" class="btn btn-outline-amber" style="font-size:0.78rem;padding:0.45rem 1rem;white-space:nowrap;"><i class="fab fa-github"></i> GitHub</a>
+    </div>
+  </div>
 
-            <section id="skills" class="content-section py-12">
-                 <h2 class="text-4xl sm:text-5xl font-bold mb-4 text-center font-poppins">Technical Proficiencies</h2>
-                <div class="separator mb-10"></div>
+  <!-- Two hardware support cards -->
+  <div class="projects-pair">
+    <div class="project-card">
+      <div class="project-card-type">Power Electronics · PCB Design</div>
+      <div class="project-card-title">500W Pure Sine Wave Inverter</div>
+      <p class="project-card-desc">Designed and built using 4047 & 555 timer ICs with MOSFET switching. Stable output, minimal heat loss, and full KiCad PCB layout.</p>
+      <div class="project-tags">
+        <span class="tag">Analog Design</span><span class="tag">MOSFET</span><span class="tag">KiCad</span><span class="tag">PCB</span>
+      </div>
+    </div>
 
-                <div class="mica-card p-6 sm:p-8 space-y-8 max-w-7xl w-full">
-                    
-                    <h3 class="text-3xl sm:text-4xl font-bold text-primary border-b border-light pb-2 font-poppins">Core Languages & Systems</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-                        <div class="skill-card text-center">
-                             <h4 class="text-xl sm:text-2xl font-semibold text-primary font-poppins">C / C++</h4>
-                            <p class="text-sm sm:text-base mt-2 text-medium">Low-level I/O, OS concepts, performance-critical systems.</p>
-                        </div>
-                        <div class="skill-card text-center">
-                             <h4 class="text-xl sm:text-2xl font-semibold text-primary font-poppins">Python</h4>
-                            <p class="text-sm sm:text-base mt-2 text-medium">Automation, AI/ML, network simulation, scripting.</p>
-                        </div>
-                        <div class="skill-card text-center">
-                             <h4 class="text-xl sm:text-2xl font-semibold text-primary font-poppins">Java & C# / VB.Net</h4>
-                            <p class="text-sm sm:text-base mt-2 text-medium">OOP principles, application development (Desktop/Web Backend).</p>
-                        </div>
-                        <div class="skill-card text-center">
-                             <h4 class="text-xl sm:text-2xl font-semibold text-primary font-poppins">Data Management</h4>
-                            <p class="text-sm sm:text-base mt-2 text-medium">MySQL, MS Access, AVL Trees, Data Structures optimization.</p>
-                        </div>
-                    </div>
+    <div class="project-card">
+      <div class="project-card-type">Audio Engineering · Analog Design</div>
+      <div class="project-card-title">120W 4.1 Hi-Fi Amplifier</div>
+      <p class="project-card-desc">High-fidelity analog amplifier with full tone controls — bass, treble, volume. Minimal distortion and clean power delivery across all four channels.</p>
+      <div class="project-tags">
+        <span class="tag">Analog</span><span class="tag">TDA Series</span><span class="tag">Audio</span><span class="tag">PCB</span>
+      </div>
+    </div>
+  </div>
 
-                    <h3 class="text-3xl sm:text-4xl font-bold text-primary border-b border-light pb-2 pt-6 font-poppins">Electronics, Embedded & Networking</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-                        <div class="skill-card text-center">
-                             <h4 class="text-xl sm:text-2xl font-semibold text-primary font-poppins">Embedded Systems</h4>
-                            <p class="text-sm sm:text-base mt-2 text-medium">ESP_Family/STM32/Arduino/IoT, DSP, low-level I/O, Embedded C.</p>
-                        </div>
-                        <div class="skill-card text-center">
-                             <h4 class="text-xl sm:text-2xl font-semibold text-primary font-poppins">Networking & Routing</h4>
-                            <p class="text-sm sm:text-base mt-2 text-medium">DVR/LSR, Cisco Packet Tracer/Wireshark, Network Protocol implementation.</p>
-                        </div>
-                        <div class="skill-card text-center">
-                             <h4 class="text-xl sm:text-2xl font-semibold text-primary font-poppins">Circuit Design</h4>
-                            <p class="text-sm sm:text-base mt-2 text-medium">Analog & Digital, Signal Integrity, Audio Amplifiers, PCB Designing.</p>
-                        </div>
-                        <div class="skill-card text-center">
-                             <h4 class="text-xl sm:text-2xl font-semibold text-primary font-poppins">Professional Tools</h4>
-                            <p class="text-sm sm:text-base mt-2 text-medium">Advanced VBA/Macro, DaVinci Resolve, Adobe CC.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            
-            <section id="experience" class="content-section py-12">
-                 <h2 class="text-4xl sm:text-5xl font-bold mb-4 text-center font-poppins">Work Experience</h2>
-                <div class="separator mb-12"></div>
-                
-                <div class="grid lg:grid-cols-2 gap-8 max-w-7xl w-full">
+  <div style="text-align:center;margin-top:3rem;">
+    <button class="btn btn-primary nav-btn" data-target="contact">Get Your Project Done <i class="fas fa-arrow-right"></i></button>
+  </div>
+</section>
 
-                    <div class="mica-card p-6 sm:p-8 section-border">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
-                            <h3 class="text-xl sm:text-2xl font-semibold font-poppins">Freelancer - Code Analyst & Developer</h3>
-                            <span class="text-base sm:text-lg text-primary font-medium mt-1 sm:mt-0">Januray 2025 - Present</span>
-                        </div>
-                        <p class="text-lg font-medium mb-3">International Client Solutions & Systems Development</p>
-                        <ul class="list-disc list-inside space-y-2 ml-4 text-base">
-                            <li>Delivered high-value projects and mentorship for international clients across the USA, Saudi Arabia, Germany, and Australia.</li>
-                            <li>Specialized in AVL-based database engines, advanced network simulators, and IoT/automation systems, emphasizing performance and architectural reliability in C/C++ and Python.</li>
-                            <li>Focus on delivering solutions requiring strict performance optimization and architectural reliability in C/C++ and Python.</li>
-                            <li>Provided expert tutoring and coursework support for IGCSE, IB, and University of Miami (ECE318, ECE218, ECE322) students, covering assignments, lab projects, and exam prep in Electronics, Embedded Systems, and Computer Engineering.</li>
-                        </ul>
-                    </div>
+<!-- ─── SKILLS ─── -->
+<section class="section" id="skills">
+  <div class="section-label">Technical Stack</div>
+  <h2 class="section-title">Skills & Proficiencies</h2>
+  <p class="section-sub">Deep expertise across software, hardware, and systems — built through real project delivery, not just coursework.</p>
 
-                    <div class="mica-card p-6 sm:p-8 section-border">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
-                            <h3 class="text-xl sm:text-2xl font-semibold font-poppins">DeepTechSolutions - Consultant, Mentor & Developer</h3>
-                            <span class="text-base sm:text-lg text-primary font-medium mt-1 sm:mt-0">March 2025 - Present</span>
-                        </div>
-                        <p class="text-lg font-medium mb-3">Specialized Mentorship & Enterprise Development</p>
-                        <ul class="list-disc list-inside space-y-2 ml-4 text-base">
-                            <li>Provided expert Cisco Packet Tracer configuration guidance and developed advanced network simulation models.</li>
-                            <li>Delivered Python-based data analysis and machine learning solutions for clients, enabling critical business intelligence.</li>
-                            <li>Designed and maintained VBA/Macro solutions automating complex workflows in finance and operations for enterprise clients.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="reviews" class="content-section py-12">
-                 <h2 class="text-4xl sm:text-5xl font-bold mb-4 text-center text-amber1-custom font-poppins">Client Testimonials & Feedback</h2>
-                <div class="separator mb-12 mx-auto" style="background: var(--amber-color);"></div> 
-                
-                <div class="max-w-7xl w-full grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <div class="review-card flex flex-col justify-between">
-                        <div>
-                            <div class="text-amber-custom mb-3 text-xl">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p class="text-lg italic text-medium mb-4">"I've had this tutor for all my programming courses, and honestly, he's amazing at what he does. He really knows his stuff and solve things in a way that actually makes sense."</p>
-                        </div>
-                        <p class="text-xl font-semibold text-primary">- Yousef Ghazi (Miami, USA)</p>
-                    </div>
+  <div class="skills-layout">
+    <div class="skills-group">
+      <div class="skills-group-title">Core Languages</div>
+      <div class="skill-item">
+        <div><div class="skill-name">C / C++</div><div class="skill-desc">Low-level I/O, templates, memory management, OS-level</div></div>
+        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span></div>
+      </div>
+      <div class="skill-item">
+        <div><div class="skill-name">Python</div><div class="skill-desc">Automation, ML/AI, data analysis, scripting, networking</div></div>
+        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span></div>
+      </div>
+      <div class="skill-item">
+        <div><div class="skill-name">Embedded C / MicroPython</div><div class="skill-desc">ESP32, Arduino, STM32, real-time firmware</div></div>
+        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div>
+      </div>
+      <div class="skill-item">
+        <div><div class="skill-name">Java / C# / VB.NET</div><div class="skill-desc">OOP, application development, business tools</div></div>
+        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div>
+      </div>
+      <div class="skill-item">
+        <div><div class="skill-name">SQL / VBA / Macros</div><div class="skill-desc">MySQL, MS Access, Excel automation, enterprise workflows</div></div>
+        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div>
+      </div>
+    </div>
 
-                    <div class="review-card flex flex-col justify-between">
-                        <div>
-                            <div class="text-amber-custom mb-3 text-xl">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                            </div>
-                            <p class="text-lg italic text-medium mb-4">"Great support on my university coursework. The explanation of advanced networking protocols was clear and thorough."</p>
-                        </div>
-                        <p class="text-xl font-semibold text-primary">- Anonymous, Client (Dubai)</p>
-                    </div>
+    <div class="skills-group">
+      <div class="skills-group-title">Hardware & Systems</div>
+      <div class="skill-item">
+        <div><div class="skill-name">Circuit & PCB Design</div><div class="skill-desc">Analog/digital design, signal integrity, power electronics</div></div>
+        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span></div>
+      </div>
+      <div class="skill-item">
+        <div><div class="skill-name">Embedded Systems</div><div class="skill-desc">ESP-family, Arduino, Raspberry Pi, IoT deployment</div></div>
+        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span></div>
+      </div>
+      <div class="skill-item">
+        <div><div class="skill-name">Networking & Protocols</div><div class="skill-desc">DVR, LSR, Cisco Packet Tracer, Wireshark, TCP/IP</div></div>
+        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div>
+      </div>
+      <div class="skill-item">
+        <div><div class="skill-name">Data Structures & Algorithms</div><div class="skill-desc">AVL Trees, Graph algorithms, optimization, complexity analysis</div></div>
+        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span></div>
+      </div>
+      <div class="skill-item">
+        <div><div class="skill-name">AI / ML</div><div class="skill-desc">CNN, TensorFlow/Keras, data pipelines, model deployment</div></div>
+        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div>
+      </div>
+    </div>
+  </div>
 
-                    <div class="review-card flex flex-col justify-between">
-                        <div>
-                            <div class="text-amber-custom mb-3 text-xl">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <p class="text-lg italic text-medium mb-4">"The custom IoT solution exceeded expectations. Subhajit seamlessly handled both the embedded software (ESP32) and the circuit design. Highly recommended."</p>
-                        </div>
-                        <p class="text-xl font-semibold text-primary">- Sneha Iyer (Chennai, India)</p>
-                    </div>
-                    
-                    <div class="review-card flex flex-col justify-between">
-                        <div>
-                            <div class="text-amber-custom mb-3 text-xl">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></i><i class="far fa-star"></i>
-                            </div>
-                            <p class="text-lg italic text-medium mb-4">"The Python assignment was delivered on time with clear, actionable insights. The guidance made the complex data analysis understandable and very useful. Highly recommended!"</p>
-                        </div>
-                        <p class="text-xl font-semibold text-primary">- Sophie Mitchell (Hahndorf, Australia)</p>
-                    </div>
+  <div class="skills-full">
+    <div class="skills-tags-title">Tools & Environments</div>
+    <div class="skills-tag-cloud">
+      <span class="tag">GCC / G++</span>
+      <span class="tag">Git / GitHub</span>
+      <span class="tag">NASM (x86 Assembly)</span>
+      <span class="tag">Cisco Packet Tracer</span>
+      <span class="tag">Wireshark</span>
+      <span class="tag">Arduino IDE</span>
+      <span class="tag">KiCad / EasyEDA</span>
+      <span class="tag">Proteus</span>
+      <span class="tag">CMake</span>
+      <span class="tag">WSL / Linux</span>
+      <span class="tag">Jupyter Notebook</span>
+      <span class="tag">VS Code / Visual Studio</span>
+      <span class="tag">MySQL / PostgreSQL / SQLite</span>
+      <span class="tag">OpenCV</span>
+      <span class="tag">TensorFlow / PyTorch</span>
+      <span class="tag">scikit-learn</span>
+      <span class="tag">Pandas / NumPy</span>
+      <span class="tag">Bash / Shell Scripting</span>
+    </div>
+  </div>
+</section>
 
-                    <div class="review-card flex flex-col justify-between">
-                        <div>
-                            <div class="text-amber-custom mb-3 text-xl">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <p class="text-lg italic text-medium mb-4">"Expert guidance in Cisco Packet Tracer. My configuration lab work improved dramatically after one session. Fantastic mentor!"</p>
-                        </div>
-                        <p class="text-xl font-semibold text-primary">- Alya Al-Shammari (Saudi Arabia)</p>
-                    </div>
-                    
-                    <div class="review-card flex flex-col justify-between">
-                        <div>
-                            <div class="text-amber-custom mb-3 text-xl">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <p class="text-lg italic text-medium mb-4">"Subhajit developed a comprehensive VBA solution for our store, managing stock, expenses, and staff efficiently. The system has significantly improved our daily operations and record-keeping. Highly professional and reliable!"</p>
-                        </div>
-                        <p class="text-xl font-semibold text-primary">- Olivia Parker (Denver, USA)</p>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="contact" class="content-section py-12">
-                <div class="max-w-6xl mx-auto w-full">
-                    <h2 class="text-4xl sm:text-5xl font-bold mb-4 text-center font-poppins">Get In Touch</h2>
-                    <div class="separator mb-12"></div>
-                    
-                    <div class="grid lg:grid-cols-2 gap-8">
-                        <!-- Contact Details Card -->
-                        <div class="mica-card p-8 text-center space-y-6 py-10 shadow-2xl">
-                            <h3 class="text-3xl sm:text-4xl font-bold font-poppins">Let's Discuss Your Next Project</h3>
-                            <div class="separator"></div>
-                            <p class="text-lg text-medium">I am currently available for new freelance assignments globally. Due to the proprietary nature of my work, full project source code and CV are available upon request and signing a Non-Disclosure Agreement (NDA).</p>
-                            <div class="space-y-4 pt-6">
-                                <p class="text-xl sm:text-2xl text-primary font-semibold">
-                                    Email: <a href="mailto:subhajithalder267@outlook.com" class="hover:underline hover:text-cyan-700">subhajithalder267@outlook.com</a>
-                                </p>
-                                <p class="text-xl sm:text-2xl text-primary font-semibold">
-                                    Phone/WhatsApp: 
-                                    <a href="tel:+917047736124" class="hover:underline hover:text-cyan-700">+91 7047736124</a>
-                                    <a href="https://wa.me/917047736124" target="_blank" class="ml-3 text-2xl text-primary hover:text-cyan-700 transition transform hover:scale-110" aria-label="WhatsApp">
-                                        <i class="fab fa-whatsapp"></i>
-                                    </a>
-                                </p>
-                            </div>
-                            <div class="flex justify-center space-x-6 pt-8">
-                            <a href="https://github.com/Subhajit267?tab=repositories" target="_blank" class="text-medium hover:text-primary transition transform hover:scale-110" aria-label="GitHub">
-                                    <i class="fab fa-github text-4xl"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/subhajit-halder-7aba79325" target="_blank" class="text-medium hover:text-primary transition transform hover:scale-110" aria-label="LinkedIn">
-                                    <i class="fab fa-linkedin text-4xl"></i>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Contact Form -->
-                        <div class="mica-card p-8 section-border">
-                            <h3 class="text-3xl sm:text-4xl font-bold mb-6 font-poppins">Send Me a Message</h3>
-                            <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" id="contactForm">
-                                <input type="hidden" name="access_key" value="bc8c822d-8483-471a-ad81-016fa1388aa6">
-                                <input type="hidden" name="subject" value="New Contact Form Submission">
-                                <input type="hidden" name="from_name" value="Subhajit Halder Portfolio">
-                                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                                
-                                <div class="form-group">
-                                    <label class="form-label" for="name">Your Name</label>
-                                    <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="form-label" for="email">Your Email</label>
-                                    <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="form-label" for="form_subject">Subject</label>
-                                    <input type="text" id="form_subject" name="form_subject" class="form-input" placeholder="What is this regarding?" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="form-label" for="message">Your Message</label>
-                                    <textarea id="message" name="message" class="form-textarea" placeholder="Tell me about your project or inquiry..." required></textarea>
-                                </div>
-                                
-                                <button type="submit" class="btn-primary submit-btn">
-                                    Send Message <i class="fas fa-paper-plane ml-2"></i>
-                                </button>
-                                
-                                <div id="formMessage" class="form-message hidden"></div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-             <section id="about" class="content-section py-12">
-                <div class="max-w-6xl py-10 mica-card p-10 w-full">
-                    <div class="flex flex-col lg:flex-row gap-10 items-center lg:items-start">
-                        
-                        <div class="w-full lg:w-1/3 flex justify-center lg:justify-start flex-shrink-0">
-                            <div class="p-2 border-4 border-cyan-700 rounded-full shadow-lg shadow-cyan-500/30">
-                                <img src="assets/IM1.jpeg" 
-     alt="Professional profile image of Subhajit Halder" 
-     class="w-64 h-auto object-contain rounded-full border-4 border-gray-100">
-                                 </div>
-                        </div>
+<!-- ─── CERTIFICATIONS ─── -->
+<section class="section" id="certifications">
+  <div class="section-label">Credentials</div>
+  <h2 class="section-title">Certifications</h2>
+  <p class="section-sub">Professional certifications validating expertise across security, systems programming, and advanced Python development.</p>
 
-                        <div class="w-full lg:w-2/3">
-                             <h2 class="text-5xl font-bold mb-4 font-poppins">About Me</h2>
-                            <div class="separator mb-8 mx-0"></div>
-                            
-                            <h3 class="text-3xl sm:text-3xl font-semibold text-primary font-poppins">
-                                System Architect & Embedded Specialist
-                            </h3>
+  <div class="certs-grid">
+    <div class="card cert-card card-amber">
+      <div class="cert-icon"><i class="fas fa-search"></i></div>
+      <div>
+        <div class="cert-name">Computer Forensics (CFCT+)</div>
+        <div class="cert-issuer">Udemy</div>
+        <div class="cert-year">2024</div>
+      </div>
+    </div>
 
-                            <div class="pt-2 pb-6">
-                                <p class="text-lg sm:text-l leading-relaxed mx-auto">
-                                    I build high-performance software and low-level systems, bridging hardware and software seamlessly. My expertise spans C/C++ systems, network simulations, and advanced embedded devices. I have delivered projects like custom assistive technology systems and AVL Tree-based database cores for clients across multiple countries, demonstrating both technical proficiency and real-world problem-solving.
-                                </p>
-                                <p class="text-lg sm:text-l leading-relaxed mx-auto pt-4">
-                                   Through my work, I translate complex requirements into efficient, reliable solutions, combining deep technical knowledge with practical implementation. From low-level systems to innovative software projects, I aim to deliver results that are both impactful and tailored to client needs.
-                                </p>
-                            </div>
-                            
-                            <div class="mt-8 flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4">
-                                <span class="px-4 py-2 bg-primary-light text-primary rounded-full font-medium text-base">C/C++ Systems</span>
-                                <span class="px-4 py-2 bg-primary-light text-primary rounded-full font-medium text-base">Embedded Electronics</span>
-                                <span class="px-4 py-2 bg-primary-light text-primary rounded-full font-medium text-base">IoT Solutions</span>
-                                <span class="px-4 py-2 bg-primary-light text-primary rounded-full font-medium text-base">Network Simulation</span>
-                                <span class="px-4 py-2 bg-primary-light text-primary rounded-full font-medium text-base">Academic Mentorship</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    <div class="card cert-card card-amber">
+      <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+      <div>
+        <div class="cert-name">Cybersecurity</div>
+        <div class="cert-issuer">Udemy</div>
+        <div class="cert-year">2024</div>
+      </div>
+    </div>
 
+    <div class="card cert-card card-amber">
+      <div class="cert-icon"><i class="fas fa-code"></i></div>
+      <div>
+        <div class="cert-name">Advanced C/C++ Programming</div>
+        <div class="cert-issuer">Udemy</div>
+        <div class="cert-year">2024</div>
+      </div>
+    </div>
 
-            <footer class="p-4 text-center text-sm border-t border-light">
-                <p class="text-medium dark:text-dark-medium-text">&copy; 2026 Subhajit Halder | System Architect | Electronics & Embedded Systems Expert.</p>
-            </footer>
+    <div class="card cert-card card-amber">
+      <div class="cert-icon"><i class="fab fa-python"></i></div>
+      <div>
+        <div class="cert-name">Python Advanced</div>
+        <div class="cert-issuer">GUVI</div>
+        <div class="cert-year">2024</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:2rem;">
+    <a href="https://github.com/Subhajit267" target="_blank" class="btn btn-ghost"><i class="fab fa-github"></i> &nbsp;View GitHub Profile</a>
+  </div>
+</section>
+
+<!-- ─── EXPERIENCE ─── -->
+<section class="section" id="experience">
+  <div class="section-label">Track Record</div>
+  <h2 class="section-title">Work Experience</h2>
+  <p class="section-sub">Hands-on delivery across software, hardware, mentorship, and enterprise automation — for clients across USA, Germany, Saudi Arabia, and Australia.</p>
+
+  <div class="experience-layout">
+    <div class="card exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Freelance Developer & Code Analyst</div>
+        <span class="exp-date">Jan 2025 — Present</span>
+      </div>
+      <div class="exp-org">International Clients · USA, Germany, Saudi Arabia &amp; Australia · Remote</div>
+      <ul class="exp-list">
+        <li>Delivered 35+ software systems, automation tools, and networking solutions for international clients with typical turnaround of 2–5 days per project.</li>
+        <li>Developed systems including databases, network simulators, VBA/Macro automation, and IoT tools under NDA with complete documentation and IP transfer.</li>
+        <li>Managed end-to-end delivery for 3–5 concurrent projects simultaneously, handling client requirements and iterative refinement independently.</li>
+        <li>Provided expert tutoring and coursework support for IGCSE, IB, and University of Miami (ECE318, ECE218, ECE322) students covering Electronics, Embedded Systems, and Computer Engineering.</li>
+      </ul>
+    </div>
+
+    <div class="card exp-card">
+      <div class="exp-header">
+        <div class="exp-title">Consultant, Mentor & Developer</div>
+        <span class="exp-date">Mar 2025 — Present</span>
+      </div>
+      <div class="exp-org">DeepTechSolutions · Specialized Mentorship & Enterprise Development</div>
+      <ul class="exp-list">
+        <li>Developed 10+ network simulation and automation solutions using Cisco Packet Tracer, Python, and VBA for enterprise learning environments.</li>
+        <li>Built 5+ advanced Excel automation tools and ML-based scripts delivering critical business intelligence for multiple clients.</li>
+        <li>Mentored 15+ students in C++, Python, and networking concepts with structured sessions and measurable grade improvements.</li>
+        <li>Designed and maintained VBA/Macro suites automating complex financial and operational workflows for enterprise-level clients.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;">
+    <div>
+      <div style="font-family:var(--font-m);font-size:0.68rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;">Availability</div>
+      <div style="font-weight:600;font-size:0.95rem;color:var(--green);">● Open to projects</div>
+    </div>
+    <div>
+      <div style="font-family:var(--font-m);font-size:0.68rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;">Project Types</div>
+      <div style="font-weight:600;font-size:0.95rem;">Fixed-scope & ongoing</div>
+    </div>
+    <div>
+      <div style="font-family:var(--font-m);font-size:0.68rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;">NDA</div>
+      <div style="font-weight:600;font-size:0.95rem;">Available on request</div>
+    </div>
+    <div>
+      <div style="font-family:var(--font-m);font-size:0.68rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;">Location</div>
+      <div style="font-weight:600;font-size:0.95rem;">India · Remote Worldwide</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── REVIEWS ─── -->
+<section class="section" id="reviews">
+  <div class="section-label">Client Feedback</div>
+  <h2 class="section-title" style="color:var(--amber);">What Clients Say</h2>
+  <p class="section-sub">Testimonials from clients across the USA, Australia, India, Saudi Arabia, and UAE.</p>
+
+  <div class="reviews-grid">
+    <div class="card review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-quote">I've had this tutor for all my programming courses, and honestly, he's amazing at what he does. He really knows his stuff and solves things in a way that actually makes sense.</p>
+      <div class="review-author">Yousef Ghazi</div>
+      <div class="review-location">Miami, USA · University Student</div>
+    </div>
+
+    <div class="card review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-quote">The custom IoT solution exceeded expectations. Subhajit seamlessly handled both the embedded software (ESP32) and the circuit design. Highly recommended for any hardware project.</p>
+      <div class="review-author">Sneha Iyer</div>
+      <div class="review-location">Chennai, India · IoT Client</div>
+    </div>
+
+    <div class="card review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-quote">Subhajit developed a comprehensive VBA solution for our store — managing stock, expenses, and staff. The system significantly improved our daily operations and record-keeping. Highly professional!</p>
+      <div class="review-author">Olivia Parker</div>
+      <div class="review-location">Denver, USA · Business Client</div>
+    </div>
+
+    <div class="card review-card">
+      <div class="stars">★★★★☆</div>
+      <p class="review-quote">The Python assignment was delivered on time with clear, actionable insights. The guidance made complex data analysis understandable and very useful. Highly recommended!</p>
+      <div class="review-author">Sophie Mitchell</div>
+      <div class="review-location">Hahndorf, Australia · Data Client</div>
+    </div>
+
+    <div class="card review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-quote">Expert guidance in Cisco Packet Tracer. My configuration lab work improved dramatically after one session. Fantastic mentor — explains concepts clearly and patiently.</p>
+      <div class="review-author">Alya Al-Shammari</div>
+      <div class="review-location">Saudi Arabia · Networking Student</div>
+    </div>
+
+    <div class="card review-card">
+      <div class="stars">★★★★☆</div>
+      <p class="review-quote">Great support on my university coursework. The explanation of advanced networking protocols was clear and thorough. Delivered exactly what was promised, on time.</p>
+      <div class="review-author">Anonymous Client</div>
+      <div class="review-location">Dubai, UAE · University Student</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section class="section" id="contact">
+  <div class="section-label">Work Together</div>
+  <h2 class="section-title">Let's Build Something</h2>
+
+  <div class="contact-layout">
+    <div class="card contact-info">
+      <h3 class="contact-title">Ready to Start Your Project?</h3>
+      <p class="contact-desc">I'm currently available for new freelance assignments globally. Due to the proprietary nature of client work, full project source code and CV are provided upon request under NDA.</p>
+
+      <a href="mailto:subhajithalder267@outlook.com" class="contact-item">
+        <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+        <div>
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-value">subhajithalder267@outlook.com</div>
         </div>
+      </a>
+
+      <a href="tel:+917047736124" class="contact-item">
+        <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+        <div>
+          <div class="contact-item-label">Phone / WhatsApp</div>
+          <div class="contact-item-value">+91 7047736124</div>
+        </div>
+      </a>
+
+      <a href="https://wa.me/917047736124" target="_blank" class="contact-item">
+        <div class="contact-item-icon"><i class="fab fa-whatsapp"></i></div>
+        <div>
+          <div class="contact-item-label">WhatsApp</div>
+          <div class="contact-item-value">Message me directly</div>
+        </div>
+      </a>
+
+      <div class="social-row" style="margin-top:1.5rem;">
+        <a href="https://github.com/Subhajit267?tab=repositories" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/subhajit-halder-7aba79325" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://wa.me/917047736124" target="_blank" class="social-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+
+      <div style="margin-top:2rem;padding:1.25rem;background:rgba(245,166,35,0.06);border:1px solid rgba(245,166,35,0.15);border-radius:var(--radius);font-size:0.85rem;color:var(--muted2);line-height:1.7;">
+        <strong style="color:var(--amber);">Response time:</strong> Within 24 hours. All inquiries treated with confidentiality. NDA available before sharing any project details.
+      </div>
     </div>
 
-    <div class="theme-toggle" id="themeToggle">
-        <i class="fas fa-moon text-xl"></i>
+    <div class="card form-card">
+      <h3 class="form-title">Send a Message</h3>
+      <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="bc8c822d-8483-471a-ad81-016fa1388aa6">
+        <input type="hidden" name="subject" value="New Inquiry — Subhajit Halder Portfolio">
+        <input type="checkbox" name="botcheck" style="display:none">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="name">Your Name</label>
+            <input type="text" id="name" name="name" class="form-input" placeholder="John Smith" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="project_type">Service Type</label>
+          <select id="project_type" name="project_type" class="form-input" style="cursor:pointer;">
+            <option value="">Select a service...</option>
+            <option>Software / Systems Development (C/C++, Python)</option>
+            <option>IoT & Embedded Systems</option>
+            <option>Academic Mentorship / Tutoring</option>
+            <option>VBA / Business Automation</option>
+            <option>Circuit / PCB Design</option>
+            <option>Other / Consultation</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="form_subject">Project Brief</label>
+          <input type="text" id="form_subject" name="form_subject" class="form-input" placeholder="One-line description of your project" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">Details</label>
+          <textarea id="message" name="message" class="form-textarea" placeholder="Tell me about your requirements, timeline, and budget..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%;justify-content:center;">
+          Send Message <i class="fas fa-paper-plane"></i>
+        </button>
+
+        <div id="formMessage" class="form-message"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section class="section" id="about">
+  <div class="section-label">Who I Am</div>
+  <h2 class="section-title" style="margin-bottom:2.5rem;">About Me</h2>
+
+  <div class="about-layout">
+    <div class="about-img-wrap">
+      <div class="about-img-frame">
+        <img src="assets/IM1.jpeg" alt="Subhajit Halder" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="about-img-placeholder" style="display:none;flex-direction:column;align-items:center;gap:0.5rem;">
+          <i class="fas fa-user-circle" style="font-size:3rem;color:var(--muted);"></i>
+          <span>Profile Photo</span>
+        </div>
+      </div>
+      <div class="about-name">Subhajit Halder</div>
+      <div class="about-role">Systems & Software Developer</div>
+      <div style="display:flex;justify-content:center;gap:0.5rem;flex-wrap:wrap;">
+        <span class="tag tag-green">● Available</span>
+        <span class="tag">India · Remote</span>
+      </div>
     </div>
 
-    <script>
-        // Function to handle tab switching logic
-        function switchTab(targetId) {
-            const contentSections = document.querySelectorAll('.content-section');
-            const contentWrapper = document.getElementById('content-wrapper');
+    <div class="about-content">
+      <p class="about-body">
+        I'm a systems engineer and freelance developer who builds at the intersection of software and hardware. My work spans C/C++ performance systems, embedded firmware, IoT deployments, and algorithm-intensive applications — delivered for clients across six countries.
+      </p>
+      <p class="about-body">
+        I approach every project as an engineering problem first: define constraints, design for correctness, optimize for performance, document for maintainability. Whether it's a self-balancing database engine or a real-time Braille converter, the standard is the same.
+      </p>
+      <p class="about-body">
+        Beyond client work, I mentor university and pre-university students in Computer Science, Electronics, and Embedded Systems — translating complex theory into practical understanding that shows up on assessments and in the lab.
+      </p>
 
-            contentSections.forEach(section => section.classList.remove('active'));
-            
-            // Remove active-tab from all links (desktop and mobile)
-            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active-tab'));
+      <div class="about-chips">
+        <span class="tag tag-amber">C/C++ Systems</span>
+        <span class="tag tag-amber">Embedded Electronics</span>
+        <span class="tag tag-amber">IoT Solutions</span>
+        <span class="tag tag-amber">Network Simulation</span>
+        <span class="tag tag-amber">Academic Mentorship</span>
+        <span class="tag tag-amber">PCB Design</span>
+        <span class="tag tag-amber">Data Analysis</span>
+        <span class="tag tag-amber">AI / ML</span>
+      </div>
 
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            } else {
-                return;
-            }
+      <div class="education-block">
+        <div class="edu-title">Education</div>
+        <div class="edu-item">
+          <div class="edu-deg">B.Tech — Information Technology</div>
+          <div class="edu-school">Jalpaiguri Government Engineering College · 2024–2028</div>
+        </div>
+        <div class="edu-item" style="border:none;padding-bottom:0;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div class="edu-deg">Current SGPA</div>
+            <div style="font-family:var(--font-m);font-size:0.85rem;color:var(--amber);font-weight:700;">8.29 <span style="font-size:0.68rem;color:var(--muted);">SEM 3</span></div>
+          </div>
+        </div>
+      </div>
 
-            // Add active-tab to all matching links (desktop and mobile)
-            document.querySelectorAll(`.nav-link[data-target="${targetId}"]`).forEach(link => {
-                 link.classList.add('active-tab');
-            });
-            
-            // Close mobile menu if it's open after a tab switch
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-                document.getElementById('mobile-menu-toggle').querySelector('i').classList.remove('fa-times');
-                document.getElementById('mobile-menu-toggle').querySelector('i').classList.add('fa-bars');
-            }
-            
-            if (contentWrapper) {
-                // Scroll to top of the content wrapper on tab switch
-                contentWrapper.scrollTop = 0;
-            }
-        }
-        
-        // Mobile Menu Toggle Logic
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
+      <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+        <button class="btn btn-primary nav-btn" data-target="contact">Work With Me <i class="fas fa-arrow-right"></i></button>
+        <button class="btn btn-ghost nav-btn" data-target="projects">See Projects</button>
+      </div>
+    </div>
+  </div>
+</section>
 
-        mobileMenuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            const icon = mobileMenuToggle.querySelector('i');
-            if (mobileMenu.classList.contains('hidden')) {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            } else {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            }
-        });
+</main>
 
+<footer>
+  <p>© 2026 Subhajit Halder &nbsp;·&nbsp; Systems & Software Developer &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp; Jalpaiguri, West Bengal, India</p>
+</footer>
 
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
-        
-        // Check for saved theme preference or default to light
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        if (currentTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-                localStorage.setItem('theme', 'light');
-            }
-        });
+<script>
+/* ═══════════════════════════════════════════
+   NAVIGATION LOGIC
+═══════════════════════════════════════════ */
+const sections  = document.querySelectorAll('.section');
+const navBtns   = document.querySelectorAll('[data-target]');
+const mobileDrawer = document.getElementById('mobile-drawer');
+const mobileToggle = document.getElementById('mobileToggle');
 
-        // Read More functionality for project cards
-        document.addEventListener('DOMContentLoaded', () => {
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault(); 
-                    const targetId = this.dataset.target;
-                    switchTab(targetId);
-                });
-            });
-            
-            const initialTarget = document.querySelector('.nav-link.active-tab')?.dataset.target || 'home';
-            switchTab(initialTarget);
-            
-            // Read More button functionality
-            const readMoreButtons = document.querySelectorAll('.read-more-btn');
-            readMoreButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const description = this.previousElementSibling;
-                    description.classList.toggle('expanded');
-                    this.classList.toggle('expanded');
-                    
-                    if (this.classList.contains('expanded')) {
-                        this.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
-                    } else {
-                        this.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
-                    }
-                });
-            });
-            
-            // Contact form submission with Web3Forms integration
-            const contactForm = document.getElementById('contactForm');
-            const formMessage = document.getElementById('formMessage');
-            
-            if (contactForm) {
-                contactForm.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    
-                    // Get form data
-                    const formData = new FormData(this);
-                    const name = formData.get('name');
-                    const email = formData.get('email');
-                    const subject = formData.get('form_subject');
-                    const message = formData.get('message');
-                    
-                    // Simple validation
-                    if (!name || !email || !subject || !message) {
-                        showFormMessage('Please fill in all fields.', 'error');
-                        return;
-                    }
-                    
-                    // Email validation
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(email)) {
-                        showFormMessage('Please enter a valid email address.', 'error');
-                        return;
-                    }
-                    
-                    // Show loading state
-                    const submitBtn = contactForm.querySelector('.submit-btn');
-                    const originalText = submitBtn.innerHTML;
-                    submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin ml-2"></i>';
-                    submitBtn.disabled = true;
-                    
-                    try {
-                        // Send form data to Web3Forms
-                        const response = await fetch('https://api.web3forms.com/submit', {
-                            method: 'POST',
-                            body: formData
-                        });
-                        
-                        const result = await response.json();
-                        
-                        if (result.success) {
-                            // Show success message
-                            showFormMessage('Thank you for your message! I will get back to you soon.', 'success');
-                            // Reset form
-                            contactForm.reset();
-                        } else {
-                            // Show error message from Web3Forms
-                            showFormMessage('There was an error sending your message. Please try again or contact me directly.', 'error');
-                            console.error('Web3Forms error:', result);
-                        }
-                    } catch (error) {
-                        // Show error message
-                        showFormMessage('There was an error sending your message. Please try again or contact me directly.', 'error');
-                        console.error('Form submission error:', error);
-                    } finally {
-                        // Reset button
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.disabled = false;
-                    }
-                });
-            }
-            
-            function showFormMessage(message, type) {
-                formMessage.textContent = message;
-                formMessage.className = 'form-message';
-                formMessage.classList.add(type);
-                formMessage.classList.remove('hidden');
-                
-                // Hide message after 5 seconds
-                setTimeout(() => {
-                    formMessage.classList.add('hidden');
-                }, 5000);
-            }
-        });
-    </script>
+function showSection(id) {
+  sections.forEach(s => s.classList.remove('active'));
+  const target = document.getElementById(id);
+  if (target) { target.classList.add('active'); window.scrollTo(0,0); }
+
+  navBtns.forEach(b => {
+    b.classList.toggle('active', b.dataset.target === id);
+  });
+
+  mobileDrawer.classList.remove('open');
+  mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+}
+
+navBtns.forEach(btn => {
+  btn.addEventListener('click', () => showSection(btn.dataset.target));
+});
+
+mobileToggle.addEventListener('click', () => {
+  const open = mobileDrawer.classList.toggle('open');
+  mobileToggle.innerHTML = open ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+});
+
+/* ═══════════════════════════════════════════
+   CONTACT FORM
+═══════════════════════════════════════════ */
+const form        = document.getElementById('contactForm');
+const formMsg     = document.getElementById('formMessage');
+const submitBtn   = document.getElementById('submitBtn');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const orig = submitBtn.innerHTML;
+  submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+  submitBtn.disabled = true;
+
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: new FormData(form)
+    });
+    const data = await res.json();
+
+    if (data.success) {
+      formMsg.className = 'form-message success';
+      formMsg.textContent = '✓ Message sent! I\'ll get back to you within 24 hours.';
+      form.reset();
+    } else {
+      throw new Error('Submission failed');
+    }
+  } catch {
+    formMsg.className = 'form-message error';
+    formMsg.textContent = '✕ Something went wrong. Please email me directly at subhajithalder267@outlook.com';
+  }
+
+  submitBtn.innerHTML = orig;
+  submitBtn.disabled = false;
+  setTimeout(() => { formMsg.className = 'form-message'; }, 7000);
+});
+
+/* ═══════════════════════════════════════════
+   THEME TOGGLE
+═══════════════════════════════════════════ */
+const themeToggle = document.getElementById('themeToggle');
+const htmlEl = document.documentElement;
+
+function applyTheme(theme) {
+  htmlEl.setAttribute('data-theme', theme);
+  themeToggle.innerHTML = theme === 'dark'
+    ? '<i class="fas fa-sun"></i>'
+    : '<i class="fas fa-moon"></i>';
+  themeToggle.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+  localStorage.setItem('sh-theme', theme);
+}
+
+themeToggle.addEventListener('click', () => {
+  const current = htmlEl.getAttribute('data-theme');
+  applyTheme(current === 'dark' ? 'light' : 'dark');
+});
+
+// Restore saved preference or detect system preference
+const saved = localStorage.getItem('sh-theme');
+if (saved) {
+  applyTheme(saved);
+} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+  applyTheme('light');
+} else {
+  applyTheme('dark');
+}
+
+/* ── Init ── */
+showSection('home');
+</script>
 </body>
 </html>
