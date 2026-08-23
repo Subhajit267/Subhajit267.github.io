@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -10,11 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-/* ═══════════════════════════════════════════
-   DESIGN SYSTEM — DARK / LIGHT MODE
-═══════════════════════════════════════════ */
 :root {
-  /* shared */
   --amber:     #f5a623;
   --amber2:    #ffc344;
   --green:     #22c55e;
@@ -25,8 +20,6 @@
   --radius:    12px;
   --radius-lg: 20px;
 }
-
-/* ── DARK MODE (default) ── */
 html[data-theme="dark"] {
   --bg:        #0a0a0b;
   --bg2:       #111114;
@@ -45,8 +38,6 @@ html[data-theme="dark"] {
   --tag-amber-bg: rgba(245,166,35,0.1);
   --tag-green-bg: rgba(34,197,94,0.1);
 }
-
-/* ── LIGHT MODE — warm parchment, easy on eyes ── */
 html[data-theme="light"] {
   --bg:        #f0ead8;
   --bg2:       #f8f3e8;
@@ -68,11 +59,8 @@ html[data-theme="light"] {
   --amber:     #b86a00;
   --amber2:    #d48020;
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
-
 body {
   font-family: var(--font-b);
   background: var(--bg);
@@ -81,8 +69,6 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
-
-/* ── NOISE TEXTURE OVERLAY ── */
 body::before {
   content: '';
   position: fixed;
@@ -92,8 +78,6 @@ body::before {
   z-index: 9999;
   opacity: var(--noise-opacity);
 }
-
-/* ── AMBIENT GLOW ── */
 .glow-orb {
   position: fixed;
   border-radius: 50%;
@@ -103,10 +87,6 @@ body::before {
 }
 .glow-1 { width: 600px; height: 600px; background: var(--glow1-bg); top: -200px; right: -100px; }
 .glow-2 { width: 400px; height: 400px; background: var(--glow2-bg); bottom: 20%; left: -100px; }
-
-/* ═══════════════════════════════════════════
-   NAVIGATION
-═══════════════════════════════════════════ */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -119,7 +99,6 @@ nav {
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
 }
-
 .nav-inner {
   max-width: 1400px;
   margin: 0 auto;
@@ -129,7 +108,6 @@ nav {
   align-items: center;
   justify-content: space-between;
 }
-
 .nav-logo {
   font-family: var(--font-h);
   font-size: 1.15rem;
@@ -140,16 +118,13 @@ nav {
   align-items: center;
   gap: 0.5rem;
 }
-
 .nav-logo .dot { color: var(--amber); }
-
 .nav-links {
   display: flex;
   align-items: center;
   gap: 0.25rem;
   list-style: none;
 }
-
 .nav-links button {
   background: none;
   border: none;
@@ -163,17 +138,14 @@ nav {
   transition: all 0.2s;
   white-space: nowrap;
 }
-
 .nav-links button:hover,
 .nav-links button.active {
   color: var(--text);
   background: var(--bg3);
 }
-
 .nav-links button.active {
   color: var(--amber);
 }
-
 .nav-cta {
   font-family: var(--font-m) !important;
   background: var(--amber) !important;
@@ -182,13 +154,10 @@ nav {
   padding: 0.5rem 1.1rem !important;
   letter-spacing: 0.02em !important;
 }
-
 .nav-cta:hover {
   background: var(--amber2) !important;
   color: var(--bg) !important;
 }
-
-/* Mobile menu */
 .mobile-btn {
   display: none;
   background: none;
@@ -199,7 +168,6 @@ nav {
   cursor: pointer;
   font-size: 1rem;
 }
-
 #mobile-drawer {
   display: none;
   position: fixed;
@@ -212,7 +180,6 @@ nav {
   gap: 0.25rem;
   flex-direction: column;
 }
-
 #mobile-drawer.open { display: flex; }
 #mobile-drawer button {
   background: none;
@@ -227,16 +194,11 @@ nav {
   transition: all 0.2s;
 }
 #mobile-drawer button:hover, #mobile-drawer button.active { color: var(--amber); background: var(--bg3); }
-
-/* ═══════════════════════════════════════════
-   LAYOUT SHELL
-═══════════════════════════════════════════ */
 main {
   padding-top: var(--nav-h);
   position: relative;
   z-index: 1;
 }
-
 .section {
   display: none;
   min-height: calc(100vh - var(--nav-h));
@@ -244,12 +206,7 @@ main {
   margin: 0 auto;
   padding: 5rem 2rem 4rem;
 }
-
 .section.active { display: block; }
-
-/* ═══════════════════════════════════════════
-   SHARED COMPONENTS
-═══════════════════════════════════════════ */
 .section-label {
   font-family: var(--font-m);
   font-size: 0.72rem;
@@ -261,7 +218,6 @@ main {
   align-items: center;
   gap: 0.6rem;
 }
-
 .section-label::before {
   content: '';
   display: block;
@@ -269,9 +225,7 @@ main {
   height: 1px;
   background: var(--amber);
 }
-
 h1, h2, h3, h4, h5 { font-family: var(--font-h); }
-
 .section-title {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
@@ -279,7 +233,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   letter-spacing: -0.03em;
   margin-bottom: 1rem;
 }
-
 .section-sub {
   color: var(--muted2);
   font-size: 1.05rem;
@@ -287,38 +240,30 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   max-width: 640px;
   margin-bottom: 3rem;
 }
-
 .divider {
   width: 100%;
   height: 1px;
   background: var(--border);
   margin: 3rem 0;
 }
-
-/* ── CARD BASE ── */
 .card {
   background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
-
 .card:hover {
   border-color: var(--border2);
   transform: translateY(-4px);
   box-shadow: 0 24px 60px var(--shadow);
 }
-
 .card-amber {
   border-color: rgba(245,166,35,0.2);
 }
-
 .card-amber:hover {
   border-color: rgba(245,166,35,0.4);
   box-shadow: 0 24px 60px rgba(245,166,35,0.08);
 }
-
-/* ── TAGS ── */
 .tag {
   display: inline-block;
   font-family: var(--font-m);
@@ -330,11 +275,8 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   border: 1px solid var(--border2);
   letter-spacing: 0.03em;
 }
-
 .tag-amber { background: var(--tag-amber-bg); color: var(--amber); border-color: rgba(245,166,35,0.25); }
 .tag-green { background: var(--tag-green-bg); color: var(--green); border-color: rgba(34,197,94,0.2); }
-
-/* ── BUTTONS ── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -350,30 +292,23 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   text-decoration: none;
   letter-spacing: 0.02em;
 }
-
 .btn-primary {
   background: var(--amber);
   color: var(--bg);
 }
 .btn-primary:hover { background: var(--amber2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,166,35,0.3); }
-
 .btn-ghost {
   background: var(--bg3);
   color: var(--text);
   border: 1px solid var(--border2);
 }
 .btn-ghost:hover { border-color: rgba(255,255,255,0.25); transform: translateY(-2px); }
-
 .btn-outline-amber {
   background: transparent;
   color: var(--amber);
   border: 1px solid rgba(245,166,35,0.4);
 }
 .btn-outline-amber:hover { background: rgba(245,166,35,0.08); transform: translateY(-2px); }
-
-/* ═══════════════════════════════════════════
-   HOME SECTION
-═══════════════════════════════════════════ */
 #home {
   display: none;
   padding-top: 0;
@@ -386,14 +321,12 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
-
 .hero-layout {
   display: grid;
   grid-template-columns: 1fr 340px;
   gap: 3rem;
   align-items: center;
 }
-
 .hero-status {
   display: inline-flex;
   align-items: center;
@@ -408,19 +341,16 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   margin-bottom: 1.5rem;
   letter-spacing: 0.05em;
 }
-
 .hero-status .pulse {
   width: 7px; height: 7px;
   border-radius: 50%;
   background: var(--green);
   animation: pulse 2s infinite;
 }
-
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.5; transform: scale(0.8); }
 }
-
 .hero-title {
   font-size: clamp(2.8rem, 6vw, 5rem);
   font-weight: 800;
@@ -428,10 +358,8 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   letter-spacing: -0.04em;
   margin-bottom: 1.5rem;
 }
-
 .hero-title .amber { color: var(--amber); }
 .hero-title .block { display: block; }
-
 .hero-desc {
   font-size: 1.1rem;
   color: var(--muted2);
@@ -439,21 +367,18 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   max-width: 520px;
   margin-bottom: 2.5rem;
 }
-
 .hero-actions {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
   margin-bottom: 3.5rem;
 }
-
 .hero-stats {
   display: flex;
   gap: 2.5rem;
   padding-top: 2rem;
   border-top: 1px solid var(--border);
 }
-
 .stat-item { display: flex; flex-direction: column; gap: 0.2rem; }
 .stat-num {
   font-family: var(--font-h);
@@ -464,8 +389,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
 }
 .stat-num span { color: var(--amber); }
 .stat-label { font-family: var(--font-m); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
-
-/* Hero right card */
 .hero-card {
   background: var(--bg2);
   border: 1px solid var(--border);
@@ -474,7 +397,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   position: sticky;
   top: calc(var(--nav-h) + 2rem);
 }
-
 .hero-card-header {
   display: flex;
   align-items: center;
@@ -483,13 +405,11 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--border);
 }
-
 .hero-card-header .dot-row { display: flex; gap: 5px; }
 .dot-row span { width: 10px; height: 10px; border-radius: 50%; }
 .dot-red { background: #ff5f57; }
 .dot-yellow { background: #febc2e; }
 .dot-green { background: #28c840; }
-
 .hero-card-title {
   font-family: var(--font-m);
   font-size: 0.72rem;
@@ -497,7 +417,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   letter-spacing: 0.08em;
   margin-left: auto;
 }
-
 .service-item {
   display: flex;
   align-items: center;
@@ -505,9 +424,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   padding: 0.75rem 0;
   border-bottom: 1px solid var(--border);
 }
-
 .service-item:last-child { border: none; padding-bottom: 0; }
-
 .service-icon {
   width: 36px; height: 36px;
   border-radius: 8px;
@@ -515,14 +432,11 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   font-size: 0.9rem;
   flex-shrink: 0;
 }
-
 .si-amber { background: rgba(245,166,35,0.12); color: var(--amber); }
 .si-green { background: rgba(34,197,94,0.12); color: var(--green); }
 .si-blue { background: rgba(99,179,237,0.12); color: #63b3ed; }
-
 .service-name { font-size: 0.88rem; font-weight: 500; }
 .service-tech { font-family: var(--font-m); font-size: 0.68rem; color: var(--muted); margin-top: 0.1rem; }
-
 .availability-badge {
   margin-top: 1.25rem;
   background: rgba(34,197,94,0.06);
@@ -535,23 +449,17 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   color: var(--green);
   letter-spacing: 0.04em;
 }
-
-/* ═══════════════════════════════════════════
-   SERVICES SECTION
-═══════════════════════════════════════════ */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
   margin-bottom: 3rem;
 }
-
 .service-card {
   padding: 2rem;
   position: relative;
   overflow: hidden;
 }
-
 .service-card::before {
   content: '';
   position: absolute;
@@ -561,9 +469,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   opacity: 0;
   transition: opacity 0.3s;
 }
-
 .service-card:hover::before { opacity: 1; }
-
 .service-card-icon {
   width: 48px; height: 48px;
   border-radius: 12px;
@@ -574,14 +480,12 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   font-size: 1.2rem;
   margin-bottom: 1.25rem;
 }
-
 .service-card-title {
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
   letter-spacing: -0.02em;
 }
-
 .service-card-sub {
   font-family: var(--font-m);
   font-size: 0.72rem;
@@ -589,14 +493,12 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   margin-bottom: 1rem;
   letter-spacing: 0.04em;
 }
-
 .service-card-desc {
   color: var(--muted2);
   font-size: 0.92rem;
   line-height: 1.7;
   margin-bottom: 1.25rem;
 }
-
 .service-card-note {
   font-size: 0.85rem;
   font-weight: 500;
@@ -604,7 +506,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   padding-top: 1rem;
   border-top: 1px solid var(--border);
 }
-
 .process-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -615,15 +516,12 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   overflow: hidden;
   margin-top: 2rem;
 }
-
 .process-step {
   padding: 1.75rem;
   border-right: 1px solid var(--border);
   position: relative;
 }
-
 .process-step:last-child { border-right: none; }
-
 .step-num {
   font-family: var(--font-m);
   font-size: 0.7rem;
@@ -631,18 +529,12 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   letter-spacing: 0.1em;
   margin-bottom: 0.75rem;
 }
-
 .step-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
 .step-desc { font-size: 0.83rem; color: var(--muted2); line-height: 1.6; }
-
-/* ═══════════════════════════════════════════
-   PROJECTS SECTION — TABBED SINGLE-FRAME
-═══════════════════════════════════════════ */
 #projects {
   padding-top: 2rem !important;
   padding-bottom: 1.5rem !important;
 }
-
 .projects-header {
   display: flex;
   align-items: flex-end;
@@ -651,20 +543,15 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   flex-wrap: wrap;
   gap: 0.5rem;
 }
-
-/* ── TAB BAR (kept for compat, hidden) ── */
 .proj-tabs { display: none; }
 .proj-panel { display: none; }
 .proj-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-/* ── UNIFIED 3-COL GRID ── */
 .proj-unified-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0.6rem;
   align-items: start;
 }
-
 .proj-cat-label {
   font-family: var(--font-m);
   font-size: 0.65rem;
@@ -678,30 +565,21 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   border-bottom: 1px solid var(--border);
   margin-bottom: 0.1rem;
 }
-
 .proj-cat-label::after {
   content: '';
   flex: 1;
   height: 1px;
   background: var(--border);
 }
-
-/* wide card spans 2 cols */
 .proj-wide { grid-column: span 2; }
-
-/* stacked pair in one cell */
 .proj-stack {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-
-/* mini cards (no description, compact) */
 .proj-mini {
   padding: 1.1rem 1.25rem !important;
 }
-
-/* card top row (title + badge) */
 .pc-top {
   display: flex;
   align-items: flex-start;
@@ -710,8 +588,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   flex-wrap: wrap;
   margin-bottom: 0.4rem;
 }
-
-/* badge variants */
 .pc-badge {
   font-family: var(--font-m);
   font-size: 0.6rem;
@@ -724,14 +600,11 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   white-space: nowrap;
   flex-shrink: 0;
 }
-
 .pc-badge-green {
   color: var(--green);
   background: rgba(34,197,94,0.08);
   border-color: rgba(34,197,94,0.22);
 }
-
-/* card footer row */
 .pc-foot {
   display: flex;
   align-items: center;
@@ -740,8 +613,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   gap: 0.5rem;
   margin-top: 0.5rem;
 }
-
-/* ── PROJECT CARD ── */
 .project-card {
   background: var(--bg2);
   border: 1px solid var(--border);
@@ -754,14 +625,11 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   position: relative;
   overflow: hidden;
 }
-
 .project-card:hover {
   border-color: var(--border2);
   box-shadow: 0 12px 32px var(--shadow);
   transform: translateY(-2px);
 }
-
-/* amber left accent on featured cards */
 .project-card.is-flagship {
   border-color: rgba(245,166,35,0.22);
 }
@@ -776,8 +644,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   border-color: rgba(245,166,35,0.45);
   box-shadow: 0 12px 32px rgba(245,166,35,0.08);
 }
-
-/* ── card innards ── */
 .project-card-type {
   font-family: var(--font-m);
   font-size: 0.63rem;
@@ -785,23 +651,19 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-
 .project-card-title {
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.3;
 }
-
 .project-card-desc {
   font-size: 0.78rem;
   color: var(--muted2);
   line-height: 1.55;
   flex: 1;
 }
-
 .project-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.15rem; }
-
 .project-link {
   font-family: var(--font-m);
   font-size: 0.7rem;
@@ -816,7 +678,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   width: fit-content;
 }
 .project-link:hover { opacity: 1; }
-
 .proj-footer {
   display: flex;
   align-items: center;
@@ -827,13 +688,11 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   flex-wrap: wrap;
   gap: 0.5rem;
 }
-
 .proj-footer-note {
   font-family: var(--font-m);
   font-size: 0.72rem;
   color: var(--muted);
 }
-
 .view-all-btn {
   font-family: var(--font-m);
   font-size: 0.75rem;
@@ -849,10 +708,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   transition: all 0.2s;
 }
 .view-all-btn:hover { background: rgba(245,166,35,0.14); transform: translateY(-1px); }
-
-/* ══════════════════════════════════════════
-   ALL PROJECTS DRAWER (slide-in panel)
-══════════════════════════════════════════ */
 #all-projects-drawer {
   position: fixed;
   inset: 0;
@@ -862,19 +717,16 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   opacity: 0;
   transition: opacity 0.3s;
 }
-
 #all-projects-drawer.open {
   pointer-events: all;
   opacity: 1;
 }
-
 .drawer-backdrop {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.55);
   backdrop-filter: blur(4px);
 }
-
 .drawer-panel {
   position: absolute;
   right: 0; top: 0; bottom: 0;
@@ -889,11 +741,9 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   flex-direction: column;
   gap: 1.25rem;
 }
-
 #all-projects-drawer.open .drawer-panel {
   transform: translateX(0);
 }
-
 .drawer-header {
   display: flex;
   align-items: center;
@@ -907,14 +757,12 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   padding: 1.5rem 2rem;
   z-index: 1;
 }
-
 .drawer-title {
   font-family: var(--font-h);
   font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: -0.03em;
 }
-
 .drawer-close {
   width: 36px; height: 36px;
   border-radius: var(--radius);
@@ -928,7 +776,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   flex-shrink: 0;
 }
 .drawer-close:hover { color: var(--text); background: var(--border2); }
-
 .drawer-cat {
   font-family: var(--font-m);
   font-size: 0.65rem;
@@ -941,7 +788,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   margin-top: 0.5rem;
 }
 .drawer-cat::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-
 .drawer-item {
   display: flex;
   align-items: flex-start;
@@ -953,7 +799,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   transition: border-color 0.2s, background 0.2s;
 }
 .drawer-item:hover { border-color: var(--border2); background: var(--bg3); }
-
 .drawer-item-num {
   font-family: var(--font-m);
   font-size: 0.7rem;
@@ -965,38 +810,29 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   flex-shrink: 0;
   margin-top: 0.1rem;
 }
-
 .drawer-item-title {
   font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   margin-bottom: 0.25rem;
 }
-
 .drawer-item-desc {
   font-size: 0.78rem;
   color: var(--muted2);
   line-height: 1.6;
 }
-
 .drawer-item-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.5rem; }
-
-/* ═══════════════════════════════════════════
-   SKILLS SECTION
-═══════════════════════════════════════════ */
 .skills-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
 }
-
 .skills-group {
   background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 2rem;
 }
-
 .skills-group-title {
   font-family: var(--font-m);
   font-size: 0.72rem;
@@ -1007,7 +843,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--border);
 }
-
 .skill-item {
   display: flex;
   justify-content: space-between;
@@ -1015,26 +850,20 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   padding: 0.75rem 0;
   border-bottom: 1px solid var(--border);
 }
-
 .skill-item:last-child { border: none; }
-
 .skill-name { font-size: 0.92rem; font-weight: 500; }
 .skill-level {
   display: flex;
   gap: 3px;
 }
-
 .skill-dot {
   width: 6px; height: 6px;
   border-radius: 50%;
   background: var(--bg3);
   border: 1px solid var(--border2);
 }
-
 .skill-dot.filled { background: var(--amber); border-color: var(--amber); }
-
 .skill-desc { font-size: 0.78rem; color: var(--muted); margin-top: 0.15rem; }
-
 .skills-full {
   margin-top: 2rem;
   background: var(--bg2);
@@ -1042,27 +871,19 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   border-radius: var(--radius-lg);
   padding: 2rem;
 }
-
 .skills-tags-title {
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
 }
-
 .skills-tag-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-
-/* ═══════════════════════════════════════════
-   EXPERIENCE SECTION
-═══════════════════════════════════════════ */
 .experience-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
 }
-
 .exp-card { padding: 2rem; }
-
 .exp-header {
   display: flex;
   justify-content: space-between;
@@ -1071,7 +892,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   flex-wrap: wrap;
   gap: 0.5rem;
 }
-
 .exp-title { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; }
 .exp-date {
   font-family: var(--font-m);
@@ -1083,16 +903,13 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   border-radius: 999px;
   white-space: nowrap;
 }
-
 .exp-org { color: var(--muted2); font-size: 0.9rem; margin-bottom: 1.25rem; }
-
 .exp-list {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
 }
-
 .exp-list li {
   font-size: 0.88rem;
   color: var(--muted2);
@@ -1100,7 +917,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   padding-left: 1rem;
   position: relative;
 }
-
 .exp-list li::before {
   content: '▸';
   position: absolute;
@@ -1109,18 +925,12 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   font-size: 0.7rem;
   top: 0.15em;
 }
-
-/* ═══════════════════════════════════════════
-   REVIEWS SECTION
-═══════════════════════════════════════════ */
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
 }
-
 .review-card { padding: 1.75rem; }
-
 .stars {
   display: flex;
   gap: 3px;
@@ -1128,7 +938,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   font-size: 0.85rem;
   margin-bottom: 1rem;
 }
-
 .review-quote {
   font-size: 0.92rem;
   color: var(--muted2);
@@ -1137,7 +946,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   margin-bottom: 1.25rem;
   position: relative;
 }
-
 .review-quote::before {
   content: '"';
   font-family: var(--font-h);
@@ -1150,13 +958,11 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   line-height: 1;
   pointer-events: none;
 }
-
 .review-author {
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--text);
 }
-
 .review-location {
   font-family: var(--font-m);
   font-size: 0.7rem;
@@ -1164,19 +970,13 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   letter-spacing: 0.05em;
   margin-top: 0.2rem;
 }
-
-/* ═══════════════════════════════════════════
-   CONTACT SECTION
-═══════════════════════════════════════════ */
 .contact-layout {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
   gap: 2rem;
   align-items: start;
 }
-
 .contact-info { padding: 2.5rem; }
-
 .contact-title {
   font-size: 1.8rem;
   font-weight: 800;
@@ -1184,14 +984,12 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   margin-bottom: 0.75rem;
   line-height: 1.15;
 }
-
 .contact-desc {
   color: var(--muted2);
   font-size: 0.92rem;
   line-height: 1.75;
   margin-bottom: 2rem;
 }
-
 .contact-item {
   display: flex;
   align-items: center;
@@ -1202,10 +1000,8 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   color: var(--text);
   transition: color 0.2s;
 }
-
 .contact-item:last-of-type { border: none; }
 .contact-item:hover { color: var(--amber); }
-
 .contact-item-icon {
   width: 38px; height: 38px;
   border-radius: 10px;
@@ -1216,16 +1012,13 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   font-size: 0.95rem;
   flex-shrink: 0;
 }
-
 .contact-item-label { font-family: var(--font-m); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
 .contact-item-value { font-size: 0.92rem; font-weight: 500; margin-top: 0.1rem; }
-
 .social-row {
   display: flex;
   gap: 0.75rem;
   margin-top: 1.5rem;
 }
-
 .social-btn {
   width: 42px; height: 42px;
   border-radius: 10px;
@@ -1237,15 +1030,10 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   text-decoration: none;
   transition: all 0.2s;
 }
-
 .social-btn:hover { color: var(--amber); border-color: rgba(245,166,35,0.3); background: rgba(245,166,35,0.06); }
-
-/* Form */
 .form-card { padding: 2.5rem; }
 .form-title { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
-
 .form-group { margin-bottom: 1.25rem; }
-
 .form-label {
   display: block;
   font-family: var(--font-m);
@@ -1255,7 +1043,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   text-transform: uppercase;
   margin-bottom: 0.5rem;
 }
-
 .form-input, .form-textarea {
   width: 100%;
   background: var(--bg3);
@@ -1268,18 +1055,13 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   transition: border-color 0.2s, box-shadow 0.2s;
   outline: none;
 }
-
 .form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
-
 .form-input:focus, .form-textarea:focus {
   border-color: rgba(245,166,35,0.5);
   box-shadow: 0 0 0 3px rgba(245,166,35,0.08);
 }
-
 .form-textarea { min-height: 120px; resize: vertical; }
-
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
 .form-message {
   margin-top: 1rem;
   padding: 0.75rem 1rem;
@@ -1289,25 +1071,18 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   letter-spacing: 0.03em;
   display: none;
 }
-
 .form-message.success { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); color: var(--green); display: block; }
 .form-message.error { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); color: #f87171; display: block; }
-
-/* ═══════════════════════════════════════════
-   ABOUT SECTION
-═══════════════════════════════════════════ */
 .about-layout {
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 3rem;
   align-items: start;
 }
-
 .about-img-wrap {
   position: sticky;
   top: calc(var(--nav-h) + 2rem);
 }
-
 .about-img-frame {
   border-radius: var(--radius-lg);
   border: 1px solid var(--border2);
@@ -1319,13 +1094,11 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   justify-content: center;
   margin-bottom: 1rem;
 }
-
 .about-img-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
 .about-img-placeholder {
   font-family: var(--font-m);
   font-size: 0.75rem;
@@ -1333,14 +1106,12 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   text-align: center;
   padding: 2rem;
 }
-
 .about-name {
   font-size: 1.1rem;
   font-weight: 700;
   text-align: center;
   margin-bottom: 0.25rem;
 }
-
 .about-role {
   font-family: var(--font-m);
   font-size: 0.72rem;
@@ -1350,18 +1121,14 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
-
 .about-content h2 { font-size: 2.8rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 0.75rem; }
-
 .about-body {
   color: var(--muted2);
   font-size: 1rem;
   line-height: 1.8;
   margin-bottom: 1.5rem;
 }
-
 .about-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
-
 .education-block {
   background: var(--bg2);
   border: 1px solid var(--border);
@@ -1369,31 +1136,23 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   padding: 1.75rem;
   margin-top: 1.5rem;
 }
-
 .edu-title { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
-
 .edu-item { padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
 .edu-item:last-child { border: none; padding-bottom: 0; }
 .edu-deg { font-size: 0.92rem; font-weight: 600; }
 .edu-school { font-family: var(--font-m); font-size: 0.72rem; color: var(--muted2); margin-top: 0.15rem; }
-
-/* ═══════════════════════════════════════════
-   CERTIFICATIONS SECTION
-═══════════════════════════════════════════ */
 .certs-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
   margin-bottom: 2rem;
 }
-
 .cert-card {
   padding: 1.75rem;
   display: flex;
   align-items: flex-start;
   gap: 1.25rem;
 }
-
 .cert-icon {
   width: 48px; height: 48px;
   border-radius: 12px;
@@ -1404,16 +1163,12 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   font-size: 1.2rem;
   flex-shrink: 0;
 }
-
 .cert-name { font-size: 1rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.25rem; }
 .cert-issuer { font-family: var(--font-m); font-size: 0.72rem; color: var(--amber); letter-spacing: 0.04em; margin-bottom: 0.35rem; }
 .cert-year { font-family: var(--font-m); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.06em; }
-
 @media (max-width: 600px) {
   .certs-grid { grid-template-columns: 1fr; }
 }
-
-/* ── THEME TOGGLE BUTTON ── */
 .theme-toggle {
   display: flex;
   align-items: center;
@@ -1429,14 +1184,11 @@ h1, h2, h3, h4, h5 { font-family: var(--font-h); }
   flex-shrink: 0;
 }
 .theme-toggle:hover { color: var(--amber); border-color: rgba(245,166,35,0.3); background: rgba(245,166,35,0.06); }
-
-/* light mode specific overrides */
 html[data-theme="light"] .hero-status { border-color: rgba(22,163,74,0.3); background: rgba(22,163,74,0.08); }
 html[data-theme="light"] .availability-badge { background: rgba(22,163,74,0.06); border-color: rgba(22,163,74,0.2); }
 html[data-theme="light"] .project-featured { border-color: rgba(245,166,35,0.25); }
 html[data-theme="light"] .project-featured:hover { border-color: rgba(245,166,35,0.5); }
 html[data-theme="light"] #mobile-drawer { background: var(--bg2); border-bottom-color: var(--border); }
-
 footer {
   border-top: 1px solid var(--border);
   padding: 2rem;
@@ -1448,24 +1200,15 @@ footer {
   max-width: 1400px;
   margin: 0 auto;
 }
-
-/* ═══════════════════════════════════════════
-   ANIMATIONS
-═══════════════════════════════════════════ */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 .fade-up { animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) both; }
 .delay-1 { animation-delay: 0.1s; }
 .delay-2 { animation-delay: 0.2s; }
 .delay-3 { animation-delay: 0.35s; }
 .delay-4 { animation-delay: 0.5s; }
-
-/* ═══════════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════════ */
 @media (max-width: 1100px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
   .projects-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1478,7 +1221,6 @@ footer {
   .hero-layout { grid-template-columns: 1fr; }
   .hero-card { display: none; }
 }
-
 @media (max-width: 900px) {
   .nav-links { display: none; }
   .mobile-btn { display: flex; }
@@ -1496,7 +1238,6 @@ footer {
   .form-row { grid-template-columns: 1fr; }
   .section { padding: 3rem 1.25rem 3rem; }
 }
-
 @media (max-width: 600px) {
   .services-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
@@ -1513,18 +1254,13 @@ footer {
 </style>
 </head>
 <body>
-
-<!-- Ambient glows -->
 <div class="glow-orb glow-1"></div>
 <div class="glow-orb glow-2"></div>
-
-<!-- ═══ NAVIGATION ═══ -->
 <nav>
   <div class="nav-inner">
     <div class="nav-logo">
       SH<span class="dot">.</span>
     </div>
-
     <ul class="nav-links" id="navLinks">
       <li><button class="active" data-target="home">Home</button></li>
       <li><button data-target="services">Services</button></li>
@@ -1536,7 +1272,6 @@ footer {
       <li><button data-target="about">About</button></li>
       <li><button data-target="contact" class="nav-cta">Hire Me</button></li>
     </ul>
-
     <button class="mobile-btn" id="mobileToggle">
       <i class="fas fa-bars"></i>
     </button>
@@ -1545,8 +1280,6 @@ footer {
     </button>
   </div>
 </nav>
-
-<!-- Mobile Drawer -->
 <div id="mobile-drawer">
   <button data-target="home" class="active">Home</button>
   <button data-target="services">Services</button>
@@ -1558,29 +1291,22 @@ footer {
   <button data-target="about">About</button>
   <button data-target="contact">Hire Me →</button>
 </div>
-
-<!-- ═══ MAIN CONTENT ═══ -->
 <main>
-
-<!-- ─── HOME ─── -->
 <section class="section active" id="home">
   <div class="hero-layout">
     <div>
       <div class="hero-status fade-up">
         <span class="pulse"></span>
-        Available for freelance work
+        Linux Software Development Intern @ Swift Robotics, London
       </div>
-
       <h1 class="hero-title fade-up delay-1">
         <span class="block">Systems &</span>
-        <span class="block amber">Software</span>
+        <span class="block amber">Speech AI</span>
         <span class="block">Developer.</span>
       </h1>
-
       <p class="hero-desc fade-up delay-2">
-        35+ freelance projects delivered internationally. I build high-performance C/C++ systems, real-time IoT & embedded solutions, and AI-driven applications — for clients across USA, Germany, Saudi Arabia & Australia.
+        C/C++, Linux & AI systems developer specializing in real-time audio/AI pipelines and embedded Linux. I extend and customize speech-AI systems (Sherpa-ONNX, Moonshine, PipeWire) for production robotics, alongside 35+ freelance software systems delivered internationally.
       </p>
-
       <div class="hero-actions fade-up delay-3">
         <button class="btn btn-primary nav-btn" data-target="contact">
           Start a Project <i class="fas fa-arrow-right"></i>
@@ -1589,7 +1315,6 @@ footer {
           View Work
         </button>
       </div>
-
       <div class="hero-stats fade-up delay-4">
         <div class="stat-item">
           <div class="stat-num">35<span>+</span></div>
@@ -1605,7 +1330,6 @@ footer {
         </div>
       </div>
     </div>
-
     <div class="hero-card fade-up delay-2">
       <div class="hero-card-header">
         <div class="dot-row">
@@ -1615,44 +1339,45 @@ footer {
         </div>
         <span class="hero-card-title">SERVICES OVERVIEW</span>
       </div>
-
       <div class="service-item">
-        <div class="service-icon si-amber"><i class="fas fa-microchip"></i></div>
+        <div class="service-icon si-amber"><i class="fas fa-wave-square"></i></div>
         <div>
-          <div class="service-name">Embedded & IoT Systems</div>
-          <div class="service-tech">ESP32 · Arduino · Embedded C · PCB</div>
+          <div class="service-name">Speech AI & Audio Pipelines</div>
+          <div class="service-tech">Sherpa-ONNX · Moonshine · PipeWire</div>
         </div>
       </div>
       <div class="service-item">
-        <div class="service-icon si-blue"><i class="fas fa-code"></i></div>
+        <div class="service-icon si-blue"><i class="fas fa-microchip"></i></div>
         <div>
-          <div class="service-name">Software Development</div>
-          <div class="service-tech">C/C++ · Python · Java · Databases</div>
+          <div class="service-name">Embedded & Robotics Systems</div>
+          <div class="service-tech">Embedded Linux · XMOS · Kernel Drivers</div>
         </div>
       </div>
       <div class="service-item">
-        <div class="service-icon si-green"><i class="fas fa-graduation-cap"></i></div>
+        <div class="service-icon si-green"><i class="fas fa-code"></i></div>
         <div>
-          <div class="service-name">Technical Mentorship</div>
-          <div class="service-tech">IB · Cambridge · University Coursework</div>
+          <div class="service-name">Software & Backend Systems</div>
+          <div class="service-tech">C/C++ · Python · Node.js Native Addons</div>
         </div>
       </div>
-
       <div class="availability-badge">
         ✦ OPEN TO NEW PROJECTS — WORLDWIDE
       </div>
     </div>
   </div>
 </section>
-
-<!-- ─── SERVICES ─── -->
 <section class="section" id="services">
   <div class="section-label">What I Offer</div>
   <h2 class="section-title">Services Built Around<br>Client Outcomes</h2>
   <p class="section-sub">Every engagement is scoped, delivered, and refined to meet your exact requirements — no bloat, no vague timelines.</p>
-
   <div class="services-grid">
-    <!-- Service 1 -->
+    <div class="card service-card">
+      <div class="service-card-icon"><i class="fas fa-wave-square"></i></div>
+      <div class="service-card-title">Speech AI & Real-Time Audio</div>
+      <div class="service-card-sub">Sherpa-ONNX · Moonshine TTS · PipeWire · Streaming STT/TTS</div>
+      <p class="service-card-desc">Production speech pipelines — streaming TTS/STT, low-latency phoneme generation, lock-free audio buffering, and voice interaction systems built for robotics and conversational AI.</p>
+      <div class="service-card-note">Specialty: Streaming inference, lip-sync sync, low-latency chunked audio delivery.</div>
+    </div>
     <div class="card service-card">
       <div class="service-card-icon"><i class="fas fa-laptop-code"></i></div>
       <div class="service-card-title">Custom Software & Systems</div>
@@ -1660,27 +1385,14 @@ footer {
       <p class="service-card-desc">High-performance applications, OS-level tooling, algorithm-intensive systems, VBA/Macro automation, and database engines. Optimized for speed, correctness, and maintainability.</p>
       <div class="service-card-note">Specialty: Low-latency systems, DSA-heavy projects, performance-critical code.</div>
     </div>
-
-    <!-- Service 2 -->
     <div class="card service-card">
       <div class="service-card-icon"><i class="fas fa-microchip"></i></div>
-      <div class="service-card-title">IoT & Electronics Development</div>
-      <div class="service-card-sub">Embedded C · ESP32/Arduino · PCB Design · Circuit Prototyping</div>
-      <p class="service-card-desc">End-to-end embedded solutions — from circuit schematics and PCB layouts to firmware and cloud connectivity. Delivered as production-ready, documented hardware and software packages.</p>
-      <div class="service-card-note">Focus: ESP-family, STM32, analog/digital circuits, power electronics.</div>
-    </div>
-
-    <!-- Service 3 -->
-    <div class="card service-card">
-      <div class="service-card-icon"><i class="fas fa-graduation-cap"></i></div>
-      <div class="service-card-title">Academic Mentorship</div>
-      <div class="service-card-sub">IB · Cambridge · University of Miami (ECE) · IGCSE</div>
-      <p class="service-card-desc">Structured, results-driven tutoring for CS, Electronics, Networking, and Embedded Systems. Covers coursework, assignments, lab projects, and exam preparation with hands-on examples.</p>
-      <div class="service-card-note">Subjects: Computer Science, Electronics, Databases, Robotics.</div>
+      <div class="service-card-title">Embedded Linux & IoT</div>
+      <div class="service-card-sub">Embedded C · ESP32/Arduino · XMOS · Kernel/Driver Integration</div>
+      <p class="service-card-desc">End-to-end embedded solutions — from firmware and driver bring-up to cloud connectivity, IPC, and hardware-software integration for robotics and IoT devices.</p>
+      <div class="service-card-note">Focus: ESP-family, Raspberry Pi, XMOS voice hardware, kernel-level drivers.</div>
     </div>
   </div>
-
-  <!-- How I Work -->
   <div style="margin-top:3rem;">
     <p class="section-label">Process</p>
     <h3 style="font-size:1.5rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:1.5rem;">How Every Project Works</h3>
@@ -1707,13 +1419,10 @@ footer {
       </div>
     </div>
   </div>
-
   <div style="text-align:center;margin-top:3rem;">
     <button class="btn btn-primary nav-btn" data-target="contact">Discuss a Project <i class="fas fa-arrow-right"></i></button>
   </div>
 </section>
-
-<!-- ─── PROJECTS ─── -->
 <section class="section" id="projects">
   <div class="projects-header">
     <div>
@@ -1722,54 +1431,40 @@ footer {
     </div>
     <p style="color:var(--muted2);font-size:0.88rem;max-width:280px;line-height:1.6;text-align:right;">Source & docs on request · NDA available</p>
   </div>
-
-  <!--
-    LAYOUT: 3-col grid
-    Row 1 (Software): OE spans 2 cols | DVR/LSR 1 col
-    Row 2 (Hardware): SPHOORTI 1 col  | IoT Mood 1 col | Inverter+Amp stacked 1 col
-    Category labels float above each row via CSS subgrid trick
-  -->
   <div class="proj-unified-grid">
-
-    <!-- ── Software label ── -->
     <div class="proj-cat-label" style="grid-column:1/-1;">
-      <i class="fas fa-terminal" style="color:var(--amber);font-size:0.7rem;"></i> Software & Systems
+      <i class="fas fa-terminal" style="color:var(--amber);font-size:0.7rem;"></i> Speech AI & Software Systems
     </div>
-
-    <!-- OE — full-width flagship -->
     <div class="project-card is-flagship" style="grid-column:1/-1;">
       <div class="pc-top">
         <div>
-          <div class="project-card-type">Systems Programming · Cross-Platform</div>
-          <div class="project-card-title">Operating Environment (OE)</div>
+          <div class="project-card-type">Speech AI · Real-Time Audio · Robotics</div>
+          <div class="project-card-title">Moonshine Streaming TTS Extension for Robotics</div>
         </div>
         <span class="pc-badge"><i class="fas fa-star"></i> Flagship</span>
       </div>
-      <p class="project-card-desc">Cross-platform shell in C/C++ with 15+ commands, custom Windows/Linux abstraction layer, full text editor, Shunting Yard math evaluator — zero dependencies.</p>
+      <p class="project-card-desc">Extended the open-source Moonshine TTS engine with a real-time streaming architecture (C++, CMake, PipeWire) using Unix Domain Sockets for text ingestion and phoneme streaming. Lock-free SPSC ring buffer decouples synthesis from playback for low-latency chunked audio — lip-sync, avatar animation, voice agents.</p>
       <div class="pc-foot">
         <div class="project-tags">
-          <span class="tag tag-amber">C / C++</span>
-          <span class="tag tag-amber">Systems</span>
-          <span class="tag tag-amber">Cross-Platform</span>
+          <span class="tag tag-amber">C++ / CMake</span>
+          <span class="tag tag-amber">PipeWire</span>
+          <span class="tag tag-amber">Unix Sockets</span>
+          <span class="tag tag-amber">SPSC Ring Buffer</span>
         </div>
         <a href="https://github.com/Subhajit267" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
       </div>
     </div>
-
-    <!-- DVR/LSR — 1 col -->
     <div class="project-card" style="grid-column:span 1;">
       <div class="pc-top"><div>
-        <div class="project-card-type">Networking · Algorithms</div>
-        <div class="project-card-title">Network Routing Simulator</div>
+        <div class="project-card-type">Systems Programming · Cross-Platform</div>
+        <div class="project-card-title">Operating Environment (OE)</div>
       </div></div>
-      <p class="project-card-desc">Bellman-Ford (DVR) & Dijkstra (LSR) across 10+ nodes via multi-threaded Python TCP sockets. Real-time convergence analysis.</p>
+      <p class="project-card-desc">Cross-platform shell in C/C++ with 15+ commands, custom Windows/Linux abstraction layer, text editor, Shunting Yard math evaluator. Evolving toward a standalone OS with kernel-level syscall integration.</p>
       <div class="pc-foot">
-        <div class="project-tags"><span class="tag">Python</span><span class="tag">TCP</span><span class="tag">Multithreading</span></div>
+        <div class="project-tags"><span class="tag">C / C++</span><span class="tag">Systems</span><span class="tag">Cross-Platform</span></div>
         <a href="https://github.com/Subhajit267" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
       </div>
     </div>
-
-    <!-- Face Recognition — 2 cols -->
     <div class="project-card" style="grid-column:span 2;">
       <div class="pc-top">
         <div>
@@ -1784,13 +1479,9 @@ footer {
         <a href="https://github.com/Subhajit267" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
       </div>
     </div>
-
-    <!-- ── Hardware label ── -->
     <div class="proj-cat-label" style="grid-column:1/-1;">
       <i class="fas fa-microchip" style="color:var(--amber);font-size:0.7rem;"></i> Embedded Systems & IoT
     </div>
-
-    <!-- SPHOORTI -->
     <div class="project-card is-flagship proj-wide">
       <div class="pc-top">
         <div>
@@ -1805,33 +1496,25 @@ footer {
         <a href="https://github.com/Subhajit267" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
       </div>
     </div>
-
-    <!-- IoT Mood -->
     <div class="project-card is-flagship">
       <div class="pc-top"><div>
         <div class="project-card-type">Raspberry Pi · I2C · ML</div>
         <div class="project-card-title">IoT Mood Analysis & Therapy</div>
       </div></div>
-      <p class="project-card-desc">MAX30102 + GSR + MPU6050 over I2C on RPi. ML classifier ~75–85% accuracy triggers targeted audio therapy on 3 consecutive detections.</p>
+      <p class="project-card-desc">MAX30102 + GSR + MPU6050 over I2C on RPi. ML classifier ~75–85% accuracy triggers targeted audio therapy on sustained positive mood detection.</p>
       <div class="pc-foot">
         <div class="project-tags"><span class="tag tag-amber">RPi</span><span class="tag tag-amber">I2C</span><span class="tag tag-amber">scikit-learn</span></div>
         <a href="https://github.com/Subhajit267" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
       </div>
     </div>
-
   </div>
-
-  <!-- Footer row -->
   <div class="proj-footer">
     <span class="proj-footer-note">5 flagship projects shown · 35+ total delivered</span>
     <button class="view-all-btn" id="openAllProjects">
       View All Projects <i class="fas fa-arrow-right"></i>
     </button>
   </div>
-
 </section>
-
-<!-- ═══ ALL PROJECTS DRAWER ═══ -->
 <div id="all-projects-drawer">
   <div class="drawer-backdrop" id="drawerBackdrop"></div>
   <div class="drawer-panel">
@@ -1839,142 +1522,131 @@ footer {
       <div class="drawer-title">All Projects</div>
       <button class="drawer-close" id="closeAllProjects"><i class="fas fa-times"></i></button>
     </div>
-
-    <div class="drawer-cat" style="margin-top:0.5rem;"><i class="fas fa-terminal" style="color:var(--amber)"></i> Software & Systems</div>
-
+    <div class="drawer-cat" style="margin-top:0.5rem;"><i class="fas fa-terminal" style="color:var(--amber)"></i> Speech AI & Software Systems</div>
     <div class="drawer-item">
       <span class="drawer-item-num">01</span>
       <div>
+        <div class="drawer-item-title">Moonshine Streaming TTS Extension for Robotics</div>
+        <div class="drawer-item-desc">Real-time streaming architecture over Moonshine TTS (C++, CMake, PipeWire) with Unix Domain Sockets and a lock-free SPSC ring buffer for low-latency chunked audio.</div>
+        <div class="drawer-item-tags"><span class="tag tag-amber">C++</span><span class="tag">PipeWire</span><span class="tag">Unix Sockets</span></div>
+      </div>
+    </div>
+    <div class="drawer-item">
+      <span class="drawer-item-num">02</span>
+      <div>
         <div class="drawer-item-title">Operating Environment (OE) — Custom Shell</div>
-        <div class="drawer-item-desc">Cross-platform C/C++ shell with 15+ commands, text editor, math evaluator (Shunting Yard), file management. Zero dependencies.</div>
+        <div class="drawer-item-desc">Cross-platform C/C++ shell with 15+ commands, text editor, math evaluator (Shunting Yard), file management. Actively evolving toward a standalone OS.</div>
         <div class="drawer-item-tags"><span class="tag tag-amber">C/C++</span><span class="tag">Cross-Platform</span><span class="tag">Systems</span></div>
       </div>
     </div>
-
     <div class="drawer-item">
-      <span class="drawer-item-num">02</span>
+      <span class="drawer-item-num">03</span>
       <div>
         <div class="drawer-item-title">Network Routing Simulator (DVR & LSR)</div>
         <div class="drawer-item-desc">Bellman-Ford & Dijkstra across 10+ nodes using multi-threaded Python TCP sockets with real-time convergence analysis.</div>
         <div class="drawer-item-tags"><span class="tag">Python</span><span class="tag">Multithreading</span><span class="tag">TCP</span></div>
       </div>
     </div>
-
     <div class="drawer-item">
-      <span class="drawer-item-num">03</span>
+      <span class="drawer-item-num">04</span>
       <div>
         <div class="drawer-item-title">Face Recognition Attendance System</div>
         <div class="drawer-item-desc">Real-time face recognition for 50+ users (~90% accuracy) using dlib. Automated logging with SQLite integration.</div>
         <div class="drawer-item-tags"><span class="tag">Python</span><span class="tag">dlib</span><span class="tag">OpenCV</span></div>
       </div>
     </div>
-
     <div class="drawer-item">
-      <span class="drawer-item-num">04</span>
+      <span class="drawer-item-num">05</span>
       <div>
         <div class="drawer-item-title">AVL Tree Database Engine</div>
         <div class="drawer-item-desc">Self-balancing AVL Tree based DB core in C/C++. O(log n) guaranteed for all operations on production-scale datasets.</div>
         <div class="drawer-item-tags"><span class="tag">C/C++</span><span class="tag">DSA</span><span class="tag">O(log n)</span></div>
       </div>
     </div>
-
     <div class="drawer-item">
-      <span class="drawer-item-num">05</span>
+      <span class="drawer-item-num">06</span>
       <div>
         <div class="drawer-item-title">High-Performance Template Vector</div>
         <div class="drawer-item-desc">Optimized C++ template vector outperforming std::vector with custom memory management for embedded and large-scale environments.</div>
         <div class="drawer-item-tags"><span class="tag">C++</span><span class="tag">Templates</span><span class="tag">Memory</span></div>
       </div>
     </div>
-
     <div class="drawer-item">
-      <span class="drawer-item-num">06</span>
+      <span class="drawer-item-num">07</span>
       <div>
         <div class="drawer-item-title">VBA Store Management Suite</div>
         <div class="drawer-item-desc">Enterprise Excel/VBA solution managing stock, expenses, and staff for a retail client. Automated reports and records.</div>
         <div class="drawer-item-tags"><span class="tag">VBA</span><span class="tag">Excel</span><span class="tag">Automation</span></div>
       </div>
     </div>
-
     <div class="drawer-item">
-      <span class="drawer-item-num">07</span>
+      <span class="drawer-item-num">08</span>
       <div>
         <div class="drawer-item-title">Car Rental Management System</div>
         <div class="drawer-item-desc">Python desktop app with MySQL/CSV backends, multi-user roles, billing, and inventory management.</div>
         <div class="drawer-item-tags"><span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">CSV</span></div>
       </div>
     </div>
-
     <div class="drawer-item">
-      <span class="drawer-item-num">08</span>
+      <span class="drawer-item-num">09</span>
       <div>
         <div class="drawer-item-title">CNN Handwriting Recognition</div>
         <div class="drawer-item-desc">Convolutional Neural Network for real-time digit recognition trained on MNIST. Full pipeline from preprocessing to deployment.</div>
         <div class="drawer-item-tags"><span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">CNN</span></div>
       </div>
     </div>
-
     <div class="drawer-cat"><i class="fas fa-microchip" style="color:var(--amber)"></i> Embedded Systems & IoT</div>
-
     <div class="drawer-item">
-      <span class="drawer-item-num">09</span>
+      <span class="drawer-item-num">10</span>
       <div>
         <div class="drawer-item-title">SPHOORTI — Real-Time Speech to Braille</div>
         <div class="drawer-item-desc">ESP32 + ReactJS BT app driving GPIO solenoids for Braille output. ~85–90% accuracy. 🏆 1st Prize at multiple tech expos.</div>
         <div class="drawer-item-tags"><span class="tag tag-amber">ESP32</span><span class="tag">MicroPython</span><span class="tag">GPIO</span></div>
       </div>
     </div>
-
     <div class="drawer-item">
-      <span class="drawer-item-num">10</span>
+      <span class="drawer-item-num">11</span>
       <div>
         <div class="drawer-item-title">IoT Music Mood Analysis & Therapy System</div>
         <div class="drawer-item-desc">Raspberry Pi + MAX30102/GSR/MPU6050 sensors over I2C. ML mood classifier (~75–85%) triggers audio therapy feedback.</div>
         <div class="drawer-item-tags"><span class="tag tag-amber">Raspberry Pi</span><span class="tag">I2C</span><span class="tag">scikit-learn</span></div>
       </div>
     </div>
-
     <div class="drawer-item">
-      <span class="drawer-item-num">11</span>
+      <span class="drawer-item-num">12</span>
       <div>
         <div class="drawer-item-title">GRAINEYE — AI Sand Grain Analyzer</div>
         <div class="drawer-item-desc">Raspberry Pi + CNN for real-time beach sand grain-size analysis. Results logged via custom map API for environmental monitoring.</div>
         <div class="drawer-item-tags"><span class="tag">Raspberry Pi</span><span class="tag">CNN</span><span class="tag">Python</span></div>
       </div>
     </div>
-
     <div class="drawer-item">
-      <span class="drawer-item-num">12</span>
+      <span class="drawer-item-num">13</span>
       <div>
         <div class="drawer-item-title">500W Pure Sine Wave Inverter</div>
         <div class="drawer-item-desc">4047 & 555 IC MOSFET-switched inverter with stable output, minimal heat loss, and full KiCad PCB design.</div>
         <div class="drawer-item-tags"><span class="tag">Analog</span><span class="tag">MOSFET</span><span class="tag">KiCad</span></div>
       </div>
     </div>
-
     <div class="drawer-item">
-      <span class="drawer-item-num">13</span>
+      <span class="drawer-item-num">14</span>
       <div>
         <div class="drawer-item-title">120W 4.1 Hi-Fi Amplifier</div>
         <div class="drawer-item-desc">High-fidelity 4-channel analog amplifier with full tone controls, minimal distortion, custom PCB.</div>
         <div class="drawer-item-tags"><span class="tag">Analog</span><span class="tag">TDA Series</span><span class="tag">Audio</span></div>
       </div>
     </div>
-
   </div>
 </div>
-
-<!-- ─── SKILLS ─── -->
 <section class="section" id="skills">
   <div class="section-label">Technical Stack</div>
   <h2 class="section-title">Skills & Proficiencies</h2>
-  <p class="section-sub">Deep expertise across software, hardware, and systems — built through real project delivery, not just coursework.</p>
-
+  <p class="section-sub">Deep expertise across speech AI, embedded Linux, and systems software — built through real project and production delivery.</p>
   <div class="skills-layout">
     <div class="skills-group">
       <div class="skills-group-title">Core Languages</div>
       <div class="skill-item">
-        <div><div class="skill-name">C / C++</div><div class="skill-desc">Low-level I/O, templates, memory management, OS-level</div></div>
+        <div><div class="skill-name">C / C++</div><div class="skill-desc">Low-level I/O, templates, memory management, OS-level, C++17/20</div></div>
         <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span></div>
       </div>
       <div class="skill-item">
@@ -1982,47 +1654,49 @@ footer {
         <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span></div>
       </div>
       <div class="skill-item">
+        <div><div class="skill-name">Node.js (N-API / C++ addons)</div><div class="skill-desc">Native addons, V8/libuv interaction, production backend services</div></div>
+        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div>
+      </div>
+      <div class="skill-item">
         <div><div class="skill-name">Embedded C / MicroPython</div><div class="skill-desc">ESP32, Arduino, STM32, real-time firmware</div></div>
         <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div>
       </div>
       <div class="skill-item">
-        <div><div class="skill-name">Java / C# / VB.NET</div><div class="skill-desc">OOP, application development, business tools</div></div>
-        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div>
-      </div>
-      <div class="skill-item">
-        <div><div class="skill-name">SQL / VBA / Macros</div><div class="skill-desc">MySQL, MS Access, Excel automation, enterprise workflows</div></div>
+        <div><div class="skill-name">Java / SQL / VBA</div><div class="skill-desc">OOP, MySQL/PostgreSQL/SQLite, Excel automation</div></div>
         <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div>
       </div>
     </div>
-
     <div class="skills-group">
-      <div class="skills-group-title">Hardware & Systems</div>
+      <div class="skills-group-title">Speech AI, Audio & Embedded Systems</div>
       <div class="skill-item">
-        <div><div class="skill-name">Circuit & PCB Design</div><div class="skill-desc">Analog/digital design, signal integrity, power electronics</div></div>
-        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span></div>
-      </div>
-      <div class="skill-item">
-        <div><div class="skill-name">Embedded Systems</div><div class="skill-desc">ESP-family, Arduino, Raspberry Pi, IoT deployment</div></div>
-        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span></div>
-      </div>
-      <div class="skill-item">
-        <div><div class="skill-name">Networking & Protocols</div><div class="skill-desc">DVR, LSR, Cisco Packet Tracer, Wireshark, TCP/IP</div></div>
+        <div><div class="skill-name">Sherpa-ONNX / Moonshine TTS</div><div class="skill-desc">Streaming STT/TTS, phoneme generation, ONNX Runtime</div></div>
         <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div>
       </div>
       <div class="skill-item">
-        <div><div class="skill-name">Data Structures & Algorithms</div><div class="skill-desc">AVL Trees, Graph algorithms, optimization, complexity analysis</div></div>
-        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span></div>
+        <div><div class="skill-name">Linux Audio (PipeWire / ALSA)</div><div class="skill-desc">PCM buffering, resampling, low-latency routing, sync</div></div>
+        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div>
       </div>
       <div class="skill-item">
-        <div><div class="skill-name">AI / ML</div><div class="skill-desc">CNN, TensorFlow/Keras, data pipelines, model deployment</div></div>
+        <div><div class="skill-name">IPC & Real-Time Linux</div><div class="skill-desc">Unix sockets, lock-free SPSC buffers, epoll, threads/mutexes</div></div>
+        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div>
+      </div>
+      <div class="skill-item">
+        <div><div class="skill-name">Embedded Linux & Robotics</div><div class="skill-desc">XMOS voice hardware, kernel driver integration, camera pipelines</div></div>
+        <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span></div>
+      </div>
+      <div class="skill-item">
+        <div><div class="skill-name">AI / ML</div><div class="skill-desc">TensorFlow, PyTorch, scikit-learn, model deployment</div></div>
         <div class="skill-level"><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot filled"></span><span class="skill-dot"></span><span class="skill-dot"></span></div>
       </div>
     </div>
   </div>
-
   <div class="skills-full">
     <div class="skills-tags-title">Tools & Environments</div>
     <div class="skills-tag-cloud">
+      <span class="tag tag-amber">Sherpa-ONNX</span>
+      <span class="tag tag-amber">Moonshine TTS</span>
+      <span class="tag tag-amber">PipeWire</span>
+      <span class="tag tag-amber">XMOS</span>
       <span class="tag">GCC / G++</span>
       <span class="tag">Git / GitHub</span>
       <span class="tag">NASM (x86 Assembly)</span>
@@ -2044,13 +1718,10 @@ footer {
     </div>
   </div>
 </section>
-
-<!-- ─── CERTIFICATIONS ─── -->
 <section class="section" id="certifications">
   <div class="section-label">Credentials</div>
   <h2 class="section-title">Certifications</h2>
   <p class="section-sub">Professional certifications validating expertise across security, systems programming, and advanced Python development.</p>
-
   <div class="certs-grid">
     <div class="card cert-card card-amber">
       <div class="cert-icon"><i class="fas fa-search"></i></div>
@@ -2060,7 +1731,6 @@ footer {
         <div class="cert-year">2024</div>
       </div>
     </div>
-
     <div class="card cert-card card-amber">
       <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
       <div>
@@ -2069,7 +1739,6 @@ footer {
         <div class="cert-year">2024</div>
       </div>
     </div>
-
     <div class="card cert-card card-amber">
       <div class="cert-icon"><i class="fas fa-code"></i></div>
       <div>
@@ -2078,7 +1747,6 @@ footer {
         <div class="cert-year">2024</div>
       </div>
     </div>
-
     <div class="card cert-card card-amber">
       <div class="cert-icon"><i class="fab fa-python"></i></div>
       <div>
@@ -2088,19 +1756,29 @@ footer {
       </div>
     </div>
   </div>
-
   <div style="text-align:center;margin-top:2rem;">
     <a href="https://github.com/Subhajit267" target="_blank" class="btn btn-ghost"><i class="fab fa-github"></i> &nbsp;View GitHub Profile</a>
   </div>
 </section>
-
-<!-- ─── EXPERIENCE ─── -->
 <section class="section" id="experience">
   <div class="section-label">Track Record</div>
   <h2 class="section-title">Work Experience</h2>
-  <p class="section-sub">Hands-on delivery across software, hardware, mentorship, and enterprise automation — for clients across USA, Germany, Saudi Arabia, and Australia.</p>
-
+  <p class="section-sub">Hands-on delivery across speech AI, embedded Linux, robotics, software, and enterprise automation — for clients across the UK, USA, Germany, Saudi Arabia, and Australia.</p>
   <div class="experience-layout">
+    <div class="card exp-card card-amber" style="grid-column:1/-1;">
+      <div class="exp-header">
+        <div class="exp-title">Linux Software Development Intern</div>
+        <span class="exp-date">Jun 2026 — Present</span>
+      </div>
+      <div class="exp-org">Swift Robotics · London, UK · Remote</div>
+      <ul class="exp-list">
+        <li>Worked on Sherpa-ONNX and Moonshine speech pipelines, extending and customizing streaming audio and phoneme generation for production use.</li>
+        <li>Built PipeWire-based audio streaming with Unix Socket IPC and lock-free SPSC buffering for low-latency, chunk-based phoneme and audio delivery in robotics applications (lip-sync, voice interaction).</li>
+        <li>Worked with XMOS microphone hardware and firmware, including USB audio capture and pipeline bring-up.</li>
+        <li>Contributed to backend/runtime-level performance work involving Node.js native addons (N-API/C++), optimizing V8/libuv interaction for a production backend service.</li>
+        <li>Contributed to camera-based robotics functionality and kernel-level driver integrations; currently developing low-level HDMI video receiver driver integration.</li>
+      </ul>
+    </div>
     <div class="card exp-card">
       <div class="exp-header">
         <div class="exp-title">Freelance Developer & Code Analyst</div>
@@ -2111,10 +1789,9 @@ footer {
         <li>Delivered 35+ software systems, automation tools, and networking solutions for international clients with typical turnaround of 2–5 days per project.</li>
         <li>Developed systems including databases, network simulators, VBA/Macro automation, and IoT tools under NDA with complete documentation and IP transfer.</li>
         <li>Managed end-to-end delivery for 3–5 concurrent projects simultaneously, handling client requirements and iterative refinement independently.</li>
-        <li>Provided expert tutoring and coursework support for IGCSE, IB, and University of Miami (ECE318, ECE218, ECE322) students covering Electronics, Embedded Systems, and Computer Engineering.</li>
+        <li>Provided expert tutoring and coursework support for IGCSE, IB, and University of Miami (ECE) students covering Electronics, Embedded Systems, and Computer Engineering.</li>
       </ul>
     </div>
-
     <div class="card exp-card">
       <div class="exp-header">
         <div class="exp-title">Consultant, Mentor & Developer</div>
@@ -2129,7 +1806,6 @@ footer {
       </ul>
     </div>
   </div>
-
   <div style="margin-top:2rem;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;">
     <div>
       <div style="font-family:var(--font-m);font-size:0.68rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;">Availability</div>
@@ -2145,17 +1821,14 @@ footer {
     </div>
     <div>
       <div style="font-family:var(--font-m);font-size:0.68rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.35rem;">Location</div>
-      <div style="font-weight:600;font-size:0.95rem;">India · Remote Worldwide</div>
+      <div style="font-weight:600;font-size:0.95rem;">Jalpaiguri, India · Remote Worldwide</div>
     </div>
   </div>
 </section>
-
-<!-- ─── REVIEWS ─── -->
 <section class="section" id="reviews">
   <div class="section-label">Client Feedback</div>
   <h2 class="section-title" style="color:var(--amber);">What Clients Say</h2>
   <p class="section-sub">Testimonials from clients across the USA, Australia, India, Saudi Arabia, and UAE.</p>
-
   <div class="reviews-grid">
     <div class="card review-card">
       <div class="stars">★★★★★</div>
@@ -2163,35 +1836,30 @@ footer {
       <div class="review-author">Yousef Ghazi</div>
       <div class="review-location">Miami, USA · University Student</div>
     </div>
-
     <div class="card review-card">
       <div class="stars">★★★★★</div>
       <p class="review-quote">The custom IoT solution exceeded expectations. Subhajit seamlessly handled both the embedded software (ESP32) and the circuit design. Highly recommended for any hardware project.</p>
       <div class="review-author">Sneha Iyer</div>
       <div class="review-location">Chennai, India · IoT Client</div>
     </div>
-
     <div class="card review-card">
       <div class="stars">★★★★★</div>
       <p class="review-quote">Subhajit developed a comprehensive VBA solution for our store — managing stock, expenses, and staff. The system significantly improved our daily operations and record-keeping. Highly professional!</p>
       <div class="review-author">Olivia Parker</div>
       <div class="review-location">Denver, USA · Business Client</div>
     </div>
-
     <div class="card review-card">
       <div class="stars">★★★★☆</div>
       <p class="review-quote">The Python assignment was delivered on time with clear, actionable insights. The guidance made complex data analysis understandable and very useful. Highly recommended!</p>
       <div class="review-author">Sophie Mitchell</div>
       <div class="review-location">Hahndorf, Australia · Data Client</div>
     </div>
-
     <div class="card review-card">
       <div class="stars">★★★★★</div>
       <p class="review-quote">Expert guidance in Cisco Packet Tracer. My configuration lab work improved dramatically after one session. Fantastic mentor — explains concepts clearly and patiently.</p>
       <div class="review-author">Alya Al-Shammari</div>
       <div class="review-location">Saudi Arabia · Networking Student</div>
     </div>
-
     <div class="card review-card">
       <div class="stars">★★★★☆</div>
       <p class="review-quote">Great support on my university coursework. The explanation of advanced networking protocols was clear and thorough. Delivered exactly what was promised, on time.</p>
@@ -2200,17 +1868,13 @@ footer {
     </div>
   </div>
 </section>
-
-<!-- ─── CONTACT ─── -->
 <section class="section" id="contact">
   <div class="section-label">Work Together</div>
   <h2 class="section-title">Let's Build Something</h2>
-
   <div class="contact-layout">
     <div class="card contact-info">
       <h3 class="contact-title">Ready to Start Your Project?</h3>
       <p class="contact-desc">I'm currently available for new freelance assignments globally. Due to the proprietary nature of client work, full project source code and CV are provided upon request under NDA.</p>
-
       <a href="mailto:subhajithalder267@outlook.com" class="contact-item">
         <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
         <div>
@@ -2218,7 +1882,6 @@ footer {
           <div class="contact-item-value">subhajithalder267@outlook.com</div>
         </div>
       </a>
-
       <a href="tel:+917047736124" class="contact-item">
         <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
         <div>
@@ -2226,7 +1889,6 @@ footer {
           <div class="contact-item-value">+91 7047736124</div>
         </div>
       </a>
-
       <a href="https://wa.me/917047736124" target="_blank" class="contact-item">
         <div class="contact-item-icon"><i class="fab fa-whatsapp"></i></div>
         <div>
@@ -2234,25 +1896,21 @@ footer {
           <div class="contact-item-value">Message me directly</div>
         </div>
       </a>
-
       <div class="social-row" style="margin-top:1.5rem;">
         <a href="https://github.com/Subhajit267?tab=repositories" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
         <a href="https://www.linkedin.com/in/subhajit-halder-7aba79325" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://wa.me/917047736124" target="_blank" class="social-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
       </div>
-
       <div style="margin-top:2rem;padding:1.25rem;background:rgba(245,166,35,0.06);border:1px solid rgba(245,166,35,0.15);border-radius:var(--radius);font-size:0.85rem;color:var(--muted2);line-height:1.7;">
         <strong style="color:var(--amber);">Response time:</strong> Within 24 hours. All inquiries treated with confidentiality. NDA available before sharing any project details.
       </div>
     </div>
-
     <div class="card form-card">
       <h3 class="form-title">Send a Message</h3>
       <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="bc8c822d-8483-471a-ad81-016fa1388aa6">
         <input type="hidden" name="subject" value="New Inquiry — Subhajit Halder Portfolio">
         <input type="checkbox" name="botcheck" style="display:none">
-
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="name">Your Name</label>
@@ -2263,45 +1921,38 @@ footer {
             <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
           </div>
         </div>
-
         <div class="form-group">
           <label class="form-label" for="project_type">Service Type</label>
           <select id="project_type" name="project_type" class="form-input" style="cursor:pointer;">
             <option value="">Select a service...</option>
+            <option>Speech AI / Real-Time Audio Systems</option>
             <option>Software / Systems Development (C/C++, Python)</option>
-            <option>IoT & Embedded Systems</option>
+            <option>Embedded Linux / IoT & Robotics</option>
             <option>Academic Mentorship / Tutoring</option>
             <option>VBA / Business Automation</option>
             <option>Circuit / PCB Design</option>
             <option>Other / Consultation</option>
           </select>
         </div>
-
         <div class="form-group">
           <label class="form-label" for="form_subject">Project Brief</label>
           <input type="text" id="form_subject" name="form_subject" class="form-input" placeholder="One-line description of your project" required>
         </div>
-
         <div class="form-group">
           <label class="form-label" for="message">Details</label>
           <textarea id="message" name="message" class="form-textarea" placeholder="Tell me about your requirements, timeline, and budget..." required></textarea>
         </div>
-
         <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%;justify-content:center;">
           Send Message <i class="fas fa-paper-plane"></i>
         </button>
-
         <div id="formMessage" class="form-message"></div>
       </form>
     </div>
   </div>
 </section>
-
-<!-- ─── ABOUT ─── -->
 <section class="section" id="about">
   <div class="section-label">Who I Am</div>
   <h2 class="section-title" style="margin-bottom:2.5rem;">About Me</h2>
-
   <div class="about-layout">
     <div class="about-img-wrap">
       <div class="about-img-frame">
@@ -2312,35 +1963,32 @@ footer {
         </div>
       </div>
       <div class="about-name">Subhajit Halder</div>
-      <div class="about-role">Systems & Software Developer</div>
+      <div class="about-role">Systems & Speech AI Developer</div>
       <div style="display:flex;justify-content:center;gap:0.5rem;flex-wrap:wrap;">
         <span class="tag tag-green">● Available</span>
         <span class="tag">India · Remote</span>
       </div>
     </div>
-
     <div class="about-content">
       <p class="about-body">
-        I'm a systems engineer and freelance developer who builds at the intersection of software and hardware. My work spans C/C++ performance systems, embedded firmware, IoT deployments, and algorithm-intensive applications — delivered for clients across six countries.
+        I'm a systems developer specializing in real-time audio/AI pipelines, embedded Linux, and low-latency C++. Currently a Linux Software Development Intern at Swift Robotics (London), where I extend and customize speech-AI systems — Sherpa-ONNX, Moonshine, PipeWire — for production robotics, and work on low-level HDMI video receiver driver development.
       </p>
       <p class="about-body">
-        I approach every project as an engineering problem first: define constraints, design for correctness, optimize for performance, document for maintainability. Whether it's a self-balancing database engine or a real-time Braille converter, the standard is the same.
+        I approach every project as an engineering problem first: define constraints, design for correctness, optimize for performance, document for maintainability. Whether it's a lock-free streaming TTS pipeline or a real-time Braille converter, the standard is the same.
       </p>
       <p class="about-body">
-        Beyond client work, I mentor university and pre-university students in Computer Science, Electronics, and Embedded Systems — translating complex theory into practical understanding that shows up on assessments and in the lab.
+        Alongside my internship, I've delivered 35+ freelance software systems for clients across the USA, Germany, Saudi Arabia, and Australia, and mentor students in Computer Science, Electronics, and Embedded Systems.
       </p>
-
       <div class="about-chips">
+        <span class="tag tag-amber">Speech AI Pipelines</span>
+        <span class="tag tag-amber">Embedded Linux</span>
+        <span class="tag tag-amber">Real-Time Audio</span>
         <span class="tag tag-amber">C/C++ Systems</span>
-        <span class="tag tag-amber">Embedded Electronics</span>
+        <span class="tag tag-amber">Robotics Software</span>
         <span class="tag tag-amber">IoT Solutions</span>
         <span class="tag tag-amber">Network Simulation</span>
         <span class="tag tag-amber">Academic Mentorship</span>
-        <span class="tag tag-amber">PCB Design</span>
-        <span class="tag tag-amber">Data Analysis</span>
-        <span class="tag tag-amber">AI / ML</span>
       </div>
-
       <div class="education-block">
         <div class="edu-title">Education</div>
         <div class="edu-item">
@@ -2354,7 +2002,6 @@ footer {
           </div>
         </div>
       </div>
-
       <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
         <button class="btn btn-primary nav-btn" data-target="contact">Work With Me <i class="fas fa-arrow-right"></i></button>
         <button class="btn btn-ghost nav-btn" data-target="projects">See Projects</button>
@@ -2362,17 +2009,11 @@ footer {
     </div>
   </div>
 </section>
-
 </main>
-
 <footer>
-  <p>© 2026 Subhajit Halder &nbsp;·&nbsp; Systems & Software Developer &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp; Jalpaiguri, West Bengal, India</p>
+  <p>© 2026 Subhajit Halder &nbsp;·&nbsp; Systems & Speech AI Developer &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp; Jalpaiguri, West Bengal, India</p>
 </footer>
-
 <script>
-/* ═══════════════════════════════════════════
-   NAVIGATION LOGIC
-═══════════════════════════════════════════ */
 const sections  = document.querySelectorAll('.section');
 const navBtns   = document.querySelectorAll('[data-target]');
 const mobileDrawer = document.getElementById('mobile-drawer');
@@ -2382,11 +2023,9 @@ function showSection(id) {
   sections.forEach(s => s.classList.remove('active'));
   const target = document.getElementById(id);
   if (target) { target.classList.add('active'); window.scrollTo(0,0); }
-
   navBtns.forEach(b => {
     b.classList.toggle('active', b.dataset.target === id);
   });
-
   mobileDrawer.classList.remove('open');
   mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
 }
@@ -2400,9 +2039,6 @@ mobileToggle.addEventListener('click', () => {
   mobileToggle.innerHTML = open ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
 });
 
-/* ═══════════════════════════════════════════
-   CONTACT FORM
-═══════════════════════════════════════════ */
 const form        = document.getElementById('contactForm');
 const formMsg     = document.getElementById('formMessage');
 const submitBtn   = document.getElementById('submitBtn');
@@ -2412,14 +2048,12 @@ form.addEventListener('submit', async (e) => {
   const orig = submitBtn.innerHTML;
   submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
   submitBtn.disabled = true;
-
   try {
     const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       body: new FormData(form)
     });
     const data = await res.json();
-
     if (data.success) {
       formMsg.className = 'form-message success';
       formMsg.textContent = '✓ Message sent! I\'ll get back to you within 24 hours.';
@@ -2431,15 +2065,11 @@ form.addEventListener('submit', async (e) => {
     formMsg.className = 'form-message error';
     formMsg.textContent = '✕ Something went wrong. Please email me directly at subhajithalder267@outlook.com';
   }
-
   submitBtn.innerHTML = orig;
   submitBtn.disabled = false;
   setTimeout(() => { formMsg.className = 'form-message'; }, 7000);
 });
 
-/* ═══════════════════════════════════════════
-   THEME TOGGLE
-═══════════════════════════════════════════ */
 const themeToggle = document.getElementById('themeToggle');
 const htmlEl = document.documentElement;
 
@@ -2457,7 +2087,6 @@ themeToggle.addEventListener('click', () => {
   applyTheme(current === 'dark' ? 'light' : 'dark');
 });
 
-// Restore saved preference or detect system preference
 const saved = localStorage.getItem('sh-theme');
 if (saved) {
   applyTheme(saved);
@@ -2467,9 +2096,6 @@ if (saved) {
   applyTheme('dark');
 }
 
-/* ═══════════════════════════════════════════
-   ALL PROJECTS DRAWER
-═══════════════════════════════════════════ */
 const drawer = document.getElementById('all-projects-drawer');
 const openBtn = document.getElementById('openAllProjects');
 const closeBtn = document.getElementById('closeAllProjects');
@@ -2493,7 +2119,6 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeDrawer();
 });
 
-/* ── Init ── */
 showSection('home');
 </script>
 </body>
